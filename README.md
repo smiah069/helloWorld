@@ -18,5 +18,40 @@ Error redoing merge 1234deadbeef1234deadbeef
 
 Solution: 
 
-git pull origin master --allow-unrelated-histories
-git merge origin origin/master
+* git pull origin master --allow-unrelated-histories
+git merge origin origin/master * 
+
+
+### (Windows MINGW64) Working set of commands for uploading local repositing to github remote repository
+
+1. Navigate command line to go to local github repository
+
+
+$ git init
+$ git add . 
+
+*** Please tell me who you are.
+
+==
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+===
+
+$ git commit -m "Adding poster and labnotebook"
+
+$ git remote add origin https://github.com/smiah069/gitHubReposSeniorProject1-18-19
+
+$  git pull origin master --allow-unrelated-histories
+
+$ git push --force origin master
+
+
+(For merging: use $ git merge origin origin/master)
+
+=====
