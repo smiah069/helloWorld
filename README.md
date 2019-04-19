@@ -3,7 +3,7 @@ This is my first hello world repository.
 
 # Some usefull links
 
-## Adding a file to a repository using the command line
+## Upload/upgrade local repository to github (online) repository using the command line
 
 * [See this link](https://help.github.com/en/articles/adding-a-file-to-a-repository-using-the-command-line)
 
