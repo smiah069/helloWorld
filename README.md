@@ -28,6 +28,7 @@ git merge origin origin/master *
 
 
 $ git init
+
 $ git add . 
 
 *** Please tell me who you are.
@@ -36,9 +37,11 @@ $ git add .
 Run
 
   git config --global user.email "you@example.com"
+  
   git config --global user.name "Your Name"
 
 to set your account's default identity.
+
 Omit --global to set the identity only in this repository.
 
 ===
