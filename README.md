@@ -58,3 +58,7 @@ $ git push --force origin master
 (For merging: use $ git merge origin origin/master)
 
 =====
+
+### To work with the  latest version of repository in local repository drive, first fetch it in the local repo drive:
+
+$ git pull origin master       (OR  $ git fetch --all)
