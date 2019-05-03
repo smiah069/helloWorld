@@ -71,19 +71,18 @@ error: Untracked working tree file 'public/images/icon.gif' would be overwritten
 
 Solution: 
 
-git fetch --all
+>git fetch --all
+
 Then, you have two options:
 
-git reset --hard origin/master
+>git reset --hard origin/master
 OR If you are on some other branch type:
 
-git reset --hard origin/<branch_name>
+>git reset --hard origin/<branch_name>
 
-~Explanation~ 
-
-git fetch downloads the latest from remote without trying to merge or rebase anything.
-
-Then the git reset resets the master branch to what you just fetched. The --hard option changes all the files in your working tree to match the files in origin/master
-
+*Explanation* 
+~~~
+git fetch downloads the latest from remote without trying to merge or rebase anything. Then the git reset resets the master branch to what you just fetched. The --hard option changes all the files in your working tree to match the files in origin/master
+~~~
 
 
