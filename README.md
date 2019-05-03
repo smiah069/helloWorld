@@ -76,6 +76,7 @@ Solution:
 Then, you have two options:
 
 >git reset --hard origin/master
+
 OR If you are on some other branch type:
 
 >git reset --hard origin/<branch_name>
