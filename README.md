@@ -1,23 +1,22 @@
-# helloWorld
-This is my first hello world repository.
+# My Git Documentation   
 
-# Some usefull links
+* Some usefull links 
 
-## Upload/upgrade local repository to github (online) repository using the command line
+  * Upload/upgrade local repository to github (online) repository using the command line
 
-* [See this link](https://help.github.com/en/articles/adding-a-file-to-a-repository-using-the-command-line)
+    [See this link](https://help.github.com/en/articles/adding-a-file-to-a-repository-using-the-command-line)
 
-## How to upload a project to Github
+  * How to upload a project to Github
 
-* [See this link](https://stackoverflow.com/questions/12799719/how-to-upload-a-project-to-github)
-
+  * [See this link](https://stackoverflow.com/questions/12799719/how-to-upload-a-project-to-github)
 
 
-### (Windows MINGW64) Working set of commands for uploading local repositing to github remote repository
+
+* (Windows MINGW64) Working set of commands for uploading local repositing to github remote repository
 
 1. Navigate command line to go to local github repository
 
-
+~~~
 $ git init
 
 $ git add . 
@@ -44,17 +43,20 @@ $ git remote add origin https://github.com/smiah069/gitHubReposSeniorProject1-18
 $  git pull origin master --allow-unrelated-histories
 
 $ git push --force origin master
+~~~
 
+For merging: use 
 
-(For merging: use $ git merge origin origin/master)
+$ git merge origin origin/master)
 
 =====
 
-### To work with the  latest version of repository in local repository drive, first fetch it in the local repo drive:
+* To work with the  latest version of repository in local repository drive, first fetch it in the local repo drive:
 
 $ git pull origin master       (OR  $ git fetch --all)
 
-### Troubleshooting 
+
+# Troubleshooting 
 
 
 1. Error
