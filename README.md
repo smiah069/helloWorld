@@ -21,21 +21,29 @@ $ git init
 
 $ git add . 
 
+~~~
+
 *** Please tell me who you are.
 
 ==
 Run
 
+~~~
   git config --global user.email "you@example.com"
   
   git config --global user.name "Your Name"
+~~~
 
 to set your account's default identity.
 
-Omit --global to set the identity only in this repository.
+~~~
+Omit --global 
+~~~
+to set the identity only in this repository
 
-===
+==
 
+~~~
 $ git commit -m "Adding poster and labnotebook"
 
 $ git remote add origin https://github.com/smiah069/gitHubReposSeniorProject1-18-19
@@ -47,7 +55,9 @@ $ git push --force origin master
 
 For merging: use 
 
+~~~
 $ git merge origin origin/master)
+~~~
 
 =====
 
