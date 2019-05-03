@@ -11,15 +11,6 @@ This is my first hello world repository.
 
 * [See this link](https://stackoverflow.com/questions/12799719/how-to-upload-a-project-to-github)
 
-## Troubleshooting
-
-* fatal: refusing to merge unrelated histories
-Error redoing merge 1234deadbeef1234deadbeef
-
-Solution: 
-
-* git pull origin master --allow-unrelated-histories
-git merge origin origin/master * 
 
 
 ### (Windows MINGW64) Working set of commands for uploading local repositing to github remote repository
@@ -64,7 +55,21 @@ $ git push --force origin master
 $ git pull origin master       (OR  $ git fetch --all)
 
 ### Troubleshooting 
-Suppose that you have a local (existing) git repository that needs to be updated with the remote repository. With "git pull origin master" you will get the following error
+
+
+1. Error
+   ~~~
+   fatal: refusing to merge unrelated histories
+   Error redoing merge 1234deadbeef1234deadbeef
+   ~~~
+
+  Solution: 
+
+  > git pull origin master --allow-unrelated-histories
+  > git merge origin origin/master 
+
+2. Suppose that you have a local (existing) git repository that needs to be updated with the remote repository. With "git pull    origin master" you will get the following error
+
 ~~~
 error: Untracked working tree file 'public/images/icon.gif' would be overwritten by merge
 ~~~
