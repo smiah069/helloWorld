@@ -1,7 +1,12 @@
 # My Git Documentation   
 
-##
+To download 
 
+
+* To download a repository in the local directory
+~~~
+$ git clone *repo_link*
+~~~
 
 * To work with the  latest version of repository in local repository drive, first fetch it in the local repo drive:
 
