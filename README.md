@@ -2,38 +2,30 @@
 
 
 * To download a repository in the local directory
-~~~
-$ git clone *repo_link*
-~~~
+
+>$ git clone *repo_link*
+
 
 * To work with the  latest version of repository in local repository drive, first fetch it in the local repo drive:
 
-~~~
-$ git pull origin master       (OR  $ git fetch --all)
-~~~
+
+>$ git pull origin master       (OR  $ git fetch --all)
+
 
 * "git status" is an important command that you run every time before pushing modified files to the repository
 
 * Suppose you want to download the latest version from the GitHub repository in your local directory, modify some files, and then upload the modified version back to the repository in GitHub website. For that, follow the steps below. (I'm assuming that you've already set up the git repository in your local directory by $git clone *repo_link*)
 
-1. Go to the local directory Run
-~~~
-$git status
-~~~
-1. Modify the contents of the files that you want to upload in the Git repository and then save all files.
+	1. Go to the local directory Run
+	   >$git status
+	1. Modify the contents of the files that you want to upload in the Git repository and then save all files.
+	1. Run the following command to add all the files in the staging area of your local drive 
+	   >$git add . 
+   1. Run the following command to commit changes in your local drive 
+	  >$git commit -m "Type meaningful message here regarding the changes you made" 
+   1. Finally, you are ready to commit changes by ***pushing*** updated files/contents to the  remote repository. For that, simply type the following command
+	>$git push 
 
-1. Run the following command to add all the files in the staging area of your local drive 
-~~~
-$git add . 
-~~~
-1. Run the following command to commit changes in your local drive 
-~~~
-$git commit -m "Type meaningful message here regarding the changes you made" 
-~~~
-1. Finally, you are ready to commit changes by ***pushing*** updated files/contents to the  remote repository. For that, simply type the following command
-~~~
-$git push 
-~~~
 
 
 
