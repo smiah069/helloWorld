@@ -28,9 +28,6 @@
 	  >$git push 
 
 
-
-
-
 * Some usefull links 
 
   * Upload/upgrade local repository to github (online) repository using the command line
@@ -98,10 +95,9 @@ For merging: use
 1. Error: "fatal: unable to auto-detect email address (got 'Obby@ObbyWorkstation.(none)')"
 
 	Solution: Run 
-	~~~
-	git config --global user.email "yourEmail@email.com"
-	git config --global user.name "Your name"
-	~~~
+	>git config --global user.email "yourEmail@email.com"
+	>git config --global user.name "Your name"
+
 
 
 
