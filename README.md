@@ -1,5 +1,17 @@
 # My Git Documentation   
 
+##
+
+
+* To work with the  latest version of repository in local repository drive, first fetch it in the local repo drive:
+
+$ git pull origin master       (OR  $ git fetch --all)
+
+
+* git status 
+
+
+
 * Some usefull links 
 
   * Upload/upgrade local repository to github (online) repository using the command line
@@ -23,10 +35,7 @@ $ git add .
 
 ~~~
 
-*** Please tell me who you are.
-
-==
-Run
+*** Please tell me who you are. For that, run
 
 ~~~
   git config --global user.email "you@example.com"
@@ -61,9 +70,6 @@ $ git merge origin origin/master)
 
 =====
 
-* To work with the  latest version of repository in local repository drive, first fetch it in the local repo drive:
-
-$ git pull origin master       (OR  $ git fetch --all)
 
 
 # Troubleshooting 
