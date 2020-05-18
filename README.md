@@ -1,6 +1,4 @@
-# My Git Documentation   
-
-To download 
+# My Git Documentation
 
 
 * To download a repository in the local directory
