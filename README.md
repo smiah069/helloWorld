@@ -1,4 +1,4 @@
-# My Git Documentation
+# Getting Started with Git
 
 
 * To download a repository in the local directory
@@ -67,10 +67,10 @@ For merging: use
    Error redoing merge 1234deadbeef1234deadbeef
    ~~~
 
-  Solution: 
+	Solution: 
 
-  > git pull origin master --allow-unrelated-histories
-  > git merge origin origin/master 
+	> git pull origin master --allow-unrelated-histories
+	> git merge origin origin/master 
 
 1. Suppose that you have a local (existing) git repository that needs to be updated with the remote repository. With "git pull    origin master" you will get the following error
 
