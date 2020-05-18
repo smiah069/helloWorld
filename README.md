@@ -114,4 +114,14 @@ OR If you are on some other branch type:
 git fetch downloads the latest from remote without trying to merge or rebase anything. Then the git reset resets the master branch to what you just fetched. The --hard option changes all the files in your working tree to match the files in origin/master
 ~~~
 
+* Error: "fatal: unable to auto-detect email address (got 'Obby@ObbyWorkstation.(none)')"
+
+Solution: Run 
+~~~
+git config --global user.email "yourEmail@email.com"
+git config --global user.name "Your name"
+~~~
+
+
+
 
