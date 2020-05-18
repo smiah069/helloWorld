@@ -8,10 +8,33 @@ $ git clone *repo_link*
 
 * To work with the  latest version of repository in local repository drive, first fetch it in the local repo drive:
 
+~~~
 $ git pull origin master       (OR  $ git fetch --all)
+~~~
 
+* "git status" is an important command that you run every time before pushing modified files to the repository
 
-* git status 
+* Suppose you want to download the latest version from the GitHub repository in your local directory, modify some files, and then upload the modified version back to the repository in GitHub website. For that, follow the steps below. (I'm assuming that you've already set up the git repository in your local directory by $git clone *repo_link*)
+
+1. Go to the local directory Run
+~~~
+$git status
+~~~
+1. Modify the contents of the files that you want to upload in the Git repository and then save all files.
+
+1. Run the following command to add all the files in the staging area of your local drive 
+~~~
+$git add . 
+~~~
+1. Run the following command to commit changes in your local drive 
+~~~
+$git commit -m "Type meaningful message here regarding the changes you made" 
+~~~
+1. Finally, you are ready to commit changes by ***pushing*** updated files/contents to the  remote repository. For that, simply type the following command
+~~~
+$git push 
+~~~
+
 
 
 
@@ -26,38 +49,11 @@ $ git pull origin master       (OR  $ git fetch --all)
   * [See this link](https://stackoverflow.com/questions/12799719/how-to-upload-a-project-to-github)
 
 
-
-* (Windows MINGW64) Working set of commands for uploading local repositing to github remote repository
-
-1. Navigate command line to go to local github repository
-
-~~~
-$ git init
-
-$ git add . 
-
-~~~
-
-*** Please tell me who you are. For that, run
-
-~~~
-  git config --global user.email "you@example.com"
-  
-  git config --global user.name "Your Name"
-~~~
-
-to set your account's default identity.
-
-~~~
-Omit --global 
-~~~
-to set the identity only in this repository
+* Other commands:
 
 ==
 
 ~~~
-$ git commit -m "Adding poster and labnotebook"
-
 $ git remote add origin https://github.com/smiah069/gitHubReposSeniorProject1-18-19
 
 $  git pull origin master --allow-unrelated-histories
@@ -70,9 +66,7 @@ For merging: use
 ~~~
 $ git merge origin origin/master)
 ~~~
-
 =====
-
 
 
 # Troubleshooting 
@@ -89,7 +83,7 @@ $ git merge origin origin/master)
   > git pull origin master --allow-unrelated-histories
   > git merge origin origin/master 
 
-2. Suppose that you have a local (existing) git repository that needs to be updated with the remote repository. With "git pull    origin master" you will get the following error
+1. Suppose that you have a local (existing) git repository that needs to be updated with the remote repository. With "git pull    origin master" you will get the following error
 
 ~~~
 error: Untracked working tree file 'public/images/icon.gif' would be overwritten by merge
