@@ -23,8 +23,9 @@
 	   >$git add . 
    1. Run the following command to commit changes in your local drive 
 	  >$git commit -m "Type meaningful message here regarding the changes you made" 
-   1. Finally, you are ready to commit changes by ***pushing*** updated files/contents to the  remote repository. For that, simply type the following command
-	>$git push 
+  1. Finally, you are ready to commit changes by ***pushing*** updated files/contents to the  remote repository. For that,
+	  simply type the following command
+	  >$git push 
 
 
 
@@ -41,10 +42,7 @@
   * [See this link](https://stackoverflow.com/questions/12799719/how-to-upload-a-project-to-github)
 
 
-* Other commands:
-
-==
-
+* Some other commands may be necessary:
 ~~~
 $ git remote add origin https://github.com/smiah069/gitHubReposSeniorProject1-18-19
 
@@ -55,14 +53,13 @@ $ git push --force origin master
 
 For merging: use 
 
-~~~
-$ git merge origin origin/master)
-~~~
-=====
+
+>$ git merge origin origin/master)
+
+
 
 
 # Troubleshooting 
-
 
 1. Error
    ~~~
@@ -77,34 +74,34 @@ $ git merge origin origin/master)
 
 1. Suppose that you have a local (existing) git repository that needs to be updated with the remote repository. With "git pull    origin master" you will get the following error
 
-~~~
-error: Untracked working tree file 'public/images/icon.gif' would be overwritten by merge
-~~~
+	~~~
+	error: Untracked working tree file 'public/images/icon.gif' would be overwritten by merge
+	~~~
 
-Solution: 
+	Solution: 
 
->git fetch --all
+	>git fetch --all
 
-Then, you have two options:
+	Then, you have two options:
 
->git reset --hard origin/master
+	>git reset --hard origin/master
 
-OR If you are on some other branch type:
+	OR If you are on some other branch type:
 
->git reset --hard origin/<branch_name>
+	>git reset --hard origin/<branch_name>
 
-*Explanation* 
-~~~
-git fetch downloads the latest from remote without trying to merge or rebase anything. Then the git reset resets the master branch to what you just fetched. The --hard option changes all the files in your working tree to match the files in origin/master
-~~~
+	*Explanation* 
+	~~~
+	git fetch downloads the latest from remote without trying to merge or rebase anything. Then the git reset resets the    master branch to what you just fetched. The --hard option changes all the files in your working tree to match the files in   origin/master
+	~~~
 
-* Error: "fatal: unable to auto-detect email address (got 'Obby@ObbyWorkstation.(none)')"
+1. Error: "fatal: unable to auto-detect email address (got 'Obby@ObbyWorkstation.(none)')"
 
-Solution: Run 
-~~~
-git config --global user.email "yourEmail@email.com"
-git config --global user.name "Your name"
-~~~
+	Solution: Run 
+	~~~
+	git config --global user.email "yourEmail@email.com"
+	git config --global user.name "Your name"
+	~~~
 
 
 
