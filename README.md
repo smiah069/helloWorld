@@ -96,6 +96,7 @@ For merging: use
 
 	Solution: Run 
 	>git config --global user.email "yourEmail@email.com"
+	>
 	>git config --global user.name "Your name"
 
 
