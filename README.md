@@ -104,6 +104,7 @@ For merging: use
 
   * To remotely login to a file server:
     >sftp username@serverName
+    >
     >put sourceFiles  -- it places source files in the current directory
 
 
