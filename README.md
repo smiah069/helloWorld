@@ -42,7 +42,9 @@
 * Some other commands may be necessary:
 
 >$ git remote add origin https://github.com/smiah069/gitHubReposSeniorProject1-18-19
+>
 >$  git pull origin master --allow-unrelated-histories
+>
 >$ git push --force origin master
 
 
