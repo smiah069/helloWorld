@@ -56,7 +56,7 @@ For merging: use
 
 
 
-# Troubleshooting 
+# Common Errors with Git Commands
 
 1. Error
    ~~~
@@ -99,6 +99,12 @@ For merging: use
 	>
 	>git config --global user.name "Your name"
 
+
+# Some Useful Commands
+
+  * To remotely login to a file server:
+    >sftp username@serverName
+    >put sourceFiles  -- it places source files in the current directory
 
 
 
