@@ -39,12 +39,14 @@
   * [See this link](https://stackoverflow.com/questions/12799719/how-to-upload-a-project-to-github)
 
 
-* Some other commands may be necessary:
+* Some other commands may be necessary:~
+~~
+$ git remote add origin https://github.com/smiah069/gitHubReposSeniorProject1-18-19
 
->$ git remote add origin https://github.com/smiah069/gitHubReposSeniorProject1-18-19
->$  git pull origin master --allow-unrelated-histories
->$ git push --force origin master
+$  git pull origin master --allow-unrelated-histories
 
+$ git push --force origin master
+~~~
 
 For merging: use 
 
