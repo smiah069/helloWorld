@@ -54,6 +54,23 @@ For merging: use
 >$ git merge origin origin/master)
 
 
+## Magit
+
+It is git UI for emacs. Instead of working with git commands from the terminal, emacs magit allows to manage GitHub repository. Frequently used keyboard commands are:
+
+> C-x g => git status
+>
+> S   => stage all
+>
+> c c => commit message  followed by C-c C-c
+>
+> P p => Push
+>
+>?  => help 
+
+
+
+
 
 
 # Common Errors with Git Commands
