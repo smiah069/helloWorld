@@ -2,6 +2,8 @@
 
 Change in LD
 
+Change in GH 
+
 * To download a repository in the local directory
 
 >$ git clone *repo_link*
