@@ -58,20 +58,21 @@ For merging: use
 
 It is git UI for emacs. Instead of working with git commands from the terminal, emacs magit allows to manage GitHub repository. Frequently used keyboard commands are:
 
-> C-x g => git status
+> C-x g => Keyboard shortcut for git status
 >
-> S   => stage all
+> S   => Stage all
 >
-> c c => commit message  followed by C-c C-c
+> c c => Commit message  followed by C-c C-c
 >
 > P p => Push
 >
->?  => help 
+>?  => Help 
 >
 > g => To refresh magit buffer
 >
-> TAB => to see differences in files 
-
+> TAB => To see differences in files 
+>
+> C-t => To set default options  
 
 You may want to watch the [Youtube video](https://www.youtube.com/watch?v=vQO7F2Q9DwA), which is very helpful for beginners.  
 
