@@ -1,8 +1,6 @@
 # Getting Started with Git
 
-Change 1
-
-Change 2
+Chage in GH
 
 * To download a repository in the local directory
 
