@@ -67,6 +67,8 @@ It is git UI for emacs. Instead of working with git commands from the terminal, 
 > P p => Push
 >
 >?  => help 
+>
+> g => To refresh magit buffer
 
 
 You may want to watch the [Youtube video](https://www.youtube.com/watch?v=vQO7F2Q9DwA), which is very helpful for beginners.  
