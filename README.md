@@ -1,8 +1,6 @@
 # Getting Started with Git
 
-Change 1
-
-Change 2
+Change in LD
 
 * To download a repository in the local directory
 
