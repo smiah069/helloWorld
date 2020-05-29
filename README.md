@@ -1,8 +1,5 @@
 # Getting Started with Git
 
-Change in LD1
-
-Change in GH 
 
 * To download a repository in the local directory
 
