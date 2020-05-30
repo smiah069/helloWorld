@@ -1,5 +1,6 @@
 # Getting Started with Git
 
+Change 2
 
 * To download a repository in the local directory
 
@@ -83,7 +84,10 @@ It is git UI for emacs. Instead of working with git commands from the terminal, 
 >r i => rebasing   (change/delete commits and rebase)
 
 >C-c C-k => quit current operation
-
+>
+> C-t => To set default options  
+>
+> C-c C-a => Commit ammend
 
 You may want to watch the [Youtube video](https://www.youtube.com/watch?v=vQO7F2Q9DwA), which is very helpful for beginners.  
 
