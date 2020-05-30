@@ -1,8 +1,5 @@
 # Getting Started with Git
 
-Change 1
-
-
 * To download a repository in the local directory
 
 >$ git clone *repo_link*
@@ -92,7 +89,11 @@ It is git UI for emacs. Instead of working with git commands from the terminal, 
 
 You may want to watch the [Youtube video](https://www.youtube.com/watch?v=vQO7F2Q9DwA), which is very helpful for beginners.  
 
+~~~
+*Dealing with merge conflict using the built-in Ediff tool in emacs*
 
+Suppose that you are changing a file locally. After that, changes are to be pushed to the remote (upstream) branch. However, when you push  
+~~~
 
 
 # Common Errors with Git Commands
