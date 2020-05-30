@@ -92,7 +92,11 @@ You may want to watch the [Youtube video](https://www.youtube.com/watch?v=vQO7F2
 ~~~
 *Dealing with merge conflict using the built-in Ediff tool in emacs*
 
-Suppose that you are changing a file locally. After that, changes are to be pushed to the remote (upstream) branch. However, when you push  
+Suppose that you are changing a file locally. After that, changes are to be pushed to the remote (upstream) branch. However, when you push
+
+
+
+First try to commit using c c => Write commit messages => C-c C-c => Shift+P p 
 ~~~
 
 ~~~
