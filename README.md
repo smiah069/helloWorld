@@ -1,6 +1,9 @@
 # Getting Started with Git
 
-Change 2
+<<<<<<< HEAD
+Change 1
+=======
+>>>>>>> eea1e31... Update README.md
 
 * To download a repository in the local directory
 
