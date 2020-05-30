@@ -74,7 +74,8 @@ It is git UI for emacs. Instead of working with git commands from the terminal, 
 > TAB => To see differences in files 
 >
 > C-t => To set default options  
-
+>
+> C-c C-a => Commit ammend
 You may want to watch the [Youtube video](https://www.youtube.com/watch?v=vQO7F2Q9DwA), which is very helpful for beginners.  
 
 
