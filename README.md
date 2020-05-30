@@ -1,7 +1,5 @@
 # Getting Started with Git
 
-Change 1
-
 
 * To download a repository in the local directory
 
@@ -93,6 +91,11 @@ It is git UI for emacs. Instead of working with git commands from the terminal, 
 You may want to watch the [Youtube video](https://www.youtube.com/watch?v=vQO7F2Q9DwA), which is very helpful for beginners.  
 
 
+
+~~~
+1. Fetch using Shift F
+1. Move the cursor to unstaged file that you changed locally 
+~~~
 
 
 # Common Errors with Git Commands
