@@ -96,6 +96,9 @@ Suppose that you are changing a file locally. After that, changes are to be push
 ~~~
 
 ~~~
+GitError! failed to push some refs to ...
+
+
 1. Fetch using Shift F
 1. Move the cursor to unstaged file that you changed locally 
 ~~~
