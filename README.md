@@ -95,6 +95,11 @@ You may want to watch the [Youtube video](https://www.youtube.com/watch?v=vQO7F2
 Suppose that you are changing a file locally. After that, changes are to be pushed to the remote (upstream) branch. However, when you push  
 ~~~
 
+~~~
+1. Fetch using Shift F
+1. Move the cursor to unstaged file that you changed locally 
+~~~
+
 
 # Common Errors with Git Commands
 
