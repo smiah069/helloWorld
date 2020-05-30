@@ -92,14 +92,20 @@ You may want to watch the [Youtube video](https://www.youtube.com/watch?v=vQO7F2
 ~~~
 *Dealing with merge conflict using the built-in Ediff tool in emacs*
 
-Suppose that you are changing a file locally. After that, changes are to be pushed to the remote (upstream) branch. However, when you push
+
+
+Suppose that you are changing a file locally. After that, changes are to be pushed to the remote (upstream) branch. However, when you want to push the local changes to the remote repository, you see merge conflict because one of your collaborator has commmitted some changes to the same file in the remote repository. To resolve this issue using magit, follow the steps below.
 
 
 
-First try to commit using c c => Write commit messages => C-c C-c => Shift+P p 
+
+
 ~~~
+First try to commit using c c => Write commit messages => C-c C-c => Shift+P p  
 
-~~~
+OOPS!!    => GitError! failed to push some refs to ...
+
+
 1. Fetch using Shift F
 1. Move the cursor to unstaged file that you changed locally 
 ~~~
