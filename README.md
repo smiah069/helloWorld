@@ -1,7 +1,10 @@
 # Getting Started with Git
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Change 1
+=======
+>>>>>>> eea1e31... Update README.md
 =======
 >>>>>>> eea1e31... Update README.md
 
