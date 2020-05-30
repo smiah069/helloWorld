@@ -1,6 +1,5 @@
 # Getting Started with Git
 
-Chage 1
 
 * To download a repository in the local directory
 
@@ -11,7 +10,6 @@ Chage 1
 
 
 >$ git pull origin master       (OR  $ git fetch --all)
-
 
 * "git status" is an important command that you run every time before pushing modified files to the repository
 
@@ -48,11 +46,12 @@ Chage 1
 >
 >$ git push --force origin master
 
+### Terminologies
 
-For merging: use 
 
 
->$ git merge origin origin/master)
+**Stashing** is the process of temporarity shelving (storing) the current changes so that once can quickly switch to different different piece of work and come back to re-apply the stashed changes in the current work. [See this link](https://www.atlassian.com/git/tutorials/saving-changes/git-stash) for details. 
+
 
 
 ## Magit
@@ -73,7 +72,18 @@ It is git UI for emacs. Instead of working with git commands from the terminal, 
 >
 > TAB => To see differences in files 
 >
-> C-t => To set default options  
+> C-t => To set default options 
+
+>M-p, M-n  => revisit previous commit messages
+
+>V V   => reverting magit and commit
+>
+>V v  => reverting magit and no commit
+
+>r i => rebasing   (change/delete commits and rebase)
+
+>C-c C-k => quit current operation
+
 
 You may want to watch the [Youtube video](https://www.youtube.com/watch?v=vQO7F2Q9DwA), which is very helpful for beginners.  
 
