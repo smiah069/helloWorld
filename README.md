@@ -1,6 +1,5 @@
 # Getting Started with Git
 
-LD
 
 * To download a repository in the local directory
 
