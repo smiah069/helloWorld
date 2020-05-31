@@ -47,7 +47,7 @@
 >$ git push --force origin master
 
 
-Stashing
+**Stashing**
 : Stashing is the process of temporarity shelving (storing) the current changes so that once can quickly switch to different different piece of work and come back to re-apply the stashed changes in the current work. [See this link](https://www.atlassian.com/git/tutorials/saving-changes/git-stash) for details. 
 
 
