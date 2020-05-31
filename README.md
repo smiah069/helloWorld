@@ -92,7 +92,7 @@ It is git UI for emacs. Instead of working with git commands from the terminal, 
 You may want to watch the [Youtube video](https://www.youtube.com/watch?v=vQO7F2Q9DwA), which is very helpful for beginners.  
 
 ~~~
-* Dealing with merge conflict using the built-in Ediff tool in emacs *
+** Dealing with merge conflict using the built-in Ediff tool in emacs **
 
 Suppose that you are changing a file locally. After that, changes are to be pushed to the remote (upstream) branch. However, when you want to push the local changes to the remote repository, you see merge conflict because one of your collaborator has commmitted some changes to the same file in the remote repository. To resolve this issue using magit, follow the steps below.
 
