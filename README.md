@@ -1,10 +1,6 @@
 # Getting Started with Git
 
 
-A
-
-B
-
 * To download a repository in the local directory
 
 >$ git clone *repo_link*
@@ -101,7 +97,7 @@ Suppose that you are changing a file locally. After that, changes are to be push
 1. Keep ether variant A or B
 
 
-You can merge two variants following the steps: Move cursor to "Unmerged ..." then m m, and then follow the on screen instructions. 
+You can merge two variants following the steps: Shift F p => Move cursor to "Unmerged ..." then m m, and then follow the on screen instructions. 
 
 # Common Errors with Git Commands
 
