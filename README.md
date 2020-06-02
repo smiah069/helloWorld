@@ -1,5 +1,6 @@
 # Getting Started with Git
 
+A
 
 
 * To download a repository in the local directory
@@ -97,9 +98,8 @@ Suppose that you are changing a file locally. After that, changes are to be push
 1. Move the cursor to Unstaged "filename" and then press e to open Ediff window: A, B, and C = diff(A+B)
 1. Keep ether variant A or B
 
-Let say you want to keep both variants. Then follow the steps as:  State local fil => c c => Commit message => C-c C-c => Shift P p.  However, when you want to push the local changes to the remote repository, you see merge conflict because one of your collaborator has commmitted some changes to the same file in the remote repository.
 
-Move cursor to "unmerged ..origin/master". then Shift F p
+You can merge two variants following the steps: Shift F p => Move cursor to "Unmerged ..." then m m, and then follow the on screen instructions. 
 
 # Common Errors with Git Commands
 
