@@ -1,6 +1,9 @@
 # Getting Started with Git
 
 
+2
+
+
 * To download a repository in the local directory
 
 >$ git clone *repo_link*
