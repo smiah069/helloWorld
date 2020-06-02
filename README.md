@@ -1,9 +1,5 @@
 # Getting Started with Git
 
-1
-
-
-2
 
 3
 
