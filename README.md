@@ -1,19 +1,6 @@
 # Getting Started with Git
 
-
-
-A
-
-B
-
-AB
-
-1
-
 2
-
-
-3
 
 
 * To download a repository in the local directory
