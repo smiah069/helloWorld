@@ -1,7 +1,6 @@
 # Getting Started with Git
 
-
-Remote
+A
 
 * To download a repository in the local directory
 
