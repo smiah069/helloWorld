@@ -1,6 +1,10 @@
 # Getting Started with Git
 
 
+<<<<<<< HEAD
+=======
+B
+>>>>>>> origin/master
 
 * To download a repository in the local directory
 
