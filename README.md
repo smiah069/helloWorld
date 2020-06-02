@@ -97,8 +97,7 @@ Suppose that you are changing a file locally. After that, changes are to be push
 1. Keep ether variant A or B
 
 
-~~~
-
+You can merge two variants following the steps: Move cursor to "Unmerged ..." then m m, and then follow the on screen instructins
 
 # Common Errors with Git Commands
 
