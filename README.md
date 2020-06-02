@@ -1,6 +1,6 @@
 # Getting Started with Git
 
-A
+
 
 * To download a repository in the local directory
 
