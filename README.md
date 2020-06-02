@@ -102,7 +102,9 @@ OOPS!!    => GitError! failed to push some refs to ...
 
 
 1. Fetch using Shift F
-1. Move the cursor to unstaged file that you changed locally 
+1. Move the cursor to unstaged file that you changed locally
+
+
 ~~~
 
 
