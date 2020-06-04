@@ -1,0 +1,603 @@
+===================================p===========================================\
+1. To compile the LaTeX source file, example1.tex, into a PDF file\
+\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--\
+for on-screen presentation, do:\
+latex example1.tex or pdflatex example1.tex\
+dvips -o -t a4 example1.dvi // a4 change this to letter for letter size
+pdf\
+ps2pdf -dPDFSETTINGS=/prepress example1.ps\
+acroread example1.pdf\
+\
+==============================================================================\
+Compile latex file to dvi: latex example.tex -o dvi\
+dvi file to eps: dvips -E example.dvi -o example.eps\
+fix the bounding box: epstool \--bbox -t4 example.eps example.eps\
+\
+Note if you do not have epstool installed then install it through using
+macports using the command: sudo port install epstool\
+==============================================================================\
+\
+Aquamacs latex viewer:
+
+===================
+
+We do not want to open PDF over and over again. For that, we will
+compile the latex document in dvi and then in ps first. Once we are
+happy with the document then we generate final PDF file. For that you
+need Ghostscript 9.20 and GSView installed (for windows).
+
+1.  Open Emacs/Aquamacs -\> Command -\> TeXing options -\> Generate PDF
+
+2.  Command -\> TeXing options -\> PDF from DVI -\> choose dvips +
+    > ps2pdf
+
+For MAC Aquamacs, you do not need to use above options as docView can
+read PDF files dynamically. If you want XQuartz and MacGhostView
+installed for MAC to look like Windows.
+
+==============================================================================\
+Converting .dtx or .ins file to .cls file for latex.\
+\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--\
+1. run pdflatex file.dtx\
+2. you will find file.cls file to include in the documentclass of your
+latex document\
+\
+==============================================================================
+
+=======================================================\
+Dia: Incorporate latex math formula in your block diagram. Please follow
+the steps below:\
+\
+1. Create a block diagram (block.dia) in dia editor that has a lated
+formula, \$p=\\frac{3}{\\sqrt{x+3}}\$, for example.\
+\
+2. Export your block.dia to \"TeX Metapost macros (\*.mp)\". This will
+export your block.dia to block.mp\
+3. Open terminal and run the following command in the directory you are
+working on\
+mpost block.mp. This will generate block.1 file\
+4. Now rename the block.1 file to block.mps using the following command\
+mv block.1 block.mps\
+\
+5. You can now use this block.mps in your latex document as below\
+\\begin{figure}\
+\\includegraphics\[width=\\textwidth\]{block.mps}\
+\\end{figure}\
+\
+OR execute the following command to produce pdf directly from .mp file\
+\
+mptopdf \--latex block.mp\
+\
+Cool!!!!!!!!!!\
+\
+Thanks metapost.
+
+===
+
+If Dia does not launch in Yosemite then follow the instructions
+
+===
+
+I could not find anything on the internet that was Dia specific, so I
+thought of writing this blog, in hope of helping someone in the same
+situation as me. So here is what I did:
+
+1.  Goto your Applications directory where Dia.app exists (mine was
+    > located at: /Applications)
+
+2.  Right click the icon and click on Show Package Contents
+
+3.  Goto the directory Dia.app/Contents/Resources/bin
+
+4.  Edit the file dia, in your favourite text editor.
+
+5.  After line 39 (right before the line osascript -e \'tell app
+    > \"XQuartz\" to launch\'), add the line: **export DISPLAY=:0**
+
+6.  Save and exit.
+
+7.  Close XQuartz if its running.
+
+8.  Now Dia should come up.
+
+9.  If it does not come up, try restarting your computer.
+
+====
+
+Convert PDF to EPS
+
+1.  run pdf2ps
+
+2.  run ps2eps
+
+====\
+===========\
+Creating IEEE PDF eXpress compatible pdf paper\
+===========\
+1. Compile your-paper.tex using pdfLaTeX to produce your-paper.pdf\
+2. Open terminal\
+3. Type the following commands:\
+\
+pdftops your-paper.pdf\
+ps2pdf14 -dPDFSETTINGS=/prepress your-paper.ps\
+\
+4. Now your-paper.pdf should be IEEE PDF eXpress compatible and ready to
+be uploaded in any IEEE conference.\
+\
+\
+===============\
+Setting up pdflatex path (in case you have two latex distribution
+installed)\
+===============\
+Open .Profile from /User/mdsuruzmiah/\
+\
+and add the following lines and save:\
+\
+PATH=\$PATH:/usr/local/texlive/2012/bin/x86\_64-linux\
+export PATH\
+MANPATH=\$MANPATH:/usr/local/texlive/2012/texmf/doc/man\
+export MANPATH\
+INFOPATH=\$INFOPATH:/usr/local/texlive/2012/texmf/doc/info\
+export INFOPATH\
+\
+\
+======
+
+LatexIt in Mozilla thunderbird
+
+1.  Install Imagemagic using: sudo port install Imagemagick
+
+2.  Then install latexIt add-on under Tools Add-ons. Make sure
+
+    a.  Path to latex excutable:
+        > /usr/local/texlive/2016/bin/x86\_64-darwin/latex
+
+    b.  Path to dvips excutable:
+        > /usr/local/texlive/2016/bin/x86\_64-darwin/dvips
+
+    c.  Path to convert excutable: /opt/local/bin/convert
+
+==================
+
+Install telive in Ubuntu:
+
+1.  Download and unzip: install-tl-ubuntu-master.zip
+
+2.  Go to the install-tl-ubuntu-master/ directory and Execute the
+    > command
+
+sudo ./install-tl-ubuntu-master
+
+Uninstall telive in Ubuntu:
+
+1.  sudo apt-get purge texlive\*
+
+2.  rm -rf /usr/local/texlive/2012 and rm -rf \~/.texlive2012
+
+3.  rm -rf /usr/local/share/texmf
+
+4.  rm -rf /var/lib/texmf
+
+5.  rm -rf /etc/texmf
+
+6.  sudo apt-get remove tex-common \--purge
+
+7.  rm -rf \~/.texlive
+
+source:
+http://tex.stackexchange.com/questions/95483/how-to-remove-everything-related-to-tex-live-for-fresh-install-on-ubuntu
+
+===
+
+tlmgr is found at : /opt/texbin/
+
+update texlive using
+
+sudo /opt/texbin/tlmgr update \--self \--all
+
+=====
+
+Installing Pygments on MacOS X (Useful for using minted package in Latex)
+=========================================================================
+
+Mojave has "easy\_install" installer command installed already
+
+So, simply run: sudo easy\_install Pygments
+
+In case you get the following error:
+
+"! Package minted Error: Missing Pygments output; \\inputminted was"
+
+Then simply remove easy\_install manually from /usr/local/bin directory
+
+Reinstall Pygments using the command "sudo easy\_install-3.7 Pygments"
+
+Or the following steps were done for macOS Seirra
+
+First make sure to install pip installer if you do not have. For most
+recently tested on macOS Sierra (10.12.6):
+
+1.  Download the installation script; curl
+    > https://bootstrap.pypa.io/get-pip.py -o \~/Downloads/get-pip.py
+
+2.  Run the installation, appending the \--user flag; python
+    > \~/Downloads/get-pip.py \--user. pip will be installed to
+    > \~/Library/Python/2.7/bin/pip
+
+3.  Make sure \~/Library/Python/2.7/bin is in your \$PATH. For bash
+    > users, edit the PATH= line in \~/.profile to append the local
+    > Python path; ie. "export PATH=\$PATH:\~/Library/Python/2.7/bin".
+    > Apply the changes, source \~/.profile.
+
+4.  Use pip! Remember to append \--user when installing modules; ie. pip
+    > install \<package\_name\> \--user
+
+Finally run the following command:
+
+**sudo pip install Pygments**
+
+However, make sure to add "\--shell-escape" in aquamacs, go to LaTeX -\>
+Customize AUCTeX -\> click on the "TeX Command"
+
+In the box titled "Latex Command" replace "latex" with "latex
+\--shell-escape"
+
+)
+
+For Windows emacs: go to LaTeX -\> Customize AUCTeX -\> Browse Options
+-\> click on the "TeX Command"
+
+In the box titled "Latex Command" replace "latex" with "latex
+\--shell-escape"
+
+6\. Open texmaker preferences and in the PdfLaTeX option, change
+
+\"/usr/texbin/pdflatex\" -synctex=1 -interaction=nonstopmode %.tex
+
+to
+
+\"/usr/texbin/pdflatex\" -synctex=1 -shell-escape
+-interaction=nonstopmode %.tex
+
+7\. You are good to use minted package in Latex document.
+
+In Aquamacs: If the error is "invoke \--shell-escape" command for the
+error due to including minted package then do the following
+
+-   In aquamacs, go to LaTeX -\> Customize AUCTeX -\> click on the "TeX
+    > Command"
+
+-   In the box titled "Latex Command" replace "latex" with "latex
+    > \--shell-escape"
+
+=====
+
+Importing simulink model as an eps figure in Latex document
+
+=====
+
+Suppose your simulink model name is mymodel.slx
+
+1.  Go to matlab command window and type: \>\>
+    > [[orient]{.underline}](http://www.mathworks.com/access/helpdesk/help/techdoc/ref/orient.html)(\'mymodel\',
+    > \'portrait\'), if your mymodel.slx is already open in simulink
+    > environment, then type: \>\>orient(gcs, \'portrait\')
+
+2.  \>\> print -deps -r300 -smymodel myfig.eps
+
+3.  Open terminal and type: \$ mv myfig.eps myfig.ps and then \$ ps2eps
+    > myfig.ps
+
+4.  Finally, include myfig.eps in your latex document as a figure
+
+====
+
+Converting bibtex file into bibitem for CVs
+
+Create a refs.bib file with all the BibTeX entries, which are easily
+available from Google Scholar or similar
+
+Create a "dummy" .tex file with the following entries:
+
+\\documentclass{article}
+
+\\begin{document}
+
+\\nocite{\*}
+
+\\bibliography{refs}
+
+\\bibliographystyle{plain}
+
+\\end{document}
+
+Now, do the following:
+
+\$ latex dummy \$ bibtex dummy \$ bibtex dummy \$ latex dummy
+
+You will see a dummy.bbl file containing all your BibTeX entries in
+\\bibitem format.
+
+==========
+
+Fly check dictionary on:
+
+====================
+
+Go to
+
+LaTeX\--\>Customize AuCTeX -\> Browse options, then search spell -\>
+Enable Global fly check "on"
+
+2\. If you use aquamacs to compile your latex documents to generate\
+pdf, the epstopdf tool installed in your system always converts\
+\"example.eps\" file to long name example-eps-converted-to.pdf. In order
+to have the generated pdf file only example.pdf, do the following:\
+\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--\
+\
+\--\> go and open epstopdf-sys.cfg file from the directory (in my case)\
+/usr/local/texlive/2011/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg\
+\
+\--\> Have the epstopdf-sys.cfg to write permission using the following
+command in terminal\
+\"sudo chmod 777
+/usr/local/texlive/2011/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg\"\
+You might be asked for administrative password.\
+\
+\--\> replace the following statement in epstopdf-sys.cfg\
+\\epstopdfsetup{%\
+program\@epstopdf=\\epstopdf\@sys\@cmd\
+}%\
+\
+with\
+\\epstopdfsetup{%\
+program\@epstopdf=\\epstopdf\@sys\@cmd, suffix=\
+}%\
+the \"suffix =\" will let the epstopdf tool to convert example.eps to
+exactly example.pdf\
+\
+OR\
+If you could use\
+\
+\\usepackage\[suffix={}\]{epstopdf}\
+\
+or simply add\
+\
+\\epstopdfsetup{suffix={}} to your preamble.
+
+=====
+
+Aquamacs: Install auctex
+
+1.  Refresh the package manager's contents, so that you have the latest
+    > versions of the packages on offer
+
++-------+----------------------------------+
+| 2.  1 | 3.  M-x package-refresh-contents |
++-------+----------------------------------+
+
+4.  Access the list of packages
+
++-------+------------------------------------------------+
+| 5.  1 | 6.  M-x package-list-packages                  |
+|       |                                                |
+|       | 7.  Find "auctex" type I and type X to install |
++-------+------------------------------------------------+
+
+8.  Install the auto-complete and ac-slime packages by finding them in
+    > the list, typing in an I to select each package and then type in
+    > an X to install
+
+more details see
+http://www.elegantmush.com/aquamacs-and-auto-complete-mode/
+
+Aquamacs: setting the paper size\
+\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--\
+Select Options / Customize Aquamacs / Specific Option\
+then type ps-paper-type\
+edit the line ps-paper-type to be \"letter\", \"ligal\" or \"A4\"
+
+Aquamacs: pdf viewer:
+
+================
+
+When editing L^A^TEXfiles, you will often need to view the compiled
+results. Apple\'s Preview.app can view PDF files. But for regular use
+you may prefer a program like Skim which has features specifically
+supporting L^A^TEXediting. Skim is available here:
+[[http://skim-app.sourceforge.net/]{.underline}](http://skim-app.sourceforge.net/)
+. Skim can automatically reload PDFs after every they are recompiled. It
+also includes a configuration preset to allow it to jump back and forth
+between Aquamacs and Skim, showing the documents at the corresponding
+locations. An up-to-date LaTeX distribution such as MacTeX 2009 is
+required to use the \`\`SyncTeX\'\' feature.
+
+Clicking on a position in the PDF file in Skim while holding the Command
+and Shift keys causes Aquamacs to move your cursor to the corresponding
+point in the underlying source file, opening it if necessary. To enable
+Skim with SyncTeX, enable Aquamacs in Skim\'s Preferences dialog.
+Aquamacs does not need to be configured further - it should recognize
+Skim when it is running (you need to start it yourself).
+
+If you want to be able to start Skim from inside Aquamacs, do the
+following.
+
+Having opened a Latex buffer in Aquamacs, go \`\`MenuLatexCustomize
+Auctex\'\' and then click on \"Extend this Menu.\" Then, once more, go
+\`\`MenuLatexCustomize Auctex.\'\' In the list of items you see now,
+drag the mouse to \"Tex Command,\" in the list you see then, scroll to
+\"Tex View\", and in the list which finally opens, click on \"Tex View
+Program Selection.\" You now have a customization buffer opened. There,
+you see a line which contains the words \"output-pdf.\" In the line
+below that line, you see the word \"Viewer.\" To the right of it, there
+is a button \"Value Menu.\" Click on it, and choose \"Skim\" in the list
+that pops up.
+
+Finally, before you close the customization buffer, do not forget to
+click on the button \"State\" and, in the list then popping up, to click
+on \"Save for Further Sessions\". That\'s all.
+
+Now you can use the view icon in the toolbar, or the key combination C-c
+C-v, or \`\`MenuCommandView\'\' to open Skim with your pdf-output file.
+
+Furthermore, things are configured so that these three ways to call Skim
+also yield syncing from source to pdf-output. Syncing from source to
+pdf-output can also be obtained by clicking on a position in your
+source-file while holding the Command and Shift keys.
+
+\*\*\*\*\*\*\*\*\*\*\* If pdfViewer of Aquamacs does not open latex
+output pdf after following the above instructions then do the following:
+
+1.  Make sure you have : ((\"Preview\" \"open -a Preview.app %o\")
+
+(\"Skim\" \"open -a Skim.app %o\")) in the TeX View Program List
+options. Save and return. Then restart aquamacs.
+
+Aquamacs preview
+
+===============
+
+1.  How to resolve the following error when you want to preview latex
+    > document like (WYSIWYG):
+
+    a.  Error: " error in process sentinel: LaTeX found no preview
+        > images
+
+Solution:
+
+1.  Remove \\usepackage{epstopdf} and \\epstopdfsetup{suffix={}} OR
+
+2.  \...
+
+**Problem:** get the error \"Wrong number of arguments: setq, 3\" when
+opening latex file.
+
+**Solution:** This problem is related to \\usepackage{subfigure} in the
+latex file. To solve this: do the following:
+
+Go to
+/Applications/Aquamacs.app/Contents/Resources/lisp/aquamacs/edit-modes/auctex/style/subfigure.el
+
+Just needed to change line 47 of this file to this:
+
+;; Install completion for labels:
+
+(setq TeX-complete-list
+
+(append
+
+\'((\"\\\\\\\\\[Ss\]ubref{\\\\(\[\^{}\\n\\r\\\\%,\]\*\\\\)\" 1
+LaTeX-label-list \"}\"))
+
+TeX-complete-list))
+
+In the existing code, a comment was missing in line 47 and the
+"TeX-complete-list" was in the wrong position (there should be "))"
+instead of ")" at the end of this text and remove one parenthesis from
+the line before). This fix the bug.
+
+**Adding english dictionary word in Aquamacs:**
+
+1.  Install company package using M-x package-list-packages =\> company
+    > =\> I =\> x
+
+2.  Add the following lines in your Preferences.el file located in
+    > /Users/suruzmiah/Library/Preferences/Aquamacs Emacs/
+
+=====
+
+;;;;;;;;;;;; Auto complete in text mode
+
+(require \'company)
+
+(add-hook \'after-init-hook \'global-company-mode)
+
+(defun text-mode-hook-setup ()
+
+;; make \`company-backends\' local is critcal
+
+;; or else, you will have completion in every major mode, that\'s very
+annoying!
+
+(make-local-variable \'company-backends)
+
+;; company-ispell is the plugin to complete words
+
+(add-to-list \'company-backends \'company-ispell)
+
+;; OPTIONAL, if \`company-ispell-dictionary\' is nil,
+\`ispell-complete-word-dict\' is used
+
+;; but I prefer hard code the dictionary path. That\'s more portable.
+
+**(setq company-ispell-dictionary (file-truename
+\"\~/.emacs.d/misc/english-words.txt\")))**
+
+===
+
+Then download "words.txt" from internet
+(https://raw.githubusercontent.com/dwyl/english-words/master/words.txt)
+=\> rename the filename from "words.txt" to "english-words.txt" =\>
+place it in /Users/suruzmiah/.emacs.d/misc/ directory
+
+Restart Aquamacs! =\> Cool!!!!!!!!!!!!!!!
+
+=======================
+
+Highlight a name in BibTeX Bibliography
+
+How to highlight a particular author's name in the bibliography when
+using BibTeX? This was asked on TeX Stack Exchange. I didn't like the
+top answer as much as the third answer. Simply edit the .bst file and
+add a function that highlights your name:\
+\
+\
+FUNCTION {highlight.if.cv.author}\
+{ duplicate\$ purify\$ &quot;YOURNAME&quot; purify\$ =\
+{ bold }\
+\'skip\$\
+if\$\
+}\
+(Here I chose to bold the name)\
+\
+Then, look for the string "format.name\$" in the .bst file, and call the
+function right after it, e.g.\
+\
+FUNCTION {format.names}\
+\...\
+format.name\$\
+highlight.if.cv.author\
+\...
+
+========= Bibtex to html ==
+
+I use patric's perl code to convert my bibtex to html. Until about
+September 2018, I didn't have any problem running "perl bib2html.pl
+refsSuruzWeb.bib" and all the html files were stored in OUT/ directory.
+
+As of yesterday (2018-10-15), I started having the following error while
+I run the above command.
+
+"Can\'t locate ConfFileParser.pm in \@INC (you may need to install the
+ConfFileParser module) (\@INC contains:
+/opt/local/lib/perl5/site\_perl/5.26/darwin-thread-multi-2level
+/opt/local/lib/perl5/site\_perl/5.26
+/opt/local/lib/perl5/vendor\_perl/5.26/darwin-thread-multi-2level
+/opt/local/lib/perl5/vendor\_perl/5.26
+/opt/local/lib/perl5/5.26/darwin-thread-multi-2level
+/opt/local/lib/perl5/5.26) at bib2html.pl line 33.
+
+BEGIN failed\--compilation aborted at bib2html.pl line 33."
+
+To solve this problem, I just had to add the following line
+
+use lib \'/Volumes/GoogleDrive/My
+Drive/myDocuments/myWebsites/bradleyU/public\_html/Publications\';
+
+right before the line containing "use ConfFileParser;"
+
+Where " /Volumes/GoogleDrive/My
+Drive/myDocuments/myWebsites/bradleyU/public\_html/Publications" is the
+directory of the perl module "ConfFileParser.pm"
+
+Problem solve :)
