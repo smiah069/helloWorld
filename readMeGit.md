@@ -113,7 +113,7 @@ It is git UI for emacs. Instead of working with git commands from the terminal, 
 >
 > C-t => To set default options 
 
->M-p, M-n  => revisit previous commit messages
+>M-p (M-n)  => revisit previous (next) commit messages
 
 >V V   => reverting magit and commit
 >
