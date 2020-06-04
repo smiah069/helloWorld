@@ -48,3 +48,10 @@
 
 
 (setq-default TeX-master nil)   ; working with Master file
+
+;;; Magit's Ediff's spit window layout configuation
+(setq ediff-split-window-function 'split-window-horizontally)
+
+;;;; Aquamacs cursor setup  
+(setq-default cursor-type 'box)
+
