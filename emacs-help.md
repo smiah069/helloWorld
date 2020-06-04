@@ -88,7 +88,7 @@ Add the following lines in .emacs
  ; initialize package.el
  (package-initialize)
 
-3. Restart emacs
+3. Run the command *eval-buffer* or restart emacs
 
 4. Type M-x package-list-packages
 
