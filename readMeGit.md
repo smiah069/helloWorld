@@ -147,13 +147,6 @@ Move cursor to "unmerged ..origin/master". then Shift F p
 	>git config --global user.name "Your name"
 
 
-# Some Useful Commands
-
-  * To remotely login to a file server:
-    >sftp username@serverName
-    >
-    >put sourceFiles       [it places source files in the current directory]
-
 
 
 
