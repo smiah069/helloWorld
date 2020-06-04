@@ -92,16 +92,18 @@ You may want to watch the [Youtube video](https://www.youtube.com/watch?v=vQO7F2
 
 ** Dealing with merge conflict using the built-in Ediff tool in emacs **
 
-Suppose that you are changing a file locally. After that, changes are to be pushed to the remote (upstream) branch following the steps: c c => Commit message => C-c C-c => Shift P p.  However, when you want to push the local changes to the remote repository, you see merge conflict because one of your collaborator has commmitted some changes to the same file in the remote repository. To resolve this issue using magit, follow the steps below.
+Suppose that you are changing a file locally. After that, changes are to be pushed to the remote (upstream) branch following the steps: c c => Commit message => C-c C-c.  However, when you want to push the local changes to the remote repository using *Shift P p*, you see merge conflict because one of your collaborator has commmitted some changes to the same file in the remote repository. To resolve this issue using magit, follow the steps below.
 
-1. Fetch using Shift F
-1. Move the cursor to Unstaged "filename" and then press e to open Ediff window: A, B, and C = diff(A+B)
+1. Fetch using *shift f   p*
+1. Move the cursor to Staged section followed by unmerged "filename" and then press e to open Ediff window: A, B, and C = diff(A+B)
 1. Keep ether variant A or B
 
 
-Let say you want to keep both variants. Then follow the steps as: State local fil => c c => Commit message => C-c C-c => Shift P p. However, when you want to push the local changes to the remote repository, you see merge conflict because one of your collaborator has commmitted some changes to the same file in the remote repository.
+Let say you want to keep both variants. Then follow the steps as: Stage local file => c c => Commit message => C-c C-c => Shift P p. However, when you want to push the local changes to the remote repository, you see merge conflict because one of your collaborator has commmitted some changes to the same file in the remote repository.
 
-Move cursor to "unmerged ..origin/master". then Shift F p
+1. Fetch using *shift f   p*
+1. Move cursor to "unmerged ..origin/master"
+
 
 # Common Errors with Git Commands
 
