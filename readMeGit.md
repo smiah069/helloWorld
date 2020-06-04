@@ -1,7 +1,5 @@
 # Getting Started with Git
 
-AB
-
 
 * To download a repository in the local directory
 
