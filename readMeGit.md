@@ -101,7 +101,7 @@ Suppose that you are changing a file locally. After that, changes are to be push
 
 Let say you want to keep both variants. Then follow the steps as: Stage local file => c c => Commit message => C-c C-c => Shift P p. However, when you want to push the local changes to the remote repository, you see merge conflict because one of your collaborator has commmitted some changes to the same file in the remote repository.
 
-1. Fetch using *shift f   p*
+1. Fetch using *shift f   p*  (Merge commt message may already show up with all the merged text)
 1. Move cursor to "unmerged ..origin/master"
 1. m m
 
