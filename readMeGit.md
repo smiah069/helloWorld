@@ -1,7 +1,7 @@
 # Getting Started with Git
 
 
-* To download a repository in the local directory
+* To download a repository in the local directory, run the following command
 
 >$ git clone *repo_link*
 
