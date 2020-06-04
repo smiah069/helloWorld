@@ -47,8 +47,49 @@
 >$ git push --force origin master
 
 
-**Stashing**
-: Stashing is the process of temporarity shelving (storing) the current changes so that once can quickly switch to different different piece of work and come back to re-apply the stashed changes in the current work. [See this link](https://www.atlassian.com/git/tutorials/saving-changes/git-stash) for details. 
+## Common Errors with Git Commands
+
+1. Error
+   ~~~
+   fatal: refusing to merge unrelated histories
+   Error redoing merge 1234deadbeef1234deadbeef
+   ~~~
+
+	Solution: 
+
+	> git pull origin master --allow-unrelated-histories
+	> git merge origin origin/master 
+
+1. Suppose that you have a local (existing) git repository that needs to be updated with the remote repository. With "git pull    origin master" you will get the following error
+
+	~~~
+	error: Untracked working tree file 'public/images/icon.gif' would be overwritten by merge
+	~~~
+
+	Solution: 
+
+	>git fetch --all
+
+	Then, you have two options:
+
+	>git reset --hard origin/master
+
+	OR If you are on some other branch type:
+
+	>git reset --hard origin/<branch_name>
+
+	*Explanation* 
+	~~~
+	git fetch downloads the latest from remote without trying to merge or rebase anything. Then the git reset resets the    master branch to what you just fetched. The --hard option changes all the files in your working tree to match the files in   origin/master
+	~~~
+
+1. Error: "fatal: unable to auto-detect email address (got 'Obby@ObbyWorkstation.(none)')"
+
+	Solution: Run 
+	>git config --global user.email "yourEmail@email.com"
+	>
+	>git config --global user.name "Your name"
+
 
 
 
@@ -104,48 +145,10 @@ Let say you want to keep both variants. Then follow the steps as: Stage local fi
 1. m m
 
 
-# Common Errors with Git Commands
 
-1. Error
-   ~~~
-   fatal: refusing to merge unrelated histories
-   Error redoing merge 1234deadbeef1234deadbeef
-   ~~~
+**Stashing**
+: Stashing is the process of temporarity shelving (storing) the current changes so that once can quickly switch to different different piece of work and come back to re-apply the stashed changes in the current work. [See this link](https://www.atlassian.com/git/tutorials/saving-changes/git-stash) for details.
 
-	Solution: 
-
-	> git pull origin master --allow-unrelated-histories
-	> git merge origin origin/master 
-
-1. Suppose that you have a local (existing) git repository that needs to be updated with the remote repository. With "git pull    origin master" you will get the following error
-
-	~~~
-	error: Untracked working tree file 'public/images/icon.gif' would be overwritten by merge
-	~~~
-
-	Solution: 
-
-	>git fetch --all
-
-	Then, you have two options:
-
-	>git reset --hard origin/master
-
-	OR If you are on some other branch type:
-
-	>git reset --hard origin/<branch_name>
-
-	*Explanation* 
-	~~~
-	git fetch downloads the latest from remote without trying to merge or rebase anything. Then the git reset resets the    master branch to what you just fetched. The --hard option changes all the files in your working tree to match the files in   origin/master
-	~~~
-
-1. Error: "fatal: unable to auto-detect email address (got 'Obby@ObbyWorkstation.(none)')"
-
-	Solution: Run 
-	>git config --global user.email "yourEmail@email.com"
-	>
-	>git config --global user.name "Your name"
 
 
 
