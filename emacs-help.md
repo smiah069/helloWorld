@@ -1,3 +1,21 @@
+# myEmacs Configuration
+
+*See the Preferences.el file*
+
+* ido-mode is useful to find files from a directory. It shows all the subdirectories under a directory automatically. To make use of ido-mode, type
+>
+>M-x ido-mode
+> 
+
+* smex package is useful to have auto-complete commands in the minibuffer. See [this link](https://github.com/nonsequitur/smex) for details. To install this package, run
+
+- *M-x package-list-packages*
+- * Search smex, then type i then x, then follow the instructions 
+
+
+
+
+
 Installing AucTeX for emacs to have improved Latex Editor for MS windows.
 
  01. Install Emacs
