@@ -1,24 +1,7 @@
-# myEmacs Configuration
 
-*See myEmacsSetup/aquamacs/Preferences.el file*
+**Installing AucTeX for emacs to have improved Latex Editor for MS windows.**
 
-* ido-mode is useful to find files from a directory. It shows all the subdirectories under a directory automatically. To make use of ido-mode, type
->
->M-x ido-mode
-> 
-
-* **smex** package is useful to have auto-complete commands in the minibuffer. See [this link](https://github.com/nonsequitur/smex) for details. To install this package, run
-
-	- *M-x package-list-packages*
-	- Search *smex*, then type i then x, then follow the instructions 
-
-
-
-
-
-Installing AucTeX for emacs to have improved Latex Editor for MS windows.
-
- 01. Install Emacs
+ 01. Install Emacs using *brew cask install emacs*
  For my case: it was in c:\emacs\emacs-23.2 directory
  02. Download auctex-11.86-e23.2-msw.zip from http://www.gnu.org/software/auctex/download-for-windows.html
 
@@ -62,6 +45,53 @@ If C-a and C-e makes your cursor go to the beginning of a paragraph and end of a
 18. Command+Shift+{ => switch between tabbed buffers.
 
 - Switch to text mode: M-x text mode
+
+
+# myEmacs Configuration
+
+*See myEmacsSetup/aquamacs/Preferences.el file*
+
+* ido-mode is useful to find files from a directory. It shows all the subdirectories under a directory automatically. To make use of ido-mode, type
+>
+>M-x ido-mode
+> 
+
+* **smex** package is useful to have auto-complete commands in the minibuffer. See [this link](https://github.com/nonsequitur/smex) for details. To install this package, run
+
+	- *M-x package-list-packages*
+	- Search *smex*, then type i then x, then follow the instructions 
+
+
+
+**Installing pdf-tools**
+*pdf-tools* is an open-source package, which is a replacement of DocView package, which is built-in emacs. More details about the package can be sought at [PDF tools README](https://github.com/politza/pdf-tools). To install it, follow the steps below.
+
+* Install *use-package* package from *M-x package-list-packages*
+* For macOS, install poppler using *brew install poppler automake*
+* Using terminal install pdf-tools using *brew install --HEAD dunn/homebrew-emacs/pdf-tools*  Note the path of epdfinfo and after the installation as this path will be required down the road
+* Install *pdf-tools* package from *M-x package-list-packages*
+* Open *.emacs* (Preferences.el) file and add the following
+
+~~~
+;;; pdf-tools elisp via the use-package below. To upgrade the epdfinfo
+;;; server, just do 'brew upgrade pdf-tools' prior to upgrading to newest
+;;; pdf-tools package using Emacs package system. If things get messed
+;;; up, just do 'brew uninstall pdf-tools', wipe out the elpa
+;;; pdf-tools package and reinstall both as at the start.
+(use-package pdf-tools
+  :ensure t
+  :config
+  (custom-set-variables
+    '(pdf-tools-handle-upgrades nil)) ; Use brew upgrade pdf-tools instead.
+  (setq pdf-info-epdfinfo-program "/usr/local/bin/epdfinfo"))
+(pdf-tools-install)
+~~~
+* Restart emacs
+
+
+
+
+
 
 Working with latex &quot;minted&quot; package: Invoke latex command with
 
