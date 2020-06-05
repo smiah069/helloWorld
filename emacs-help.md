@@ -7,10 +7,10 @@
 >M-x ido-mode
 > 
 
-* smex package is useful to have auto-complete commands in the minibuffer. See [this link](https://github.com/nonsequitur/smex) for details. To install this package, run
+* **smex** package is useful to have auto-complete commands in the minibuffer. See [this link](https://github.com/nonsequitur/smex) for details. To install this package, run
 
 - *M-x package-list-packages*
-- * Search smex, then type i then x, then follow the instructions 
+- Search *smex*, then type i then x, then follow the instructions 
 
 
 
