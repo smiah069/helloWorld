@@ -1,6 +1,6 @@
 # myEmacs Configuration
 
-*See the Preferences.el file*
+*See myEmacsSetup/aquamacs/Preferences.el file*
 
 * ido-mode is useful to find files from a directory. It shows all the subdirectories under a directory automatically. To make use of ido-mode, type
 >
