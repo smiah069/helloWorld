@@ -54,7 +54,16 @@ If C-a and C-e makes your cursor go to the beginning of a paragraph and end of a
 * ido-mode is useful to find files from a directory. It shows all the subdirectories under a directory automatically. To make use of ido-mode, type
 >
 >M-x ido-mode
-> 
+>
+
+To activate ido-mode when starting emacs, write
+
+>
+>(require 'ido)
+>(ido-mode t)
+
+in the *.emacs* or *Preferences.el* file and the run *M-x eval-buffer* to take its effect without restarting emacs
+
 
 * **smex** package is useful to have auto-complete commands in the minibuffer. See [this link](https://github.com/nonsequitur/smex) for details. To install this package, run
 
