@@ -95,8 +95,11 @@ in the *.emacs* or *Preferences.el* file and the run *M-x eval-buffer* to take i
   (setq pdf-info-epdfinfo-program "/usr/local/bin/epdfinfo"))
 (pdf-tools-install)
 ~~~
-* Restart emacs
-
+* Restart emacs or run *M-x eval-buffer RET*  to take effect of pdf-tools
+* In case Emacs is frozen to open a PDF file using PDF-tools, it is probably because you have linum-mode enabled. Note that pdf-tools pretty much unusable with linum-mode enabled. Therefore, you will need to **deactivate** it. For that add the following line somewhere in your .emacs (Preferences.el) file:
+>
+>(add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1))) 
+>
 
 
 
