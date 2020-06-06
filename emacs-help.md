@@ -70,7 +70,15 @@ in the *.emacs* or *Preferences.el* file and the run *M-x eval-buffer* to take i
 	- *M-x package-list-packages*
 	- Search *smex*, then type i then x, then follow the instructions 
 
+**ido vertical mode**
+This mode makes ido-mode display vertically (very convenient). First install ido-vertical-mode from the melpha packages usng *M-x package-list-packages* and then fine *ido-vertical-mode* then install it by typing  *i* then *x* . After that add the following lines in the .emacs (Preferences file)
 
+~~~
+(require 'ido-vertical-mode)
+(ido-mode 1)
+(ido-vertical-mode 1)
+(setq ido-vertical-define-keys 'C-n-and-C-p-only)
+~~~
 
 **Installing pdf-tools**
 *pdf-tools* is an open-source package, which is a replacement of DocView package, which is built-in emacs. More details about the package can be sought at [PDF tools README](https://github.com/politza/pdf-tools). To install it, follow the steps below.
