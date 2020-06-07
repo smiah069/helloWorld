@@ -1,3 +1,16 @@
+**Configuring emacs DIRectory EDitor (dired)**
+
+The default dired editor in emacs doesn't group directory and sort files in alphabetical order when *M-x dired* is executed. In Linux emacs adding the following line:
+>
+> (setq dired-listing-switches "-aBhl  --group-directories-first")
+>
+in the *.emacs* file should solve the problem. However, adding the above lines in the *Aquamacs Preferences.el*  file  in macOS will given an error; something like: "Listing directory failed but 'access-file' worked". To solve this problem macOS, to the following:
+* Install *coreutils*; one can use *brew install coreutils* in the terminal to install the *coreutils* package
+* Add *(setq insert-directory-program "gls" dired-use-ls-dired t)*   in the Preferences.el and save
+
+Then run *M-x eval-buffer*  or restart Aquamacs to have this new dired feature in effect. 
+
+
 
 **Installing AucTeX for emacs to have improved Latex Editor for MS windows.**
 

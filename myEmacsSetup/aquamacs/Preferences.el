@@ -14,6 +14,12 @@
 ; initialize package.el
 (package-initialize)
 
+
+;; Directory editor: Group directories and sort files
+(setq insert-directory-program "gls" dired-use-ls-dired t)
+;;(setq dired-listing-switches "-aBhl  --group-directories-first")
+
+
 ; start auto-complete with emacs
 (require 'auto-complete)
 ; do default config for auto-complete
@@ -24,10 +30,6 @@
 ; start yasnippet with emacs
 (require 'yasnippet)
 (yas-global-mode 1)
-
-
-
-
 
 
 (global-visual-line-mode 1)  ; 1 for on, 0 for off.
@@ -98,12 +100,14 @@
 (global-set-key (kbd "M-x") 'smex)
   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
   ;; This is your old M-x.
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+  ;;(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 (require 'recentf)  ;; To access recently opened files
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
-(require 'amx)
+(require 'amx)  ;; Newer version of smex 
 (amx-mode 1)
+
+
