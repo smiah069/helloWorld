@@ -56,16 +56,6 @@
 (setq-default cursor-type 'box)
 
 
-;;;; Autocomplete for minibuffer's M-x commands 
-(require 'smex) ; Not needed if you use package.el
-  (smex-initialize) ; Can be omitted. This might cause a (minimal) delay
-                    ; when Smex is auto-initialized on its first run.
-(global-set-key (kbd "M-x") 'smex)
-  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-  ;; This is your old M-x.
-  (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-
-
 ;;; Install epdfinfo via 'brew install pdf-tools' and then install the
 ;;; pdf-tools elisp via the use-package below. To upgrade the epdfinfo
 ;;; server, just do 'brew upgrade pdf-tools' prior to upgrading to newest
@@ -106,6 +96,16 @@
 
 
 
+;;;; Autocomplete for minibuffer's M-x commands 
+(require 'smex) ; Not needed if you use package.el
+  (smex-initialize) ; Can be omitted. This might cause a (minimal) delay
+                    ; when Smex is auto-initialized on its first run.
+(global-set-key (kbd "M-x") 'smex)
+  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+  ;; This is your old M-x.
+  (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+
 ;;;;;; Ido-mode enable
 
 (require 'ido)
@@ -115,3 +115,6 @@
 (ido-mode 1)
 (ido-vertical-mode 1)
 (setq ido-vertical-define-keys 'C-n-and-C-p-only)
+
+(require 'amx)
+(amx-mode 1)
