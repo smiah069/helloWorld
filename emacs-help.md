@@ -31,6 +31,7 @@ M-x find-name-dired
 ~/Preferences
 Pref*
 ~~~
+Enjoy...
 
 **Installing AucTeX for emacs to have improved Latex Editor (for macOS)**
 
