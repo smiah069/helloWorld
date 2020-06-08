@@ -18,7 +18,7 @@ Then run *M-x eval-buffer*  or restart Aquamacs to have this new dired feature i
 
 
 
-**Installing AucTeX for emacs to have improved Latex Editor for MS windows.**
+**Installing AucTeX for emacs to have improved Latex Editor (for macOS)**
 
 1. Install Emacs using *brew cask install emacs*
 1. M-x package-list-packages
