@@ -32,6 +32,9 @@ M-x find-name-dired
 Pref*
 ~~~
 
+
+
+
 **Installing AucTeX for emacs to have improved Latex Editor (for macOS)**
 
 1. Install Emacs using *brew cask install emacs*
