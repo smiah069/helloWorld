@@ -17,7 +17,7 @@
 
 ;; Directory editor: Group directories and sort files
 (setq insert-directory-program "gls" dired-use-ls-dired t)
-;;(setq dired-listing-switches "-aBhl  --group-directories-first")
+(setq dired-listing-switches "-aBhl  --group-directories-first")
 
 
 ; start auto-complete with emacs
