@@ -3,7 +3,7 @@
 *See myEmacsSetup/aquamacs/Preferences.el file*
 
 ~~~
-*This document is currently very disorganized and is intended for myself only. However, I've plan to make this document organized and available for public*
+This document is currently very disorganized and is intended for myself only. However, I've plan to make this document organized and available for public.
 ~~~
 
 **Configuring emacs DIRectory EDitor (dired)**
