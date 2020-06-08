@@ -22,7 +22,15 @@ in the Preferences.el and save
 
 Then run *M-x eval-buffer*  or restart Aquamacs to have this new dired feature in effect. 
 
+[See dired reference card](https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.pdf) for list of dired opeations and keyboard shortcut
 
+*Find file from dired*
+Example: Find all files with prefix "Pref" in directory "~/Preferences/". Enter the following:
+~~~
+M-x find-name-dired
+~/Preferences
+Pref*
+~~~
 
 **Installing AucTeX for emacs to have improved Latex Editor (for macOS)**
 

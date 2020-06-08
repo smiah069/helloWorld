@@ -19,6 +19,8 @@
 (setq insert-directory-program "gls" dired-use-ls-dired t)
 (setq dired-listing-switches "-aBhl  --group-directories-first")
 
+(require 'dired-x) ;; useful to jump (or info) to the directory of the file your are editing kbd shortcut C-x C-j; I for info 
+
 
 ; start auto-complete with emacs
 (require 'auto-complete)
@@ -86,14 +88,24 @@
 ;;;;;; Ido-mode enable
 
 (require 'ido)
-(ido-mode t)
+
+(ido-mode 1); enable ido-mode
+(setq ido-enable-flex-matching t); flexibly match names via fuzzy matching
+(ido-everywhere 1); use ido-mode everywhere, in buffers and for finding files
+(setq ido-use-filename-at-point 'guess); for find-file-at-point
+(setq ido-use-url-at-point t); look for URLs at point
+(setq ffap-require-prefix t); get find-file-at-point with C-u C-x C-f
+
+;;(require 'ido-completing-read+)
+(ido-ubiquitous-mode 1)  
+
 
 (require 'ido-vertical-mode)
 (ido-mode 1)
 (ido-vertical-mode 1)
 (setq ido-vertical-define-keys 'C-n-and-C-p-only)
 
-;;;; Autocomplete for minibuffer's M-x commands 
+;;;; Autocomplete for minibuffer's M-x commands (similar to ido-mode but it is M-x only)
 (require 'smex) ; Not needed if you use package.el
   (smex-initialize) ; Can be omitted. This might cause a (minimal) delay
                     ; when Smex is auto-initialized on its first run.
