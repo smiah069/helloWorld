@@ -36,7 +36,7 @@ Pref*
 Enjoy...
 
 
-* Add *(require 'dired-x)* in the *.emacs* file to take advantage of *C-x C-j* (jume to the directory of the file you are editing) and I (for information of file/folder), *C-x C-q* to make the directory editor **Editable** and *C-c C-c* to switch back to the **normal (uneditable)** directory editor
+* Add *(require 'dired-x)* in the *.emacs* file to take advantage of *C-x C-j* (jume to the directory of the file you are editing) and I (for information of file/folder), *C-x C-q* to make the directory editor **(Editable!)** and *C-c C-c* to switch back to the **normal (uneditable)** directory editor
 
 
 
