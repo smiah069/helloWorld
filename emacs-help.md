@@ -1,3 +1,9 @@
+# myEmacs Configuration
+
+*See myEmacsSetup/aquamacs/Preferences.el file*
+
+
+
 **Configuring emacs DIRectory EDitor (dired)**
 
 The default dired editor in emacs doesn't group directory and sort files in alphabetical order when *M-x dired* is executed. In Linux emacs adding the following line:
@@ -14,21 +20,13 @@ Then run *M-x eval-buffer*  or restart Aquamacs to have this new dired feature i
 
 **Installing AucTeX for emacs to have improved Latex Editor for MS windows.**
 
- 01. Install Emacs using *brew cask install emacs*
- For my case: it was in c:\emacs\emacs-23.2 directory
- 02. Download auctex-11.86-e23.2-msw.zip from http://www.gnu.org/software/auctex/download-for-windows.html
-
- 03. Extract auctex-11.86-e23.2-msw.zip and you should have the &quot;site-lisp&quot; directory after extraction
-
- 04. Copy the contents of the &quot;site-lisp&quot; folder (not the &quot;site-lisp&quot; folder itself) into your &quot;c:\emacs\emacs-23.2\site-lisp&quot; directory. The &quot;site-lisp&quot; folder the AucTeX package contains two folders auctex and site-start.d, and two .el files (site-start.el and tex-site.el)
-
- 05. Add the following line into your init.el or .emacs file which is located in your emacs home directory
-
- (load &quot;c:/emacs/emacs-23.2/site-lisp/tex-site.el&quot;)
+1. Install Emacs using *brew cask install emacs*
+1. M-x package-list-packages
+1. Search for auctex and install it
 
 Emac customization file .emacs is located (in my windows laptop) at the following directory: c:/Users/smiah-admin.JOB340LAP/AppData/Roaming/
 
-Emacs command:
+**Some basic emacs command and keyboard shortcut**
 
 1. Force indentation: C-q < TAB Key >
 2. Toggle word wrap: M-x toggle-word-wrap
@@ -60,9 +58,7 @@ If C-a and C-e makes your cursor go to the beginning of a paragraph and end of a
 - Switch to text mode: M-x text mode
 
 
-# myEmacs Configuration
-
-*See myEmacsSetup/aquamacs/Preferences.el file*
+**I (interactive) do (ido) mode**
 
 * ido-mode is useful to find files from a directory. It shows all the subdirectories under a directory automatically. To make use of ido-mode, type
 >
