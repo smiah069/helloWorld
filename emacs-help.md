@@ -12,11 +12,12 @@ The default dired editor in emacs doesn't group directory and sort files in alph
 >
 > (setq dired-listing-switches "-aBhl  --group-directories-first")
 >
-in the *.emacs* file should solve the problem. However, adding the above lines in the *Aquamacs Preferences.el*  file  in macOS will given an error; something like: "Listing directory failed but 'access-file' worked". To solve this problem macOS, to the following:
+in the *.emacs* file should solve the problem. However, adding the above lines in the *Aquamacs Preferences.el*  file  in macOS will given an error; something like: "Listing directory failed but 'access-file' worked" or "No such program *gls*  ... " To solve this problem macOS, to the following:
 * Install *coreutils*; one can use *brew install coreutils* in the terminal to install the *coreutils* package
 * Add the following two lines 
 >
 >(setq insert-directory-program "gls" dired-use-ls-dired t)
+>
 >(setq dired-listing-switches "-aBhl  --group-directories-first")
 >
 
