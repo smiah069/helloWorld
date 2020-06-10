@@ -116,9 +116,6 @@ This mode makes ido-mode display vertically (very convenient). First install ido
 *pdf-tools* is an open-source package, which is a replacement of DocView package, which is built-in emacs. More details about the package can be sought at [PDF tools README](https://github.com/politza/pdf-tools). To install it, follow the steps below.
 
 * Install *use-package* package from *M-x package-list-packages*
-* For macOS, install poppler using *brew install poppler automake*
-* Using terminal install pdf-tools using *brew install --HEAD dunn/homebrew-emacs/pdf-tools*  Note the path of epdfinfo and after the installation as this path will be required down the road
-* Install *pdf-tools* package from *M-x package-list-packages*
 * Open *.emacs* (Preferences.el) file and add the following
 
 ~~~
@@ -135,13 +132,19 @@ This mode makes ido-mode display vertically (very convenient). First install ido
   (setq pdf-info-epdfinfo-program "/usr/local/bin/epdfinfo"))
 (pdf-tools-install)
 ~~~
-* Restart emacs or run *M-x eval-buffer RET*  to take effect of pdf-tools
+* Restart emacs or run *M-x eval-buffer RET*  to take effect of pdf-tools. Note that you will need to follow the on-screen instructions for the first time as it will install *poppler* package using brew installer (install Homebrew installer if haven't!)
 * In case Emacs is frozen to open a PDF file using PDF-tools, it is probably because you have linum-mode enabled. Note that pdf-tools pretty much unusable with linum-mode enabled. Therefore, you will need to **deactivate** it. For that add the following line somewhere in your .emacs (Preferences.el) file:
 >
 >(add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1))) 
 >
 
+If the above steps installing pdf-tools doesn't work then follow the steps below:
 
+* Install *use-package* package from *M-x package-list-packages*
+* For macOS, install poppler using *brew install poppler automake*
+* Using terminal install pdf-tools using *brew install --HEAD dunn/homebrew-emacs/pdf-tools*  Note the path of epdfinfo and after the installation as this path will be required down the road
+* Install *pdf-tools* package from *M-x package-list-packages*
+* Open *.emacs* (Preferences.el) file and add the above lines. 
 
 
 
