@@ -21,6 +21,8 @@
 
 (require 'dired-x) ;; useful to jump (or info) to the directory of the file your are editing kbd shortcut C-x C-j; I for info 
 
+(setq-default delete-by-moving-to-trash t) ;; delete files/folder to trash (instead of  deleting them permenently)
+
 
 ; start auto-complete with emacs
 (require 'auto-complete)
@@ -44,6 +46,8 @@
 (setq ediff-split-window-function 'split-window-horizontally)
 
 (setq-default cursor-type 'box)
+
+;; (require 'magit)
 
 
 ;;; Install epdfinfo via 'brew install pdf-tools' and then install the
