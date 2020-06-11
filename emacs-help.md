@@ -40,7 +40,27 @@ Enjoy...
 * Add *(require 'dired-x)* in the *.emacs* file to take advantage of *C-x C-j* (jume to the directory of the file you are editing) and I (for information of file/folder), *C-x C-q* to make the directory editor **(Editable!)** and *C-c C-c* to switch back to the **normal (uneditable)** directory editor
 
 
+**dired-subtree Package**
 
+* Use TAB  key to expand current directory,
+* Use C-TAB  key once  expand current directory, twice to expand the directory recursively, thrice to contract
+* Use SHIFT-TAB key to contract the subtree when the point is inside that subtree
+
+To take advantage of dired-subtree package with the above options: 
+Add the following lines in the *.emacs* or *Preferences.el* file
+
+~~~
+(use-package dired-subtree
+  :ensure
+  :after dired
+  :config
+  (setq dired-subtree-use-backgrounds nil)
+  :bind (:map dired-mode-map
+              ("<tab>" . dired-subtree-toggle)
+              ("<C-tab>" . dired-subtree-cycle)
+              ("<S-iso-lefttab>" . dired-subtree-remove)))
+~~~
+			  
 **Installing AucTeX for emacs to have improved Latex Editor (for macOS)**
 
 1. Install Emacs using *brew cask install emacs*
