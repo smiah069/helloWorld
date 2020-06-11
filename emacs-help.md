@@ -60,7 +60,24 @@ Add the following lines in the *.emacs* or *Preferences.el* file
               ("<C-tab>" . dired-subtree-cycle)
               ("<S-iso-lefttab>" . dired-subtree-remove)))
 ~~~
-			  
+
+**Copy/Paste/ Rename in Dired using ido-mode**
+
+In directory editor (dired) when a file is to be copied/renamed/moved to a different directory
+ with key C/R then all directory choice will automatically appear in the minibuffer using
+ ido-mode (rather than conventional way of changing directory). For that,
+
+* First install *ido-completing-read+* from melpha (M-x package-list-packages => search for*ido-completing-read+*, type *i* then *x*).
+* After that, add the following two lines in the *.emacs* (Preferences.el) file
+
+~~~
+;;(require 'ido-completing-read+)  ;; no need to activate this line if ido-completing-read+ is installed from melpha 
+(ido-ubiquitous-mode 1)
+(eval-after-load 'dired '(progn (mapatoms (lambda (symbol) (if (s-starts-with? "dired-do-" (symbol-name symbol))  (put symbol 'ido 'find-file))))))
+~~~
+* Now simply use *C* or *R* key to navigate to the directory
+you want and pres *C-j* to stop at a path and paste the file
+
 **Installing AucTeX for emacs to have improved Latex Editor (for macOS)**
 
 1. Install Emacs using *brew cask install emacs*

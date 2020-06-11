@@ -6,13 +6,14 @@
 
 ;;;;;;;;;;;;;;;;;;;;; Suruz's customization
 
+#+BEGIN_SRC initializeMelpha
 ; start package.el with emacs
 (require 'package)
 ; add MELPA repository list
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 ; initialize package.el
 (package-initialize)
-
+#+END_SRC
 
 ;; Directory editor: Group directories and sort files
 (setq insert-directory-program "gls" dired-use-ls-dired t)
@@ -106,13 +107,20 @@
 (setq ido-use-url-at-point t); look for URLs at point
 (setq ffap-require-prefix t); get find-file-at-point with C-u C-x C-f
 
-;; In directory editor (dired) when a file is to be copied/renamed/moved to a different directory with key C/R then all directory choice will automatically appear in the minibuffer using ido-mode (rather than conventional way of changing directory). For that, first install ido-completing-read+ from melpha (M-x package-list-packages => search for ido-completing-read+, type i then x). After that, activate the following two lines. Now simply use C or R key to navigate to the directory you want and pres C-j to stop at a path and paste the file
+;;; In directory editor (dired) when a file is to be copied/renamed/moved to a different directory
+;;; with key C/R then all directory choice will automatically appear in the minibuffer using
+;;; ido-mode (rather than conventional way of changing directory). For that, first install
+;;; ido-completing-read+ from melpha (M-x package-list-packages => search for ido-completing-read+,
+;;; type i then x).
+;;; After that, activate the following two lines. Now simply use C or R key to navigate to the directory
+;;; you want and pres C-j to stop at a path and paste the file
 
 ;;(require 'ido-completing-read+)  ;; no need to activate this line if ido-completing-read+ is installed from melpha 
 (ido-ubiquitous-mode 1)
 (eval-after-load 'dired '(progn (mapatoms (lambda (symbol) (if (s-starts-with? "dired-do-" (symbol-name symbol))  (put symbol 'ido 'find-file))))))
 
-;;(put 'dired-do-rename 'ido 'find-file)  ;; works with key R (rename/move) only (in dired buffer) => this is not what we want
+;;(put 'dired-do-rename 'ido 'find-file);; No need works with key R (rename/move) only => this is not what we want
+
 
 (require 'ido-vertical-mode)
 (ido-mode 1)
