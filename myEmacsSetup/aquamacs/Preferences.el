@@ -4,7 +4,6 @@
 ;; evaluating this file and print errors in the *Messages* buffer.
 ;; Use this file in place of ~/.emacs (which is loaded as well.)
 
-
 ;;;;;;;;;;;;;;;;;;;;; Suruz's customization
 
 ; start package.el with emacs
@@ -23,6 +22,15 @@
 
 (setq-default delete-by-moving-to-trash t) ;; delete files/folder to trash (instead of  deleting them permenently)
 
+(use-package dired-subtree
+  :ensure
+  :after dired
+  :config
+  (setq dired-subtree-use-backgrounds nil)
+  :bind (:map dired-mode-map
+              ("<tab>" . dired-subtree-toggle)   ;; TAB
+              ("<C-tab>" . dired-subtree-cycle)  ;; C-TAB
+              ("<S-iso-lefttab>" . dired-subtree-remove))) ;; Shift-TAB
 
 ; start auto-complete with emacs
 (require 'auto-complete)
@@ -48,7 +56,6 @@
 (setq-default cursor-type 'box)
 
 ;; (require 'magit)
-
 
 ;;; Install epdfinfo via 'brew install pdf-tools' and then install the
 ;;; pdf-tools elisp via the use-package below. To upgrade the epdfinfo
@@ -88,7 +95,6 @@
              '(output-pdf "PDF Tools"))
 
 
-
 ;;;;;; Ido-mode enable
 
 (require 'ido)
@@ -100,14 +106,19 @@
 (setq ido-use-url-at-point t); look for URLs at point
 (setq ffap-require-prefix t); get find-file-at-point with C-u C-x C-f
 
-;;(require 'ido-completing-read+)
-(ido-ubiquitous-mode 1)  
+;; In directory editor (dired) when a file is to be copied/renamed/moved to a different directory with key C/R then all directory choice will automatically appear in the minibuffer using ido-mode (rather than conventional way of changing directory). For that, first install ido-completing-read+ from melpha (M-x package-list-packages => search for ido-completing-read+, type i then x). After that, activate the following two lines. Now simply use C or R key to navigate to the directory you want and pres C-j to stop at a path and paste the file
 
+;;(require 'ido-completing-read+)  ;; no need to activate this line if ido-completing-read+ is installed from melpha 
+(ido-ubiquitous-mode 1)
+(eval-after-load 'dired '(progn (mapatoms (lambda (symbol) (if (s-starts-with? "dired-do-" (symbol-name symbol))  (put symbol 'ido 'find-file))))))
+
+;;(put 'dired-do-rename 'ido 'find-file)  ;; works with key R (rename/move) only (in dired buffer) => this is not what we want
 
 (require 'ido-vertical-mode)
 (ido-mode 1)
 (ido-vertical-mode 1)
 (setq ido-vertical-define-keys 'C-n-and-C-p-only)
+
 
 ;;;; Autocomplete for minibuffer's M-x commands (similar to ido-mode but it is M-x only)
 (require 'smex) ; Not needed if you use package.el
@@ -125,5 +136,3 @@
 
 (require 'amx)  ;; Newer version of smex 
 (amx-mode 1)
-
-
