@@ -36,89 +36,58 @@ List of commands on the terminal of macOS
 >
 >killall Finder
 
+* Delete all *.ttt* files in the current directory
+>
+>find . -name "*.ttt" -delete
+>
 * The following command will remove all .DS\_Store files in a directory
 where it is executed as well as that particular directory or
-subdirectories:\
-\
-find . -name \'\*.DS\_Store\' -type f -delete\
-==============================================================================\
-\
-* delete all files in the directory but NOT the file with extension
-.tex and .eps:\
-\
-find . -type f ! -name \"\*.tex\" ! -name \"\*.eps\" -delete\
+subdirectories:
+>
+>find . -name \'\*.DS\_Store\' -type f -delete
+>
+* Delete all files in the directory but NOT the file with extension
+.tex and .eps:
+>
+>find . -type f ! -name \"\*.tex\" ! -name \"\*.eps\" -delete\
+>
+* Merging multiple pdf files into a single pdf file:
+  
+  1. First create a PDFconcat command by following the commands below (you need to do only once in your computer life!)
+	 a) cd /usr/local/bin
+	 b) sudo ln \"/System/Library/Automator/Combine PDFPages.action/Contents/Resources/join.py\" PDFconcat
+  1. Now merge pdf files using PDFconcat command
+  >
+  >PDFconcat -o PATH/TO/YOUR/MERGED/MERGED-FILE.pdf /PATH/TO/A/WHOLE/DIR/\*.pdf
+  >
+OR
 
-* Merging multiple pdf files into a single pdf file:\
-\
-1. First create a PDFconcat command by following the commands below (you
-need to do only once in your computer life!)\
-\
-a) cd /usr/local/bin\
-b) sudo ln \"/System/Library/Automator/Combine PDF
-Pages.action/Contents/Resources/join.py\" PDFconcat\
-\
-2. Now merge pdf files using PDFconcat command\
-\
-PDFconcat -o PATH/TO/YOUR/MERGED/MERGED-FILE.pdf
-/PATH/TO/A/WHOLE/DIR/\*.pdf\
-\
-OR\
-\
-PDFconcat -o PATH/TO/YOUR/MERGED/MERGED-FILE.pdf\
-/PATH/TO/ORIGINAL/1.pdf /PATH/TO/ANOTHER/2.pdf\
-/PATH/TO/A/WHOLE/DIR/\*.pdf\
-\
-OR\
-gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite\
--sOutputFile=combined\_file.pdf file1.pdf file2.pdf file3.pdf\
-\
-gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite\
--sOutputFile=UPEI-Miah-appln-pkg.pdf\
-/Users/mdsuruzmiah/Documents/Suruz/Jobs/MyJob/academic/teaching-applications/docs/cover-letters/cl-upei.pdf\
-/Users/mdsuruzmiah/Documents/Suruz/Jobs/MyJob/academic/teaching-applications/Miah-CV-details1.pdf\
-=============================\
-Converting pdf figure to eps without rastering the fonts.\
-\
-\
-Ghostscript (multi-platform)\
-Note: -dNOCACHE is needed to prevent GhostScript from rastering the
-fonts.\
-\
-gs -q -dNOCACHE -dNOPAUSE -dBATCH -dSAFER -sDEVICE=epswrite\
--sOutputFile=output.eps input.pdf\
-\
-\
-\
-=============================\
-Allow write/modify permit recursively in all files of a directory\
-(color/ in the following example)\
-\
-sudo chmod -R 777
-/usr/local/texlive/2014/texmf-dist/tex/Latex/beamer/themes/color/\*\
-=================================================
+>PDFconcat -o PATH/TO/YOUR/MERGED/MERGED-FILE.pdf /PATH/TO/ORIGINAL/1.pdf /PATH/TO/ANOTHER/2.pdf /PATH/TO/A/WHOLE/DIR/\*.pdf
 
-==
+OR
 
-Copy files folders from mac hard drive to external USB hard drive:
+>gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=combined\_file.pdf file1.pdf file2.pdf file3.pdf
+>gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=UPEI-Miah-appln-pkg.pdf /Users/mdsuruzmiah/Documents/Suruz/Jobs/MyJob/academic/teaching-applications/docs/cover-letters/cl-upei.pdf /Users/mdsuruzmiah/Documents/Suruz/Jobs/MyJob/academic/teaching-applications/Miah-CV-details1.pdf
+>
 
-rsync -avz source/ destination/
+* Allow write/modify permit recursively in all files of a directory (color/ in the following example):
 
+>sudo chmod -R 777 /usr/local/texlive/2014/texmf-dist/tex/Latex/beamer/themes/color/\*
+
+
+* Copy files folders from mac hard drive to external USB hard drive:
+>
+>rsync -avz source/ destination/
+>
 
 
 * (Force) formatting external hard drive
 
+>diskutil cs list
+>
+>sudo diskutil cs deleteLVG B6308EC8-297D-44BD-9212-6BD867F6331B (your logical number)
 
 
-diskutil cs list
+* Image compression using ImageMagic
 
-sudo diskutil cs deleteLVG B6308EC8-297D-44BD-9212-6BD867F6331B (your
-logical number)
-
-======
-
-Image compression using ImageMagic
-
-======
-
-convert -strip -interlace Plane -gaussian-blur 0.05 -quality 85%
-source.jpg result.jpg
+>convert -strip -interlace Plane -gaussian-blur 0.05 -quality 85% source.jpg result.jpg
