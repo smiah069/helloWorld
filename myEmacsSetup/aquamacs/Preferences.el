@@ -6,14 +6,14 @@
 
 ;;;;;;;;;;;;;;;;;;;;; Suruz's customization
 
-#+BEGIN_SRC initializeMelpha
+
 ; start package.el with emacs
 (require 'package)
 ; add MELPA repository list
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 ; initialize package.el
 (package-initialize)
-#+END_SRC
+
 
 ;; Directory editor: Group directories and sort files
 (setq insert-directory-program "gls" dired-use-ls-dired t)
