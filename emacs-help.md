@@ -88,6 +88,8 @@ Emac customization file .emacs is located (in my windows laptop) at the followin
 
 **Some basic emacs command and keyboard shortcut**
 
+s => Command (Windows) key 
+
 1. Force indentation: C-q < TAB Key >
 2. Toggle word wrap: M-x toggle-word-wrap
 3. Toggle word wrap in Visual line mode (preferred): M-x global-visual-line-mode. To set it permanently, open .emacs file and insert the following line and save:
@@ -113,7 +115,9 @@ If C-a and C-e makes your cursor go to the beginning of a paragraph and end of a
 15. Next/previous buffer => C-x right arrow/left arrow
 16. C-x o => To switch to another buffer in the split windows
 17. C-x 5 o => To switch to another emacs window (frame)
-18. Command+Shift+{ => switch between tabbed buffers.
+18. C-x PLUS leftArrow (C-x PLUS rightArrow ) => switch between buffers.
+1. Command+Shift+{ => switch between tabbed buffers (macOS)
+
 
 - Switch to text mode: M-x text mode
 
