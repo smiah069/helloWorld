@@ -101,7 +101,7 @@ In directory editor, visiting a new (child) directory under the cursor by pressi
 >                        (lambda () (interactive) (find-alternate-file "..")))))
 >
 
-## Installing AucTeX for emacs to have improved Latex Editor (for macOS)
+## Installing AucTeX for emacs for  improved Latex Editor (for macOS)
 
 
 1. M-x package-list-packages
