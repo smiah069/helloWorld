@@ -87,7 +87,7 @@ In directory editor (dired) when a file is to be copied/renamed/moved to a diffe
 you want and pres *C-j* to stop at a path and paste the file
 
 
-** Reusing current buffer in dired when exploring directories**
+**Reusing current buffer in dired when exploring directories**
 
 In directory editor, visiting a new (child) directory under the cursor by pressing RET key normally opens in a new buffer, which could be annoying for someone.
 
@@ -101,7 +101,7 @@ In directory editor, visiting a new (child) directory under the cursor by pressi
 >                        (lambda () (interactive) (find-alternate-file "..")))))
 >
 
-##Installing AucTeX for emacs to have improved Latex Editor (for macOS)
+## Installing AucTeX for emacs to have improved Latex Editor (for macOS)
 
 
 1. M-x package-list-packages
