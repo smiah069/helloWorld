@@ -6,7 +6,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;; Suruz's customization
 
-
 ; start package.el with emacs
 (require 'package)
 ; add MELPA repository list
@@ -23,6 +22,7 @@
 
 (setq-default delete-by-moving-to-trash t) ;; delete files/folder to trash (instead of  deleting them permenently)
 
+;;; Explore folder with TAB, C-TAB keys
 (use-package dired-subtree
   :ensure
   :after dired
@@ -33,7 +33,17 @@
               ("<C-tab>" . dired-subtree-cycle)  ;; C-TAB
               ("<S-iso-lefttab>" . dired-subtree-remove))) ;; Shift-TAB
 
-; start auto-complete with emacs
+
+;; Type 'a' (or use command 'dired-find-alternate-file'), instead of RET key to reuse current buffer (i.e., instead of opening a child directory in a new buffer)
+;; Note that the reuse buffer using 'dired-find-alternate-file' does not work when you use '^' to move up to the parent directory. If you want to reuse current buffer (i.e., buffer containing child directory) to move up to the parent directory by pressing '^' key, then add the following lines in the .emacs (Preferences.el) file
+
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (define-key dired-mode-map (kbd "^")
+                        (lambda () (interactive) (find-alternate-file "..")))))
+
+
+;;;;;;;; start auto-complete with emacs
 (require 'auto-complete)
 ; do default config for auto-complete
 (require 'auto-complete-config)

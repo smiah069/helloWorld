@@ -6,7 +6,14 @@
 This document is currently very disorganized and is intended for myself only. However, I've plan to make this document organized and available for public.
 ~~~
 
-**Configuring emacs DIRectory EDitor (dired)**
+## Installing Emacs
+
+* You can install emacs in macOS  using terminal by running the command: *brew cask install emacs*
+* New bees may want to install [Aquamacs](http://aquamacs.org/) available for  macOS only 
+* For windows, you can download emacs from this [link](https://www.gnu.org/software/emacs/download.html)
+
+
+##Configuring emacs DIRectory EDitor (dired)
 
 The default dired editor in emacs doesn't group directory and sort files in alphabetical order when *M-x dired* is executed. In Linux emacs adding the following line:
 >
@@ -27,7 +34,8 @@ Then run *M-x eval-buffer*  or restart Aquamacs to have this new dired feature i
 
 [See dired reference card](https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.pdf) for list of dired opeations and keyboard shortcut
 
-*Find file from dired*
+**Find file from dired**
+
 Example: Find all files with prefix "Pref" in directory "~/Preferences/". Enter the following:
 ~~~
 M-x find-name-dired
@@ -78,9 +86,24 @@ In directory editor (dired) when a file is to be copied/renamed/moved to a diffe
 * Now simply use *C* or *R* key to navigate to the directory
 you want and pres *C-j* to stop at a path and paste the file
 
-**Installing AucTeX for emacs to have improved Latex Editor (for macOS)**
 
-1. Install Emacs using *brew cask install emacs*
+** Reusing current buffer in dired when exploring directories**
+
+In directory editor, visiting a new (child) directory under the cursor by pressing RET key normally opens in a new buffer, which could be annoying for someone.
+
+*To avoid opening child directory in a new buffer, press **a** (instead of RET key) or use command *dired-find-alternate-file* to kill the current buffer and replace it with the contents of the subdirectory
+
+* However,  the reuse buffer using 'dired-find-alternate-file' does not work when you use *'^'* to move up to the parent directory. If you want to reuse the  current buffer (i.e., buffer containing child directory) to **move up to the parent directory** by pressing *'^'* key, then add the following lines in the *.emacs (Preferences.el)* file:
+>
+>(add-hook 'dired-mode-hook
+>          (lambda ()
+>            (define-key dired-mode-map (kbd "^")
+>                        (lambda () (interactive) (find-alternate-file "..")))))
+>
+
+##Installing AucTeX for emacs to have improved Latex Editor (for macOS)
+
+
 1. M-x package-list-packages
 1. Search for auctex and install it
 
