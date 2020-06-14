@@ -13,7 +13,7 @@ This document is currently very disorganized and is intended for myself only. Ho
 * For windows, you can download emacs from this [link](https://www.gnu.org/software/emacs/download.html)
 
 
-##Configuring emacs DIRectory EDitor (dired)
+## Configuring emacs DIRectory EDitor (dired)
 
 The default dired editor in emacs doesn't group directory and sort files in alphabetical order when *M-x dired* is executed. In Linux emacs adding the following line:
 >
