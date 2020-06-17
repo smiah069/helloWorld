@@ -52,6 +52,12 @@ Note that the *pdf* layer is added (for my case) under the user-config() functio
 Note that *SPC* key in spacemacs vim editor is equivalent to *M-m* in spacemacs emacs editor (which I'm using as I've experience with Emacs editor) 
 ~~~
 
+However, I find it a little bit inconvenient to type M-m. Therefore, I changed it *M-SPC* by updating the  line  to 
+>
+> dotspacemacs-emacs-leader-key "M-SPC" ; Previously it was "M-m" 
+>
+in the *.spacemacs* file 
+
 
 
 **Spell Checker**
