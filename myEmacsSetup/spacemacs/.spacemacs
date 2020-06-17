@@ -31,6 +31,8 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     octave
+     html
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -102,7 +104,7 @@ values."
    ;; `hybrid state' with `emacs' key bindings. The value can also be a list
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
-   ;; (default 'vim)
+   ;; (defanult 'vim)
    dotspacemacs-editing-style 'emacs
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
@@ -320,6 +322,8 @@ you should place your code here."
 
 ;;;;;;;;;;;;;;;;;;;;; Suruz's customization
 
+
+
 ; start package.el with emacs
 (require 'package)
 ; add MELPA repository list
@@ -372,6 +376,7 @@ you should place your code here."
 
 (setq-default cursor-type 'box)
 
+
 ;; (require 'magit)
 
 ;;; Install epdfinfo via 'brew install pdf-tools' and then install the
@@ -404,15 +409,16 @@ you should place your code here."
 
 (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
 
-;; view generated PDF with `pdf-tools'.
-(unless (assoc "PDF Tools" TeX-view-program-list-builtin)
-  (add-to-list 'TeX-view-program-list-builtin
-               '("PDF Tools" TeX-pdf-tools-sync-view)))
-(add-to-list 'TeX-view-program-selection
-             '(output-pdf "PDF Tools"))
+;;;;;;; view generated PDF with `pdf-tools'.
+;;(unless (assoc "PDF Tools" TeX-view-program-list-builtin)
+;;  (add-to-list 'TeX-view-program-list-builtin
+;;               '("PDF Tools" TeX-pdf-tools-sync-view)))
+;; (add-to-list 'TeX-view-program-selection '
+;;             (output-pdf "PDF Tools"))
 
 
 (setq-default dotspacemacs-configuration-layers '(pdf))
+
 
 
 ;;;;;; Ido-mode enable
@@ -421,7 +427,7 @@ you should place your code here."
 
 (ido-mode 1); enable ido-mode
 (setq ido-enable-flex-matching t); flexibly match names via fuzzy matching
-(ido-everywhere 1); use ido-mode everywhere, in buffers and for finding files
+;; (ido-everywhere 1); use ido-mode everywhere, in buffers and for finding files
 (setq ido-use-filename-at-point 'guess); for find-file-at-point
 (setq ido-use-url-at-point t); look for URLs at point
 (setq ffap-require-prefix t); get find-file-at-point with C-u C-x C-f
@@ -434,8 +440,9 @@ you should place your code here."
 ;;; After that, activate the following two lines. Now simply use C or R key to navigate to the directory
 ;;; you want and pres C-j to stop at a path and paste the file
 
-;;(require 'ido-completing-read+)  ;; no need to activate this line if ido-completing-read+ is installed from melpha 
-(ido-ubiquitous-mode 1)
+;;;;(require 'ido-completing-read+)  ;; no need to activate this line if ido-completing-read+ is installed from melpha 
+;;(ido-ubiquitous-mode 1)
+;;
 (eval-after-load 'dired '(progn (mapatoms (lambda (symbol) (if (s-starts-with? "dired-do-" (symbol-name symbol))  (put symbol 'ido 'find-file))))))
 
 ;;(put 'dired-do-rename 'ido 'find-file);; No need works with key R (rename/move) only => this is not what we want
@@ -448,11 +455,11 @@ you should place your code here."
 
 
 ;;;; Autocomplete for minibuffer's M-x commands (similar to ido-mode but it is M-x only)
-(require 'smex) ; Not needed if you use package.el
-  (smex-initialize) ; Can be omitted. This might cause a (minimal) delay
+;;(require 'smex) ; Not needed if you use package.el
+;;  (smex-initialize) ; Can be omitted. This might cause a (minimal) delay
                     ; when Smex is auto-initialized on its first run.
-(global-set-key (kbd "M-x") 'smex)
-  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;;(global-set-key (kbd "M-x") 'smex)
+;;  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
   ;; This is your old M-x.
   ;;(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
@@ -461,8 +468,8 @@ you should place your code here."
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
-(require 'amx)  ;; Newer version of smex 
-(amx-mode 1)
+;;(require 'amx)  ;; Newer version of smex
+;;(amx-mode 1)
 
 
 )
@@ -482,7 +489,6 @@ you should place your code here."
      (output-html "open"))))
  '(ansi-color-names-vector
    ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
- '(blink-cursor-mode nil)
  '(column-number-mode t)
  '(custom-safe-themes
    (quote
@@ -491,9 +497,10 @@ you should place your code here."
  '(global-display-line-numbers-mode t)
  '(package-selected-packages
    (quote
-    (rainbow-mode rainbow-identifiers color-identifiers-mode pdf-tools company-auctex auctex-latexmk auto-complete-auctex auctex dired-subtree smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit git-commit with-editor transient company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+    (dictionary web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data rainbow-mode rainbow-identifiers color-identifiers-mode pdf-tools company-auctex auctex-latexmk auto-complete-auctex auctex dired-subtree smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit git-commit with-editor transient company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
  '(pdf-tools-handle-upgrades nil)
  '(show-paren-mode t))
+'(blink-cursor-mode t)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
