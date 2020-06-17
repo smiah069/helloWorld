@@ -10,8 +10,41 @@ This document is currently very disorganized and is intended for myself only. Ho
 
 * You can install emacs in macOS  using terminal by running the command: *brew cask install emacs*
 * New bees may want to install [Aquamacs](http://aquamacs.org/) available for  macOS only 
-* For windows, you can download emacs from this [link](https://www.gnu.org/software/emacs/download.html)
+* For windows, you can download emacs from this [link](https://www.gnu.org/software/emacs/download.html**
 
+
+## Installing Spacemacs
+
+- A new way of experiencing emacs
+- You will need to install Emacs first. Please checkout [spacemacs](https://github.com/syl20bnr/spacemacs) link 
+
+For macOS installation: run the following commands: 
+
+>
+> $ brew tap d12frosted/emacs-plus
+>
+> $ brew install emacs-plus
+>
+> $ brew linkapps emacs-plus
+
+If the last command doesn't work, then manually palce the Emacs.app in the *Applications* folde using the command: 
+>
+> ln -s /usr/local/Cellar/emacs-plus@26/26.3/Emacs.app /Applications/ 
+>
+
+
+- Latex,html, git,  packages are installed as layers under *dotspacemacs-configuration-layers* (see the .spacemacs file, for example). 
+
+For PDF tools, you will need to install pdf-tools using brew from the terminal (see the pdf-tools section below). 
+
+All the user configurations in emacs-lisp are to be written in the following functions
+
+> (defun dotspacemacs/user-config ()
+> ;;;; Add your own configurations here .... 
+>
+> )
+
+Note that the *pdf* layer is added (for my case) under the user-config() function (see *(setq-default dotspacemacs-configuration-layers '(pdf))* in my .spacemacs file) 
 
 ## Configuring emacs DIRectory EDitor (dired)
 
