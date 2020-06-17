@@ -44,7 +44,31 @@ All the user configurations in emacs-lisp are to be written in the following fun
 >
 > )
 
-Note that the *pdf* layer is added (for my case) under the user-config() function (see *(setq-default dotspacemacs-configuration-layers '(pdf))* in my .spacemacs file) 
+Note that the *pdf* layer is added (for my case) under the user-config() function (see *(setq-default dotspacemacs-configuration-layers '(pdf))** in my .spacemacs file** 
+
+**Key bindings:**
+
+~~~
+Note that *SPC* key in spacemacs vim editor is equivalent to *M-m* in spacemacs emacs editor (which I'm using as I've experience with Emacs editor) 
+~~~
+
+
+
+**Spell Checker**
+
+Emacs includes Flyspell, therefore, you do  not need explicitly install flyspell. However, flyspell needs a spell checking tool (Emacs will generate an error *Error enabling Flyspell mode ...*).For that you will need to install a spell checking tool. I installed *aspell** using homebrew by running the command: 
+
+>
+> brew install aspell 
+>
+
+**Dictionary**
+
+You can find the  definition of a word in dictionary in spacemacs through *define-word*, which is a GNU emacs package that lets you see the definition of a word or a phrase  at a point. This package is normally pre-installed. 
+
+- You can run *M-x define-word* and then type the word that you want to be defined by the dictionary. 
+- Or can you define a word right under your cursor using Key bindings in Spacemacs: *SPC x w d*  
+
 
 ## Configuring emacs DIRectory EDitor (dired)
 
@@ -95,6 +119,7 @@ Add the following lines in the *.emacs* or *Preferences.el* file
   :ensure
   :after dired
   :config
+  
   (setq dired-subtree-use-backgrounds nil)
   :bind (:map dired-mode-map
               ("<tab>" . dired-subtree-toggle)
