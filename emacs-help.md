@@ -90,7 +90,7 @@ In my *.spacemacs* file, I've the following configuration as I want to use "Ubun
 
 ~~~
    dotspacemacs-default-font '("Ubuntu Mono"   ;; "Source Code Pro" 
-                               :size 20
+                               :size 18
                                :weight normal
                                :width normal
                                :powerline-scale 1.5)
