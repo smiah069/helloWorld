@@ -31,29 +31,30 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     octave
-     html
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     helm
-      auto-completion
+     auto-completion
      ;; better-defaults
+     colors
      emacs-lisp
-      git
-      markdown
-      org
+     git
+     helm
+     html
+     latex
+     markdown
+     org
+     octave
+     osx
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
-      spell-checking
-      syntax-checking
-      ;; version-control
-      latex
-      colors
-      )
+     spell-checking
+     syntax-checking
+     ;; version-control
+     )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
@@ -104,7 +105,7 @@ values."
    ;; `hybrid state' with `emacs' key bindings. The value can also be a list
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
-   ;; (defanult 'vim)
+   ;; (default 'vim)
    dotspacemacs-editing-style 'emacs
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
@@ -305,13 +306,16 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
 
+
+  ;;;;; Suruz's customization (set spacemacs background color)
+
   (setq-default
    ;; ... other configurations...
    dotspacemacs-themes '(professional))  ;; See https://themegallery.robdor.com/ for all the themes 
-)
+
+  )
 
 (defun dotspacemacs/user-config ()
-
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration.
@@ -320,71 +324,55 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
 
-;;;;;;;;;;;;;;;;;;;;; Suruz's customization
+                                        ; start package.el with emacs
+  (require 'package)
+                                        ; add MELPA repository list
+  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+                                        ; initialize package.el
+  (package-initialize)
 
 
+  (require 'dired-x) ;; useful to jump (or info) to the directory of the file your are editing kbd shortcut C-x C-j; I for info 
 
-; start package.el with emacs
-(require 'package)
-; add MELPA repository list
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-; initialize package.el
-(package-initialize)
-
-
-;; Directory editor: Group directories and sort files
-(setq insert-directory-program "gls" dired-use-ls-dired t)
-(setq dired-listing-switches "-aBhl  --group-directories-first")
-
-(require 'dired-x) ;; useful to jump (or info) to the directory of the file your are editing kbd shortcut C-x C-j; I for info 
-
-(setq-default delete-by-moving-to-trash t) ;; delete files/folder to trash (instead of  deleting them permenently)
+  (setq-default delete-by-moving-to-trash t) ;; delete files/folder to trash (instead of  deleting them permenently)
 
 ;;; Explore folder with TAB, C-TAB keys
-(use-package dired-subtree
-  :ensure
-  :after dired
-  :config
-  (setq dired-subtree-use-backgrounds nil)
-  :bind (:map dired-mode-map
-              ("<tab>" . dired-subtree-toggle)   ;; TAB
-              ("<C-tab>" . dired-subtree-cycle)  ;; C-TAB
-              ("<S-iso-lefttab>" . dired-subtree-remove))) ;; Shift-TAB
+  (use-package dired-subtree
+    :ensure
+    :after dired
+    :config
+    (setq dired-subtree-use-backgrounds nil)
+    :bind (:map dired-mode-map
+                ("<tab>" . dired-subtree-toggle)   ;; TAB
+                ("<C-tab>" . dired-subtree-cycle)  ;; C-TAB
+                ("<S-iso-lefttab>" . dired-subtree-remove))) ;; Shift-TAB
 
 
-;; Type 'a' (or use command 'dired-find-alternate-file'), instead of RET key to reuse current buffer (i.e., instead of opening a child directory in a new buffer)
-;; Note that the reuse buffer using 'dired-find-alternate-file' does not work when you use '^' to move up to the parent directory. If you want to reuse current buffer (i.e., buffer containing child directory) to move up to the parent directory by pressing '^' key, then add the following lines in the .emacs (Preferences.el) file
+  ;; Type 'a' (or use command 'dired-find-alternate-file'), instead of RET key to reuse current buffer (i.e., instead of opening a child directory in a new buffer)
+  ;; Note that the reuse buffer using 'dired-find-alternate-file' does not work when you use '^' to move up to the parent directory. If you want to reuse current buffer (i.e., buffer containing child directory) to move up to the parent directory by pressing '^' key, then add the following lines in the .emacs (Preferences.el) file
 
-(add-hook 'dired-mode-hook
-          (lambda ()
-            (define-key dired-mode-map (kbd "^")
-                        (lambda () (interactive) (find-alternate-file "..")))))
+  (add-hook 'dired-mode-hook
+            (lambda ()
+              (define-key dired-mode-map (kbd "^")
+                (lambda () (interactive) (find-alternate-file "..")))))
 
-; start yasnippet with emacs
-(require 'yasnippet)
-(yas-global-mode 1)
-
-
- (global-visual-line-mode 0)  ; 1 for on, 0 for off.
+                                        ; start yasnippet with emacs
+  (require 'yasnippet)
+  (yas-global-mode 1)
 
 
-
-(setq-default TeX-master nil)   ; working with Master file
-
-
-(setq ediff-split-window-function 'split-window-horizontally)
-
-(setq-default cursor-type 'box)
+  ;; (global-visual-line-mode 0)  ; 1 for on, 0 for off.
 
 
-;; (require 'magit)
 
-;;; Install epdfinfo via 'brew install pdf-tools' and then install the
-;;; pdf-tools elisp via the use-package below. To upgrade the epdfinfo
-;;; server, just do 'brew upgrade pdf-tools' prior to upgrading to newest
-;;; pdf-tools package using Emacs package system. If things get messed
-;;; up, just do 'brew uninstall pdf-tools', wipe out the elpa
-;;; pdf-tools package and reinstall both as at the start.
+  (setq-default TeX-master nil)   ; working with Master file
+
+
+  (setq ediff-split-window-function 'split-window-horizontally)
+
+  (setq-default cursor-type 'box)
+
+  ;; (require 'magit)
 
 ;;; Install epdfinfo via 'brew install pdf-tools' and then install the
 ;;; pdf-tools elisp via the use-package below. To upgrade the epdfinfo
@@ -393,31 +381,38 @@ you should place your code here."
 ;;; up, just do 'brew uninstall pdf-tools', wipe out the elpa
 ;;; pdf-tools package and reinstall both as at the start.
 
-
-(add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1)))
-
-(require 'use-package)
-
-(use-package pdf-tools
-  :ensure t
-  :config
-  (custom-set-variables
-    '(pdf-tools-handle-upgrades nil)) ; Use brew upgrade pdf-tools instead.
-  (setq pdf-info-epdfinfo-program "/usr/local/bin/epdfinfo"))
-(pdf-tools-install)
+;;; Install epdfinfo via 'brew install pdf-tools' and then install the
+;;; pdf-tools elisp via the use-package below. To upgrade the epdfinfo
+;;; server, just do 'brew upgrade pdf-tools' prior to upgrading to newest
+;;; pdf-tools package using Emacs package system. If things get messed
+;;; up, just do 'brew uninstall pdf-tools', wipe out the elpa
+;;; pdf-tools package and reinstall both as at the start.
 
 
-(add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+  (add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1)))
+
+  (require 'use-package)
+
+  (use-package pdf-tools
+    :ensure t
+    :config
+    (custom-set-variables
+     '(pdf-tools-handle-upgrades nil)) ; Use brew upgrade pdf-tools instead.
+    (setq pdf-info-epdfinfo-program "/usr/local/Cellar/pdf-tools/HEAD-c510442/bin/epdfinfo"))
+  (pdf-tools-install)
+
+
+  (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
 
 ;;;;;;; view generated PDF with `pdf-tools'.
-;;(unless (assoc "PDF Tools" TeX-view-program-list-builtin)
-;;  (add-to-list 'TeX-view-program-list-builtin
-;;               '("PDF Tools" TeX-pdf-tools-sync-view)))
-;; (add-to-list 'TeX-view-program-selection '
-;;             (output-pdf "PDF Tools"))
+  ;;(unless (assoc "PDF Tools" TeX-view-program-list-builtin)
+  ;;  (add-to-list 'TeX-view-program-list-builtin
+  ;;               '("PDF Tools" TeX-pdf-tools-sync-view)))
+  ;; (add-to-list 'TeX-view-program-selection '
+  ;;             (output-pdf "PDF Tools"))
 
-
-(setq-default dotspacemacs-configuration-layers '(pdf))
+  ;; Add PDF tools layer 
+  (setq-default dotspacemacs-configuration-layers '(pdf))
 
 
 
@@ -472,8 +467,8 @@ you should place your code here."
 ;;(amx-mode 1)
 
 
-(blink-cursor-mode t)
-) ;; End of user-config() 
+;; (blink-cursor-mode t) ;;;;;; blink cursor 
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -483,24 +478,15 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(TeX-view-program-selection
-   (quote
-    ((output-pdf "PDF Tools")
-     (output-dvi "open")
+   '((output-dvi "open")
      (output-pdf "PDF Tools")
-     (output-html "open"))))
- '(ansi-color-names-vector
-   ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
+     (output-html "open")))
+ '(blink-cursor-mode nil)
  '(column-number-mode t)
- '(custom-safe-themes
-   (quote
-    ("7680e0d0fe93475fcdc514ae4df428245ab30c57114a753701e4fc09a15c949b" default)))
- '(evil-want-Y-yank-to-eol nil)
- '(global-display-line-numbers-mode t)
  '(package-selected-packages
-   (quote
-    (dictionary web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data rainbow-mode rainbow-identifiers color-identifiers-mode pdf-tools company-auctex auctex-latexmk auto-complete-auctex auctex dired-subtree smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit git-commit with-editor transient company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+   '(pdf-tools dired-subtree web-mode tagedit smeargle slim-mode scss-mode sass-mode reveal-in-osx-finder rainbow-mode rainbow-identifiers pug-mode pbcopy osx-trash osx-dictionary orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup launchctl htmlize helm-gitignore helm-css-scss helm-company helm-c-yasnippet haml-mode gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit git-commit with-editor transient emmet-mode company-web web-completion-data company-statistics company-auctex company color-identifiers-mode auto-yasnippet yasnippet auto-dictionary auctex-latexmk auctex ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))
  '(pdf-tools-handle-upgrades nil)
- '(show-paren-mode t))
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
