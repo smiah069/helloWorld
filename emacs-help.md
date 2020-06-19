@@ -23,17 +23,14 @@ For macOS installation: run the following commands:
 >
 > $ brew tap d12frosted/emacs-plus
 >
-> $ brew install emacs-plus
+> $ brew install emacs-plus@27 --HEAD
 >
-> $ brew linkapps emacs-plus
-
-If the last command doesn't work, then manually palce the Emacs.app in the *Applications* folde using the command: 
->
-> ln -s /usr/local/Cellar/emacs-plus@26/26.3/Emacs.app /Applications/ 
+> $ ln -s /usr/local/opt/emacs-plus@27/Emacs.app /Applications
 >
 
+The above commands will install emacs27 in the directory /usr/local/Cellar/emacs-plus@27/HEAD-229995b/ directory, and then place the *Emacs.app* in the *Applications/* folder 
 
-- Latex,html, git,  packages are installed as layers under *dotspacemacs-configuration-layers* (see the .spacemacs file, for example). 
+- Latex,html, git, osx,  packages can be  installed as layers under *dotspacemacs-configuration-layers* (see the .spacemacs file, for example). 
 
 For PDF tools, you will need to install pdf-tools using brew from the terminal (see the pdf-tools section below). 
 
@@ -68,12 +65,36 @@ Emacs includes Flyspell, therefore, you do  not need explicitly install flyspell
 > brew install aspell 
 >
 
+In case the aspell doesn't work, then run *brew install ispell*
+
 **Dictionary**
 
 You can find the  definition of a word in dictionary in spacemacs through *define-word*, which is a GNU emacs package that lets you see the definition of a word or a phrase  at a point. This package is normally pre-installed. 
 
 - You can run *M-x define-word* and then type the word that you want to be defined by the dictionary. 
-- Or can you define a word right under your cursor using Key bindings in Spacemacs: *SPC x w d*  
+- Or can you define a word right under your cursor using Key bindings in Spacemacs: *SPC x w d***  
+
+**Installing fonts**
+
+The default font for spacemacs is "Source Code Pro". However, you will need to install this font family so that spacemacs can find them. For that, run: 
+>
+> brew tap homebrew/cask-fonts && brew cask install font-source-code-pro
+>
+
+I've installed Ubuntu font family as well. To install Ubuntu font family, run: 
+>
+> brew tap homebrew/cask-fonts && brew cask install font-ubuntu
+>
+
+In my *.spacemacs* file, I've the following configuration as I want to use "Ubuntu Mono" fonts: 
+
+~~~
+   dotspacemacs-default-font '("Ubuntu Mono"   ;; "Source Code Pro" 
+                               :size 20
+                               :weight normal
+                               :width normal
+                               :powerline-scale 1.5)
+~~~
 
 
 ## Configuring emacs DIRectory EDitor (dired)

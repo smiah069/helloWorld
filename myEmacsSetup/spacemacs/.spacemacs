@@ -137,11 +137,11 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+   dotspacemacs-default-font '("Ubuntu Mono"   ;; "Source Code Pro" 
+                               :size 20
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.5)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -264,7 +264,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t ;; nil;; Suruz's customization 
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -296,7 +296,14 @@ values."
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
    dotspacemacs-whitespace-cleanup nil
-   ))
+
+   ;;;;; Suruz's customization
+   ;;;;; Full screen or maximize screen at startup
+   ;; dotspacemacs-fullscreen-at-startup t
+
+   dotspacemacs-maximized-at-startup t
+
+   )) ;; End of init() function 
 
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
@@ -311,7 +318,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   (setq-default
    ;; ... other configurations...
-   dotspacemacs-themes '(professional))  ;; See https://themegallery.robdor.com/ for all the themes 
+   ;;dotspacemacs-themes '(professional))  ;; See https://themegallery.robdor.com/ for all the themes 
+  dotspacemacs-themes '(light-blue))  ;; See https://themegallery.robdor.com/ for all the themes 
 
   )
 
