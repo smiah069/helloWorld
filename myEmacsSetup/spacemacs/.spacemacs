@@ -38,20 +38,26 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      ;; better-defaults
+     c-c++
      colors
+     chrome
      emacs-lisp
      git
-     helm
+;;     helm
      html
      latex
      markdown
+;;     themes-megapack ;; Choose themes using SPC T s
      org
      octave
      osx
+     python
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
+     smex 
      spell-checking
+     sql  ;; SQL query 
      syntax-checking
      ;; version-control
      )
@@ -134,8 +140,8 @@ values."
    dotspacemacs-themes '(spacemacs-dark
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
-   dotspacemacs-colorize-cursor-according-to-state t
-   ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
+   dotspacemacs-colorize-cursor-according-to-state nil ;; t ;; Suruz's customization => change cursor color according to theme
+
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Ubuntu Mono"   ;; "Source Code Pro" 
                                :size 20
@@ -369,7 +375,7 @@ you should place your code here."
   (yas-global-mode 1)
 
 
-  ;; (global-visual-line-mode 0)  ; 1 for on, 0 for off.
+  (global-visual-line-mode 1)  ; 1 for on, 0 for off.
 
 
 
@@ -426,14 +432,14 @@ you should place your code here."
 
 ;;;;;; Ido-mode enable
 
-(require 'ido)
+  (require 'ido)
 
-(ido-mode 1); enable ido-mode
-(setq ido-enable-flex-matching t); flexibly match names via fuzzy matching
-;; (ido-everywhere 1); use ido-mode everywhere, in buffers and for finding files
-(setq ido-use-filename-at-point 'guess); for find-file-at-point
-(setq ido-use-url-at-point t); look for URLs at point
-(setq ffap-require-prefix t); get find-file-at-point with C-u C-x C-f
+  (ido-mode 1); enable ido-mode
+  (setq ido-enable-flex-matching t); flexibly match names via fuzzy matching
+  ;; (ido-everywhere 1); use ido-mode everywhere, in buffers and for finding files
+  (setq ido-use-filename-at-point 'guess); for find-file-at-point
+  (setq ido-use-url-at-point t); look for URLs at point
+  (setq ffap-require-prefix t); get find-file-at-point with C-u C-x C-f
 
 ;;; In directory editor (dired) when a file is to be copied/renamed/moved to a different directory
 ;;; with key C/R then all directory choice will automatically appear in the minibuffer using
@@ -444,39 +450,42 @@ you should place your code here."
 ;;; you want and pres C-j to stop at a path and paste the file
 
 ;;;;(require 'ido-completing-read+)  ;; no need to activate this line if ido-completing-read+ is installed from melpha 
-;;(ido-ubiquitous-mode 1)
-;;
-(eval-after-load 'dired '(progn (mapatoms (lambda (symbol) (if (s-starts-with? "dired-do-" (symbol-name symbol))  (put symbol 'ido 'find-file))))))
+  ;;(ido-ubiquitous-mode 1)
+  ;;
+  (eval-after-load 'dired '(progn (mapatoms (lambda (symbol) (if (s-starts-with? "dired-do-" (symbol-name symbol))  (put symbol 'ido 'find-file))))))
 
-;;(put 'dired-do-rename 'ido 'find-file);; No need works with key R (rename/move) only => this is not what we want
+  ;;(put 'dired-do-rename 'ido 'find-file);; No need works with key R (rename/move) only => this is not what we want
 
 
-(require 'ido-vertical-mode)
-(ido-mode 1)
-(ido-vertical-mode 1)
-(setq ido-vertical-define-keys 'C-n-and-C-p-only)
+  (require 'ido-vertical-mode)
+  (ido-mode 1)
+  (ido-vertical-mode 1)
+  (setq ido-vertical-define-keys 'C-n-and-C-p-only)
 
 
 ;;;; Autocomplete for minibuffer's M-x commands (similar to ido-mode but it is M-x only)
-;;(require 'smex) ; Not needed if you use package.el
-;;  (smex-initialize) ; Can be omitted. This might cause a (minimal) delay
-                    ; when Smex is auto-initialized on its first run.
-;;(global-set-key (kbd "M-x") 'smex)
-;;  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+  ;;(require 'smex) ; Not needed if you use package.el
+  ;;  (smex-initialize) ; Can be omitted. This might cause a (minimal) delay
+                                        ; when Smex is auto-initialized on its first run.
+  ;;(global-set-key (kbd "M-x") 'smex)
+  ;;  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
   ;; This is your old M-x.
   ;;(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
-(require 'recentf)  ;; To access recently opened files
-(recentf-mode 1)
-(setq recentf-max-menu-items 25)
-(global-set-key "\C-x\ \C-r" 'recentf-open-files)
+  (require 'recentf)  ;; To access recently opened files
+  (recentf-mode 1)
+  (setq recentf-max-menu-items 25)
+  (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
-;;(require 'amx)  ;; Newer version of smex
-;;(amx-mode 1)
+  ;;(require 'amx)  ;; Newer version of smex
+  ;;(amx-mode 1)
 
 
-;; (blink-cursor-mode t) ;;;;;; blink cursor 
-  )
+  ;; (blink-cursor-mode t) ;;;;;; blink cursor
+
+
+
+  )  ;; End of user-config() function 
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -492,7 +501,7 @@ you should place your code here."
  '(blink-cursor-mode nil)
  '(column-number-mode t)
  '(package-selected-packages
-   '(pdf-tools dired-subtree web-mode tagedit smeargle slim-mode scss-mode sass-mode reveal-in-osx-finder rainbow-mode rainbow-identifiers pug-mode pbcopy osx-trash osx-dictionary orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup launchctl htmlize helm-gitignore helm-css-scss helm-company helm-c-yasnippet haml-mode gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit git-commit with-editor transient emmet-mode company-web web-completion-data company-statistics company-auctex company color-identifiers-mode auto-yasnippet yasnippet auto-dictionary auctex-latexmk auctex ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))
+   '(gmail-message-mode ham-mode html-to-markdown flymd edit-server sql-indent engine-mode yapfify smex pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc disaster cython-mode company-c-headers company-anaconda cmake-mode clang-format anaconda-mode pythonic zenburn-theme zen-and-art-theme white-sand-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rebecca-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme farmhouse-theme exotica-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme pdf-tools dired-subtree web-mode tagedit smeargle slim-mode scss-mode sass-mode reveal-in-osx-finder rainbow-mode rainbow-identifiers pug-mode pbcopy osx-trash osx-dictionary orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup launchctl htmlize helm-gitignore helm-css-scss helm-company helm-c-yasnippet haml-mode gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit git-commit with-editor transient emmet-mode company-web web-completion-data company-statistics company-auctex company color-identifiers-mode auto-yasnippet yasnippet auto-dictionary auctex-latexmk auctex ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))
  '(pdf-tools-handle-upgrades nil)
  '(tool-bar-mode nil))
 (custom-set-faces
