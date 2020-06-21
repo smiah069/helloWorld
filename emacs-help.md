@@ -30,7 +30,12 @@ For macOS installation: run the following commands:
 
 The above commands will install emacs27 in the directory /usr/local/Cellar/emacs-plus@27/HEAD-229995b/ directory, and then place the *Emacs.app* in the *Applications/* folder 
 
-- Latex,html, git, osx,  packages can be  installed as layers under *dotspacemacs-configuration-layers* (see the .spacemacs file, for example). 
+- Latex,html, git, osx,  packages can be  installed as layers under *dotspacemacs-configuration-layers* (see the .spacemacs file, for example**. 
+
+ Now can you run *Emacs.app* or (run the command *emacs* from the terminal) to open Emacs editor with spacemacs configuration. You should see Spacemacs logo in your Emacs editor when you luch Emacs for the first time. You may choose Emacs editor (I chose for myself as I've experience with Emacs) or Vim editor style and the rest you choose the recommended options provided by Spacemacs. 
+ 
+Spacemacs will install many packages by itself. In case, you see some errors, just close the *Emacs* window and restarting it will resolve the errors most likely. 
+
 
 For PDF tools, you will need to install pdf-tools using brew from the terminal (see the pdf-tools section below). 
 
@@ -206,7 +211,7 @@ s => Command (Windows) key
 
 If C-a and C-e makes your cursor go to the beginning of a paragraph and end of a paragraph, then just turn of visual line mode by M-x visual-line-mode and then hit enter
 
-1. Word wrap in Aquamacs: a) **Options ► Line Wrapping ► Word wrap b) Options ► Line Wrapping ► Adopt as default c) Options ► Save options**
+1. Word wrap in Aquamacs: a) **Options ► Line Wrapping ► Word wrap b** Options ► Line Wrapping ► Adopt as default c) Options ► Save options**
 2. M-x delete-file => deletes file
 3. M-x delete-directory => deletes directory
 4. M -x make-directory _dirname =>_ This command creates a directory named dirname

@@ -1,8 +1,16 @@
-**Some useful keyboard shortcut**
+
+**Note:**
+
+*This is not an organized document. I pretty much wrote whatever I had in mind but there are a lot of items (in  addition to what I have in this document) that I have in my Macintosh that didn't mention here. Hopefully, some day I will have time to organize this document and make it more complete. For now, it's for myself only. However, if you can benefit from it, please go for it!*
+
+
+**Some useful keyboard shortcut (full list is yet to type!)**
+
 * Quickest way to *show/hide* hidden files: CMD+SHIFT+. => Press once to *show* hidden files and again to *hide* them. 
 
 **List of necessary software installed for Macintosh**
 
+1. Emacs (Emacs27) with spacemacs configuration
 1. Google drive
 1.  Google chrome
 1.  Thunderbird
