@@ -10,7 +10,7 @@
 With AucTeX package, you are able to preview current section/buffer/document (without compiling the whole document to save time) using C-c C-p .... command. However, this preview command currently previews mathematical expressions and pictures. In case, you want to preview additional *tikzpicture* and *enumerate* environments, then you will need to add the following lines in your preamble
 
 ~~~
-\usepackage[active,displaymath,textmath,sections,graphics,floats]{preview}
+\usepackage[active,displaymath,sections,graphics,floats]{preview}
 
 \PreviewEnvironment{enumerate}  % enumerate environment in the preview
 
