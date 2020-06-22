@@ -1,7 +1,9 @@
 
-**Note:**
 
-*This is not an organized document. I pretty much wrote whatever I had in mind but there are a lot of items (in  addition to what I have in this document) that I have in my Macintosh that didn't mention here. Hopefully, some day I will have time to organize this document and make it more complete. For now, it's for myself only. However, if you can benefit from it, please go for it!*
+**Disclaimer**
+
+*This document is very messy at this point! I started putting things here since I started learning latex back in 2010. Of course, many things have changed and some information placed here is obsolete!!.  Hopefully, I will find some time down the road to delete some obsolete information/instructions and  make this document tidy for other users. It comes with no warranty and you can try some instructions placed here at your own risk!*
+
 
 
 **Some useful keyboard shortcut (full list is yet to type!)**

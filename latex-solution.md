@@ -1,6 +1,27 @@
-===================================p===========================================\
-1. To compile the LaTeX source file, example1.tex, into a PDF file\
-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--\
+
+**Disclaimer**
+
+*This document is very messy at this point! I started putting things here since I started learning latex back in 2008. Of course, many things have changed and some information placed here is obsolete!!.  Hopefully, I will find some time down the road to delete some obsolete information/instructions and  make this document tidy for other users. It comes with no warranty and you can try some instructions placed here at your own risk!**
+
+
+
+**Latex Preview**
+
+With AucTeX package, you are able to preview current section/buffer/document (without compiling the whole document to save time) using C-c C-p .... command. However, this preview command currently previews mathematical expressions and pictures. In case, you want to preview additional *tikzpicture* and *enumerate* environments, then you will need to add the following lines in your preamble
+
+~~~
+\usepackage[active,displaymath,textmath,sections,graphics,floats]{preview}
+
+\PreviewEnvironment{enumerate}  % enumerate environment in the preview
+
+\PreviewEnvironment{tikzpicture} % tikzpicture in the preview 
+~~~
+
+as the last package before the begin document command in the latex document. For more information on preview package, see (this link)[https://www.gnu.org/software/auctex/manual/preview-latex.pdf] 
+
+
+1. To compile the LaTeX source file, example1.tex, into a PDF file
+
 for on-screen presentation, do:\
 latex example1.tex or pdflatex example1.tex\
 dvips -o -t a4 example1.dvi // a4 change this to letter for letter size
@@ -372,17 +393,17 @@ Aquamacs: Install auctex
 1.  Refresh the package manager's contents, so that you have the latest
     > versions of the packages on offer
 
-+-------+----------------------------------+
++-------|----------------------------------+
 | 2.  1 | 3.  M-x package-refresh-contents |
-+-------+----------------------------------+
++-------|----------------------------------+
 
 4.  Access the list of packages
 
-+-------+------------------------------------------------+
++-------|------------------------------------------------+
 | 5.  1 | 6.  M-x package-list-packages                  |
 |       |                                                |
 |       | 7.  Find "auctex" type I and type X to install |
-+-------+------------------------------------------------+
++-------|------------------------------------------------+
 
 8.  Install the auto-complete and ac-slime packages by finding them in
     > the list, typing in an I to select each package and then type in

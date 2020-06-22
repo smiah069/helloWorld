@@ -2,9 +2,11 @@
 
 *See myEmacsSetup/aquamacs/Preferences.el file*
 
-~~~
-This document is currently very disorganized and is intended for myself only. However, I've plan to make this document organized and available for public.
-~~~
+
+
+**Disclaimer**
+
+*This document is very messy at this point! I started putting things here since I started learning latex back in 2008. Of course, many things have changed and some information placed here is obsolete!!.  Hopefully, I will find some time down the road to delete some obsolete information/instructions and  make this document tidy for other users. It comes with no warranty and you can try some instructions placed here at your own risk!*
 
 ## Installing Emacs
 
