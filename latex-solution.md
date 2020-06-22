@@ -17,7 +17,7 @@ With AucTeX package, you are able to preview current section/buffer/document (wi
 \PreviewEnvironment{tikzpicture} % tikzpicture in the preview 
 ~~~
 
-as the last package before the begin document command in the latex document. For more information on preview package, see (this link)[https://www.gnu.org/software/auctex/manual/preview-latex.pdf] 
+as the last package before the begin document command in the latex document. For more information on preview package, see (this link)[https://www.gnu.org/software/auctex/manual/preview-latex.pdf]  DO NOT forget to comment these lines before compiling the latex file for producing the FINAL document. 
 
 
 1. To compile the LaTeX source file, example1.tex, into a PDF file
