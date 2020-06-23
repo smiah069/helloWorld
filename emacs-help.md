@@ -35,11 +35,9 @@ The above commands will install emacs27 in the directory /usr/local/Cellar/emacs
 - Latex,html, git, osx,  packages can be  installed as layers under *dotspacemacs-configuration-layers* (see the .spacemacs file, for example**. 
 
  Now can you run *Emacs.app* or (run the command *emacs* from the terminal) to open Emacs editor with spacemacs configuration. You should see Spacemacs logo in your Emacs editor when you luch Emacs for the first time. You may choose Emacs editor (I chose for myself as I've experience with Emacs) or Vim editor style and the rest you choose the recommended options provided by Spacemacs. 
- 
-Spacemacs will install many packages by itself. In case, you see some errors, just close the *Emacs* window and restarting it will resolve the errors most likely. 
 
+Spacemacs will install many packages by itself. In case, you see some errors, just close the *Emacs**** window and restarting it will resolve the errors most likely. 
 
-For PDF tools, you will need to install pdf-tools using brew from the terminal (see the pdf-tools section below). 
 
 All the user configurations in emacs-lisp are to be written in the following functions
 
@@ -49,6 +47,16 @@ All the user configurations in emacs-lisp are to be written in the following fun
 > )
 
 Note that the *pdf* layer is added (for my case) under the user-config() function (see *(setq-default dotspacemacs-configuration-layers '(pdf))** in my .spacemacs file** 
+
+
+**Note that you simply copy and paste my .spacemacs file in your home directory. However, you will need to install several tools in your terminal before running the Emacs with my .spacemacs configurations**
+
+* pdf-tools using terminal: *brew install --HEAD dunn/homebrew-emacs/pdf-tools* (see the detailed instructions down this document)
+* pandoc *brew install pandoc*
+* ispell (see the dictionary section for installation instructions)
+* Fonts (see the font sections)
+
+
 
 **Key bindings:**
 
