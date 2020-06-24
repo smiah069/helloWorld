@@ -2,6 +2,18 @@
 
 *This document is very messy at this point! I started putting things here long ago. Of course, many things have changed and some information placed here is obsolete!!.  Hopefully, I will find some time down the road to delete some obsolete information/instructions and  make this document tidy for other users. It comes with no warranty and you can try some instructions placed here at your own risk!*
 
+**Installing Homebrew for Linux**
+
+	* To install Homebrew, simply copy the following line
+	>
+	>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+	>
+	and then paste it in the terminal
+	* Press RET key to install it
+
+After installing homebrew, you will need to install ruby for **Linux** as well. For that, run *brew install ruby*
+
+Once ruby is installed, you can install other open-source software using brew. 
 
 **Zipping and Unzipping Files**
 
