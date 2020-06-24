@@ -1,3 +1,16 @@
+**Disclaimer**
+
+*This document is very messy at this point! I started putting things here long ago. Of course, many things have changed and some information placed here is obsolete!!.  Hopefully, I will find some time down the road to delete some obsolete information/instructions and  make this document tidy for other users. It comes with no warranty and you can try some instructions placed here at your own risk!*
+
+
+**Zipping and Unzipping Files**
+
+* *unzip folder.zip*  will unzip the folder.zip and place its contents in the current directory
+* *unzip folder.zip -d myFolder* will unzip the folder.zip and place its contents in /myFolder/ directory
+* *zip -r myZipFolder folder* will zip the *folder* (and its contents) and name the zip folder as *myZipFolder*
+* *zip folder file1 file2 file3* will put files named file1 file2 file3 into the new zip archive called folder.zip 
+
+
 
 *  *Pandoc* is an open source software that can be used to do many things, for example, converting docx to markdown format
 
@@ -30,7 +43,7 @@
 
 List of commands on the terminal of macOS
 
-1. Show/Hide Hidden Files in Finder
+* Show/Hide Hidden Files in Finder
 
 >defaults write com.apple.finder AppleShowAllFiles TRUE
 >
@@ -40,6 +53,7 @@ List of commands on the terminal of macOS
 >
 >find . -name "*.ttt" -delete
 >
+
 * The following command will remove all .DS\_Store files in a directory
 where it is executed as well as that particular directory or
 subdirectories:
