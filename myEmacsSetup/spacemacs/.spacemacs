@@ -49,7 +49,7 @@ values."
      html
      latex
      markdown
-     ;; themes-megapack ;; Choose themes using SPC T s; but sometimes create problems, when I customize font size
+     ;; themes-megapack ;; Choose themes using SPC T s; but sometimes create problems, when I customize font size or add another layer, ranger, for example
      org
      octave
      osx
