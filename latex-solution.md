@@ -1,7 +1,44 @@
 
 **Disclaimer**
 
-*This document is very messy at this point! I started putting things here since I started learning latex back in 2008. Of course, many things have changed and some information placed here is obsolete!!.  Hopefully, I will find some time down the road to delete some obsolete information/instructions and  make this document tidy for other users. It comes with no warranty and you can try some instructions placed here at your own risk!**
+*This document is very messy at this point! I started putting things here since I started learning latex back in 2008. Of course, many things have changed and some information placed here is obsolete!!.  Hopefully, I will find some time down the road to delete some obsolete information/instructions and  make this document tidy for other users. It comes with no warranty and you can try some instructions placed here at your own risk!***
+
+
+**WriteTeX: Inkscape Extension for LaTeX (Equation) Editor (macOS)**
+
+There are several ways to incorporate mathematical equations/symbols in Inkscape (svg) figures. I'm using [WriteTeX](https://writetex.tk/) extension for this task. I'm assuming that you have Inkscape version 1.0.0 (at least) installed in your macOS. To install *WriteTeX*, follow the steps below. 
+
+* Clone WriteTeX repository in Desktop/WriteTeX/ (for instance) from  https://github.com/wanglongqi/WriteTeX using 
+
+>
+> git clone https://github.com/wanglongqi/WriteTeX.git
+>
+
+* Go to WriteTeX/1.0.x/ directory, copy *writetex.inx* and *writetex.py* and paste them in the inkscape/extensions/ directory  ( To find the inkscape/extensions/ directory, go to *Applications* folder and right-click on *inkscape.app* -> Show Package Contents, then open Contents/share/inkscape/extensions/ directory*
+* Open *writetex.py* file and replace the **pdflatex**  in the following two lines 
+
+~~~
+  cmd = " CMD executed: {}".format('pdflatex "-output-directory=%s" -interaction=nonstopmode -halt-on-error "%s" > "%s"' % (tmp_dir, tex_file, out_file))
+ subprocess.call('pdflatex "-output-directory=%s" -interaction=nonstopmode -halt-on-error "%s" > "%s"' % (tmp_dir, tex_file, out_file), shell=True)
+~~~
+
+with */Library/TeX/texbin/pdflatex* which is the path of the *pdflatex* command
+
+* Install *pdf2svg* using brew:  *brew install pdf2svg* => executable pdf2svg is normally located in the */usr/local/Cellar/pdf2svg/0.2.3_5/bin/* directory 
+* Replace the *pdf2svg* from the following line of the *writetex.py* 
+
+~~~
+subprocess.call('pdf2svg %s %s' %
+                                    (pdf_file, svg_file), shell=True)
+~~~
+with */usr/local/Cellar/pdf2svg/0.2.3_5/bin/pdf2svg* 
+
+* You should now see the extension *WriteTeX* under *Extensions* menu when *Inkscape.app* is open
+
+* Click on *WriteTeX* extension and then make sure to write **pdflatex** under *Settings* tab of the *WriteTeX* extension
+
+* Write mathematical expressions in the box labeled "LateX Source"  $...$ and click apply. You should now see the mathematical expression in the svg file of the inkscape.
+
 
 
 
@@ -42,7 +79,7 @@ Aquamacs latex viewer:
 
 ===================
 
-We do not want to open PDF over and over again. For that, we will
+We do not want to open PDF file over and over again. For that, we will
 compile the latex document in dvi and then in ps first. Once we are
 happy with the document then we generate final PDF file. For that you
 need Ghostscript 9.20 and GSView installed (for windows).
@@ -52,8 +89,7 @@ need Ghostscript 9.20 and GSView installed (for windows).
 2.  Command -\> TeXing options -\> PDF from DVI -\> choose dvips +
     > ps2pdf
 
-For MAC Aquamacs, you do not need to use above options as docView can
-read PDF files dynamically. If you want XQuartz and MacGhostView
+For MAC Aquamacs, you do not need to use above options as docView renders updated PDF files . If you want XQuartz and MacGhostView
 installed for MAC to look like Windows.
 
 ==============================================================================\
@@ -95,7 +131,7 @@ Thanks metapost.
 
 ===
 
-If Dia does not launch in Yosemite then follow the instructions
+If you have trouble launching Dia  in Yosemite then follow the instructions below:
 
 ===
 
@@ -172,15 +208,18 @@ LatexIt in Mozilla thunderbird
 
     a.  Path to latex excutable:
         > /usr/local/texlive/2016/bin/x86\_64-darwin/latex
+        
+        Or  (the following path worked in macOS 10.15.x**
+        > /Library/TeX/texbin/latex
 
     b.  Path to dvips excutable:
         > /usr/local/texlive/2016/bin/x86\_64-darwin/dvips
 
     c.  Path to convert excutable: /opt/local/bin/convert
 
-==================
 
-Install telive in Ubuntu:
+
+**Install telive in Ubuntu:**
 
 1.  Download and unzip: install-tl-ubuntu-master.zip
 
@@ -216,10 +255,10 @@ update texlive using
 
 sudo /opt/texbin/tlmgr update \--self \--all
 
-=====
 
-Installing Pygments on MacOS X (Useful for using minted package in Latex)
-=========================================================================
+
+**Installing Pygments on MacOS X (Useful for using minted package in Latex)**
+
 
 Mojave has "easy\_install" installer command installed already
 
@@ -263,7 +302,7 @@ Customize AUCTeX -\> click on the "TeX Command"
 In the box titled "Latex Command" replace "latex" with "latex
 \--shell-escape"
 
-)
+**
 
 For Windows emacs: go to LaTeX -\> Customize AUCTeX -\> Browse Options
 -\> click on the "TeX Command"
@@ -388,7 +427,7 @@ or simply add\
 
 =====
 
-Aquamacs: Install auctex
+Aquamacs: Install auctex (obsolete as *latex* can be added as a layer in spacemacs)
 
 1.  Refresh the package manager's contents, so that you have the latest
     > versions of the packages on offer
@@ -486,15 +525,14 @@ Aquamacs preview
 
 Solution:
 
-1.  Remove \\usepackage{epstopdf} and \\epstopdfsetup{suffix={}} OR
+* Remove \\usepackage{epstopdf} and \\epstopdfsetup{suffix={}} OR
 
-2.  \...
+
 
 **Problem:** get the error \"Wrong number of arguments: setq, 3\" when
 opening latex file.
 
-**Solution:** This problem is related to \\usepackage{subfigure} in the
-latex file. To solve this: do the following:
+**Solution:** This problem is related to \usepackage{subfigure}, which is *obsolete* as of 2019. To solve this: do the following:
 
 Go to
 /Applications/Aquamacs.app/Contents/Resources/lisp/aquamacs/edit-modes/auctex/style/subfigure.el
