@@ -1,11 +1,12 @@
-#+title: My First Org Mode Document
-#+author: Md Suruz Miah
-#+date: <2020-07-03 Fri>
+#+TITLE: Emacs ORG-MODE
+#+AUTHOR: Md Suruz Miah
+#+DATE: <2020-07-03 Fri>
 #+OPTIONS: tex:dvipng
 
 #+begin_quote
 This is a very messy document. This document is entirely done when I started thinking about writing notes using Emacs org-mode a long time ago. You may want to use some of the templates/styles mentioned here at your own risk! It absolutely comes with no warranty. 
 #+end_quote
+
 
 
 * Basic Usage of Org-mode 
@@ -25,6 +26,7 @@ This is a very messy document. This document is entirely done when I started thi
    1. Second 
    1. Third
 
+   Inserting [[http://www.personalpages.bradley.edu/~smiah][link]] is very easy. Just type C-c C-l type the actual link followed by the description of the link that will appear in the document. 
 ** Quote and examples 
 
    #+begin_quote
@@ -37,7 +39,11 @@ This is a very messy document. This document is entirely done when I started thi
    #+end_example
 
 
-** Export to Markdown   
+** Exporting Org Documents    
+   
+   I normally export org files to latex or html that includes latex math formulas/symbols and by default the exported files include title, author, date, ...  
+
+   *However, exporting Org file to Markdown does not include title, author, dates,...* 
 
    The default /org-mode/ does not have the option to export .org file to /markdown/ (.md file).   For that you will need to replace the *org* layer in /dotspacemacs/ file   with the   following 
 
@@ -49,10 +55,5 @@ This is a very messy document. This document is entirely done when I started thi
 
  $$x = \sqrt{b}$$
 
-\begin{equation}
-\label{eq:y1}
-y = \frac{3}{\sqrt{x^2+2}}
-\end{equation}
 
-   *Note: In case C-c C-e command doesn't show the export option for m (markdown), then simply open dotspacemacs file and compile it with M-SPC f e R. After that, you should see the option to export to markdown!* 
-
+   /Note: In case C-c C-e command doesn't show the export option for m (markdown), then simply open dotspacemacs file and compile it with M-SPC f e R. After that, you should see the option to export to markdown!/ 
