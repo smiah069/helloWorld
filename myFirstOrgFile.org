@@ -1,0 +1,49 @@
+#+title: My First Org Mode Document
+#+OPTIONS: tex:dvipng
+* Section Heading 
+
+** Subsection heading 
+** Another subsection heading 
+   Some description 
+
+   - item 1 
+   - item 2  
+   - item 3
+     
+     *bold* /italic/ _underlined_ +strike-through+ Greek letter \Gamma  
+   Some enumerated  items 
+   1. First 
+   1. Second 
+   1. Third
+** Quote and examples 
+   #+begin_quote
+   Everything should be made as simple as possible but not simpler -- Albert Einstein
+   #+end_quote
+
+   #+begin_example
+   Here is an example
+   : Some example from a text file. 
+   #+end_example
+
+
+
+** Export to md  
+   The default /org-mode/ does not have the option to export .org file to /markdown/ (.md file).   For that you will need to replace the *org* layer in /dotspacemacs/ file   with the   following 
+
+
+   \begin{verbatim}
+        (org :variables
+             org-enable-github-support t)
+   \end{verbatim} 
+
+
+   Latex Equation can be exported to /markdown/
+
+
+   \begin{equation}
+    x = \sqrt{b}
+   \end{equation}
+
+
+   *Note: In case C-c C-e command doesn't show the export option for m (markdown), then simply open dotspacemacs file and complile it with M-SPC f e R.* After that, you should see the option to export to markdown! 
+
