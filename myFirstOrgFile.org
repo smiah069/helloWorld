@@ -1,11 +1,20 @@
 #+title: My First Org Mode Document
+#+author: Md Suruz Miah
+#+date: <2020-07-03 Fri>
 #+OPTIONS: tex:dvipng
-* Section Heading 
 
-** Subsection heading 
-** Another subsection heading 
-   Some description 
+#+begin_quote
+This is a very messy document. This document is entirely done when I started thinking about writing notes using Emacs org-mode a long time ago. You may want to use some of the templates/styles mentioned here at your own risk! It absolutely comes with no warranty. 
+#+end_quote
 
+
+* Basic Usage of Org-mode 
+
+  This is under the section heading "Basic Usage of Org-mode"
+ 
+** Itemize and Enumeration 
+    
+   This is under the subsection heading "Itemize and Enumeration"
    - item 1 
    - item 2  
    - item 3
@@ -15,7 +24,9 @@
    1. First 
    1. Second 
    1. Third
+
 ** Quote and examples 
+
    #+begin_quote
    Everything should be made as simple as possible but not simpler -- Albert Einstein
    #+end_quote
@@ -26,7 +37,8 @@
    #+end_example
 
 
-** Export to md  
+** Export to Markdown   
+
    The default /org-mode/ does not have the option to export .org file to /markdown/ (.md file).   For that you will need to replace the *org* layer in /dotspacemacs/ file   with the   following 
 
 #+BEGIN_SRC emacs-lisp
@@ -37,7 +49,10 @@
 
  $$x = \sqrt{b}$$
 
+\begin{equation}
+\label{eq:y1}
+y = \frac{3}{\sqrt{x^2+2}}
+\end{equation}
 
-
-   *Note: In case C-c C-e command doesn't show the export option for m (markdown), then simply open dotspacemacs file and complile it with M-SPC f e R.* After that, you should see the option to export to markdown! 
+   *Note: In case C-c C-e command doesn't show the export option for m (markdown), then simply open dotspacemacs file and compile it with M-SPC f e R. After that, you should see the option to export to markdown!* 
 

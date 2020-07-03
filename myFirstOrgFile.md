@@ -1,29 +1,26 @@
 
 # Table of Contents
 
-1.  [Section Heading](#org6d1c5bf)
-    1.  [Subsection heading](#orga877ddb)
-    2.  [Another subsection heading](#orgadfb511)
-    3.  [Quote and examples](#orga545848)
-    4.  [Export to md](#org50fab28)
+1.  [Basic Usage of Org-mode](#org0f5091e)
+    1.  [Itemize and Enumeration](#org798ec3c)
+    2.  [Quote and examples](#org5448fd6)
+    3.  [Export to Markdown](#org46a14f1)
+
+> This is a very messy document. This document is entirely done when I started thinking about writing notes using Emacs org-mode a long time ago. You may want to use some of the templates/styles mentioned here at your own risk! It absolutely comes with no warranty. 
 
 
+<a id="org0f5091e"></a>
 
-<a id="org6d1c5bf"></a>
+# Basic Usage of Org-mode
 
-# Section Heading
-
-
-<a id="orga877ddb"></a>
-
-## Subsection heading
+This is under the section heading "Basic Usage of Org-mode"
 
 
-<a id="orgadfb511"></a>
+<a id="org798ec3c"></a>
 
-## Another subsection heading
+## Itemize and Enumeration
 
-Some description 
+This is under the subsection heading "Itemize and Enumeration"
 
 -   item 1
 -   item 2
@@ -38,7 +35,7 @@ Some enumerated  items
 3.  Third
 
 
-<a id="orga545848"></a>
+<a id="org5448fd6"></a>
 
 ## Quote and examples
 
@@ -48,9 +45,9 @@ Some enumerated  items
     : Some example from a text file. 
 
 
-<a id="org50fab28"></a>
+<a id="org46a14f1"></a>
 
-## Export to md
+## Export to Markdown
 
 The default *org-mode* does not have the option to export .org file to *markdown* (.md file).   For that you will need to replace the **org** layer in *dotspacemacs* file   with the   following 
 
@@ -59,5 +56,15 @@ The default *org-mode* does not have the option to export .org file to *markdown
 
 <img src="ltximg/myFirstOrgFile_351b79e5c3a74774046066e241ffb693505c88a3.png" alt="myFirstOrgFile_351b79e5c3a74774046066e241ffb693505c88a3.png" />
 
-**Note: In case C-c C-e command doesn't show the export option for m (markdown), then simply open dotspacemacs file and complile it with M-SPC f e R.** After that, you should see the option to export to markdown! 
+
+<div class="equation-container">
+<span class="equation">
+<img src="ltximg/myFirstOrgFile_e96a8571e33825211c8f4b2ade5472d117957579.png" alt="myFirstOrgFile_e96a8571e33825211c8f4b2ade5472d117957579.png" />
+</span>
+<span class="equation-label">
+1
+</span>
+</div>
+
+**Note: In case C-c C-e command doesn't show the export option for m (markdown), then simply open dotspacemacs file and compile it with M-SPC f e R. After that, you should see the option to export to markdown!** 
 
