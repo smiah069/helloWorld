@@ -41,7 +41,9 @@ This is a very messy document. This document is entirely done when I started thi
 
 ** Exporting Org Documents    
    
-   I normally export org files to latex or html that includes latex math formulas/symbols and by default the exported files include title, author, date, ...  
+   Key binding: C-c C-e 
+
+   I normally export org files to latex/pdf (C-c C-e l p) or html (C-c C-e h h) that includes latex math formulas/symbols and by default the exported files include title, author, date, ...  
 
    *However, exporting Org file to Markdown does not include title, author, dates,...* 
 

@@ -1,0 +1,94 @@
+% Created 2020-07-03 Fri 13:57
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Md Suruz Miah}
+\date{\textit{<2020-07-03 Fri>}}
+\title{Emacs ORG-MODE}
+\hypersetup{
+ pdfauthor={Md Suruz Miah},
+ pdftitle={Emacs ORG-MODE},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.0.91 (Org mode 9.3.7)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\begin{quote}
+This is a very messy document. This document is entirely done when I started thinking about writing notes using Emacs org-mode a long time ago. You may want to use some of the templates/styles mentioned here at your own risk! It absolutely comes with no warranty. 
+\end{quote}
+
+
+
+\section{Basic Usage of Org-mode}
+\label{sec:orga73fd54}
+
+This is under the section heading "Basic Usage of Org-mode"
+
+\subsection{Itemize and Enumeration}
+\label{sec:org4acb3ba}
+
+This is under the subsection heading "Itemize and Enumeration"
+\begin{itemize}
+\item item 1
+\item item 2
+\item item 3
+
+\textbf{bold} \emph{italic} \uline{underlined} \sout{strike-through} Greek letter \(\Gamma\)
+\end{itemize}
+Some enumerated  items 
+\begin{enumerate}
+\item First
+\item Second
+\item Third
+\end{enumerate}
+
+Inserting \href{http://www.personalpages.bradley.edu/\~smiah}{link} is very easy. Just type C-c C-l type the actual link followed by the description of the link that will appear in the document. 
+\subsection{Quote and examples}
+\label{sec:org16efc4e}
+
+\begin{quote}
+Everything should be made as simple as possible but not simpler -- Albert Einstein
+\end{quote}
+
+\begin{verbatim}
+Here is an example
+: Some example from a text file. 
+\end{verbatim}
+
+
+\subsection{Exporting Org Documents}
+\label{sec:org0b4dc83}
+
+I normally export org files to latex/pdf or html that includes latex math formulas/symbols and by default the exported files include title, author, date, \ldots{}  
+
+\textbf{However, exporting Org file to Markdown does not include title, author, dates,\ldots{}} 
+
+The default \emph{org-mode} does not have the option to export .org file to \emph{markdown} (.md file).   For that you will need to replace the \textbf{org} layer in \emph{dotspacemacs} file   with the   following 
+
+\begin{verbatim}
+(org :variables
+     org-enable-github-support t)
+\end{verbatim}
+
+
+$$x = \sqrt{b}$$
+
+
+\emph{Note: In case C-c C-e command doesn't show the export option for m (markdown), then simply open dotspacemacs file and compile it with M-SPC f e R. After that, you should see the option to export to markdown!} 
+\end{document}
