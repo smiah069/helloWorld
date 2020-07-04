@@ -219,7 +219,8 @@ s => Command (Windows) key
 
 (global-visual-line-mode 1) ; 1 for on, 0 for off.
 
-If C-a and C-e makes your cursor go to the beginning of a paragraph and end of a paragraph, then just turn of visual line mode by M-x visual-line-mode and then hit enter
+If C-a and C-e makes your cursor go to the beginning of a paragraph and end of a
+paragraph, it is just because fill-paragraph command is turned on. You can deactivate it by M-q key. It is because of the *better-defaults* layer in dotspacemacs configuration file. 
 
 1. Word wrap in Aquamacs: a) **Options ► Line Wrapping ► Word wrap b** Options ► Line Wrapping ► Adopt as default c) Options ► Save options**
 2. M-x delete-file => deletes file

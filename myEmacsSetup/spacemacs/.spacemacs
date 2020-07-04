@@ -511,7 +511,7 @@ you should place your code here."
   ;;(amx-mode 1)
 
 
-  (blink-cursor-mode t) ;;;;;; blink cursor
+  ;;(blink-cursor-mode t) ;;;;;; blink cursor
 
   ;; Indentation
   (indent-guide-global-mode 1) ;; This minor mode highlights indentation levels via font-lock (very useful for programming)
