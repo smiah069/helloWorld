@@ -42,7 +42,9 @@
                                                            company-files
                                                            company-dabbrev
                                                            company-elm))
-     better-defaults ;; Enhances the default commands of Emacs 
+     (better-defaults :variables ;; Enhances the default commands of Emacs; Feature, M-q fill/unfill current paragraph
+                      better-defaults-move-to-beginning-of-code-first t
+                      better-defaults-move-to-end-of-code-first nil)
      c-c++
      colors
      chrome
@@ -353,7 +355,6 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-
                                         ; start package.el with emacs
   (require 'package)
                                         ; add MELPA repository list
@@ -404,7 +405,6 @@ you should place your code here."
   ;;;;;;;; start yasnippet with emacs (obsolete for spacemacs) ;;;;;;;;;
   ; (require 'yasnippet) ;; in Spacemacs, yasnippet-snippets is included in dotspacemacs-additional-packages() function
   ; (yas-global-mode 1)
-
 
   (global-visual-line-mode 1)  ; 1 for on, 0 for off.
 
