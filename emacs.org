@@ -1,9 +1,10 @@
-* myEmacs Configuration
-  :PROPERTIES:
-  :CUSTOM_ID: myemacs-configuration
-  :END:
 
-/See myEmacsSetup/aquamacs/Preferences.el file/
+#+title: Emacs 
+#+author: Md Suruz Miah
+#+options: h:1 num:t toc:t
+#+options: tex:dvipng
+
+
 
 *Disclaimer*
 
@@ -15,7 +16,9 @@ information/instructions and make this document tidy for other users. It
 comes with no warranty and you can try some instructions placed here at
 your own risk!/
 
-** Installing Emacs
+My Aquamacs configurations for the macOS can be found in the /myEmacsSetup/aquamacs/Preferences.el/ 
+
+* Installing Emacs
    :PROPERTIES:
    :CUSTOM_ID: installing-emacs
    :END:
@@ -27,7 +30,7 @@ your own risk!/
 - For windows, you can download emacs from this
   [link](https://www.gnu.org/software/emacs/download.html**
 
-** Installing Spacemacs
+* Spacemacs
    :PROPERTIES:
    :CUSTOM_ID: installing-spacemacs
    :END:
@@ -115,31 +118,31 @@ homebrew by running the command:
 
 In case the aspell doesn't work, then run /brew install ispell/
 
-*Dictionary*
+** Setting up Dictionary and Fonts
 
-You can find the definition of a word in dictionary in spacemacs through
-/define-word/, which is a GNU emacs package that lets you see the
-definition of a word or a phrase at a point. This package is normally
-pre-installed.
+   You can find the definition of a word in dictionary in spacemacs through
+   /define-word/, which is a GNU emacs package that lets you see the
+   definition of a word or a phrase at a point. This package is normally
+   pre-installed.
 
-- You can run /M-x define-word/ and then type the word that you want to
-  be defined by the dictionary.
-- Or can you define a word right under your cursor using Key bindings in
-  Spacemacs: /SPC x w d/**
+   - You can run /M-x define-word/ and then type the word that you want to
+     be defined by the dictionary.
+   - Or can you define a word right under your cursor using Key bindings in
+     Spacemacs: /SPC x w d/**
 
-*Installing fonts*
+   *Installing fonts*
 
-The default font for spacemacs is "Source Code Pro". However, you will
-need to install this font family so that spacemacs can find them. For
-that, run: > > brew tap homebrew/cask-fonts && brew cask install
-font-source-code-pro >
+   The default font for spacemacs is "Source Code Pro". However, you will
+   need to install this font family so that spacemacs can find them. For
+   that, run: > > brew tap homebrew/cask-fonts && brew cask install
+   font-source-code-pro >
 
-I've installed Ubuntu font family as well. To install Ubuntu font
-family, run: > > brew tap homebrew/cask-fonts && brew cask install
-font-ubuntu >
+   I've installed Ubuntu font family as well. To install Ubuntu font
+   family, run: > > brew tap homebrew/cask-fonts && brew cask install
+   font-ubuntu >
 
-In my /.spacemacs/ file, I've the following configuration as I want to
-use "Ubuntu Mono" fonts:
+   In my /.spacemacs/ file, I've the following configuration as I want to
+   use "Ubuntu Mono" fonts:
 
 #+BEGIN_EXAMPLE
      dotspacemacs-default-font '("Ubuntu Mono"   ;; "Source Code Pro" 
@@ -149,7 +152,21 @@ use "Ubuntu Mono" fonts:
                                  :powerline-scale 1.5)
 #+END_EXAMPLE
 
-** Configuring emacs DIRectory EDitor (dired)
+** Updating Spacemacs 
+
+   When spacemacs is installed, you will see the stable version of the spacemacs. However, to update the spacemacs, open /.emacs.d/ in shell then run the following command 
+#+begin_quote
+ git checkout develop 
+#+end_quote
+to checking the develop branch. Then it is going track the latest changes of the develop branch from the original server. Any time you want to update Spacemacs configurations, simply go to the /.emacs.d/ folder and run 
+#+begin_quote
+git pull
+#+end_quote
+
+and then restart spacemacs. 
+
+
+* Emacs DIRectory EDitor (dired)
    :PROPERTIES:
    :CUSTOM_ID: configuring-emacs-directory-editor-dired
    :END:
@@ -251,7 +268,7 @@ buffer and replace it with the contents of the subdirectory
   >(add-hook 'dired-mode-hook > (lambda () > (define-key dired-mode-map
   (kbd "^") > (lambda () (interactive) (find-alternate-file ".."))))) >
 
-** Installing AucTeX for emacs for improved Latex Editor (for macOS)
+* Installing AucTeX for emacs for improved Latex Editor (for macOS)
    :PROPERTIES:
    :CUSTOM_ID: installing-auctex-for-emacs-for-improved-latex-editor-for-macos
    :END:
