@@ -9,9 +9,9 @@ This is a very messy document. This document is entirely done when I started thi
 
 
 
-* Basic Usage of Org-mode 
-
-  This is under the section heading "Basic Usage of Org-mode"
+* Introduction 
+  
+  This is under the section heading/section "Introduction"
  
 ** Itemize and Enumeration 
     
@@ -38,7 +38,6 @@ This is a very messy document. This document is entirely done when I started thi
    : Some example from a text file. 
    #+end_example
 
-
 ** Exporting Org Documents    
    
    Key binding: C-c C-e 
@@ -59,3 +58,5 @@ This is a very messy document. This document is entirely done when I started thi
 
 
    /Note: In case C-c C-e command doesn't show the export option for m (markdown), then simply open dotspacemacs file and compile it with M-SPC f e R. After that, you should see the option to export to markdown!/ 
+
+* Table

@@ -104,6 +104,22 @@ changed it /M-SPC/ by updating the line to > >
 dotspacemacs-emacs-leader-key "M-SPC" ; Previously it was "M-m" > in the
 /.spacemacs/ file
 
+Nevertheless, I wanted take advantage of only SPC as a leader key. Therefore, I'm running my spacemacs in hybrid mode. I've changed my dotspacemacs configuration file (in the editing style command) as follows: 
+
+#+begin_quote
+dotspacemacs-editing-style '(hybrid :variables
+                                           hybrid-mode-enable-evilified-state t
+                                           hybrid-mode-enable-hjkl-bindings nil
+                                           hybrid-mode-default-state 'normal)
+#+end_quote  
+
+If you like "Emacs" editing style then simply replace the above piece of lisp code with the following: 
+
+#+begin_quote
+  dotspacemacs-editing-style 'hybrid
+#+end_quote
+
+
 *Spell Checker*
 
 Emacs includes Flyspell, therefore, you do not need explicitly install
