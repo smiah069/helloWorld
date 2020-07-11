@@ -8,22 +8,22 @@ information/instructions and make this document tidy for other users. It
 comes with no warranty and you can try some instructions placed here at
 your own risk!/
 
-**Installing macOS**
+*Installing macOS*
 
 First create a bootable USB flash drive for macOS by following [this link](https://support.apple.com/en-us/HT201372). Then, installing/re-installing macOS (from bootable USB/disk) without erasing the disk is easy.
 
-a. Insert the bootable USB and restart.  While restarting, press option key until you get macOS recovery window
-a. Choose Install/reinstall macOS and follow the on-screen instructions. 
+1. Insert the bootable USB and restart.  While restarting, press option key until you get macOS recovery window
+1. Choose Install/reinstall macOS and follow the on-screen instructions. 
 
 If you decide to erase the macOS and install a new copy of macOS from USB bootable disk, then
 
-a. Backup your data first
+1. Backup your data first
  Insert the bootable USB and restart.  While restarting, press option key until you get macOS recovery window
-a. Choose "Disk Utility" 
-a. Choose "Macintosh HD - Data" and then click "Erase"
-a. Choose "Macintosh HD" then click "Erase"
-a. Cmd + q  to quit the Disk Utility window
-a. Now choose "Install macOS" and follow the on-screen instructions to complete installation. 
+1. Choose "Disk Utility" 
+1. Choose "Macintosh HD - Data" and then click "Erase"
+1. Choose "Macintosh HD" then click "Erase"
+1. Cmd + q  to quit the Disk Utility window
+1. Now choose "Install macOS" and follow the on-screen instructions to complete installation. 
 
 
 
