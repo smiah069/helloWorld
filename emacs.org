@@ -16,7 +16,7 @@ information/instructions and make this document tidy for other users. It
 comes with no warranty and you can try some instructions placed here at
 your own risk!/
 
-My Aquamacs configurations for the macOS can be found in the /myEmacsSetup/aquamacs/Preferences.el/ 
+My Aquamacs configurations for macOS can be found in the /myEmacsSetup/aquamacs/Preferences.el/ 
 
 * Installing Emacs
    :PROPERTIES:
@@ -53,20 +53,61 @@ The above commands will install emacs27 in the directory
 /usr/local/Cellar/emacs-plus@27/HEAD-229995b/ directory, and then place
 the /Emacs.app/ in the /Applications// folder
 
-- Latex,html, git, osx, packages can be installed as layers under
-  /dotspacemacs-configuration-layers/ (see the .spacemacs file, for
-  example**.
+Once Emacs is installed, then open the terminal then run 
+
+1. Run the following command (assuming you are already in home/ directory ) to backup the current .emacs configurations: 
+#+begin_quote
+cd ~
+mv .emacs.d .emacs.d.bak
+mv .emacs .emacs.bak
+#+end_quote  
+
+2. Clone the spacemacs repository: 
+
+#+begin_quote
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+#+end_quote 
+
+
+
 
 Now can you run /Emacs.app/ or (run the command /emacs/ from the
 terminal) to open Emacs editor with spacemacs configuration. You should
-see Spacemacs logo in your Emacs editor when you luch Emacs for the
+see Spacemacs logo in your Emacs editor when you launch Emacs for the
 first time. You may choose Emacs editor (I chose for myself as I've
 experience with Emacs) or Vim editor style and the rest you choose the
 recommended options provided by Spacemacs.
 
+
+
+*Spacemacs for Windows 10*
+ Run emacs.exe but look for .emacs and .emacs.d/ directory in /C:\Users\username\AppData\Roaming\/  (home) directory. Go to /C:\Users\username\AppData\Roaming\/ directory using gitbash (install git for windows if you do not have it), and then 
+
+1. Run the following command (assuming you are already in home/ directory ) to backup the current .emacs configurations: 
+#+begin_quote
+mv .emacs.d .emacs.d.bak
+mv .emacs .emacs.bak
+#+end_quote  
+
+2. Clone the spacemacs repository: 
+
+#+begin_quote
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+#+end_quote 
+
+** Configuring dotspacemacs (.spacemacs) file 
+
+
+
 Spacemacs will install many packages by itself. In case, you see some
 errors, just close the /Emacs/*** window and restarting it will resolve
 the errors most likely.
+
+
+- Latex,html, git, osx, packages can be installed as layers under
+  /dotspacemacs-configuration-layers/ (see the .spacemacs file, for
+  example**.
+
 
 All the user configurations in emacs-lisp are to be written in the
 following functions
@@ -125,7 +166,7 @@ If you like "Emacs" editing style then simply replace the above piece of lisp co
 Emacs includes Flyspell, therefore, you do not need explicitly install
 flyspell. However, flyspell needs a spell checking tool (Emacs will
 generate an error /Error enabling Flyspell mode .../).For that you will
-need to install a spell checking tool. I installed *aspell** using
+need to install a spell checking tool. I installed *aspell* using
 homebrew by running the command:
 
 #+BEGIN_QUOTE
@@ -134,405 +175,440 @@ homebrew by running the command:
 
 In case the aspell doesn't work, then run /brew install ispell/
 
-** Setting up Dictionary and Fonts
+  *Spell Checker for Windows 10*
+  
+  Aspell or hunspell can be installed using msys2 (a collection of tools to build and install native windows software). For more about mysys2, visit [[https://www.msys2.org/]]. You will need to install msys2. I've installed /msys2-x86_64-20200629.exe/ (double-click to install) in my c:\msys64\ directory. 
+  Once msys2 is installed, you can search for packages (aspell, for example) using /pacman -Ss aspell/.  To install aspell, open  msys2 and run the following command:
+#+begin_example
+pacman -S mingw64/mingw-w64-x86_64-aspell
+pacman -S mingw64/mingw-w64-x86_64-aspell-en
+#+end_example 
+/aspell.exe/ should be installed in the /C:\msys64\mingw64\bin/ directory. You will need add the following line in the user-config() function of dotspacemacs: 
+#+begin_example
+(setq ispell-program-name "C:/msys64/mingw64/bin/aspell.exe")
+#+end_example
+Note the forward slash '/' instead of backward slash '\' in the emacs path directory of the setq command. If you do not want to write the full path in the above command, the simply add the path of the /aspell.exe/ file in the "Path" environment variable. 
 
-   You can find the definition of a word in dictionary in spacemacs through
-   /define-word/, which is a GNU emacs package that lets you see the
-   definition of a word or a phrase at a point. This package is normally
-   pre-installed.
+If everything is set up correctly, the you should be able to enable flyspell-mode without getting error like: 
 
-   - You can run /M-x define-word/ and then type the word that you want to
-     be defined by the dictionary.
-   - Or can you define a word right under your cursor using Key bindings in
-     Spacemacs: /SPC x w d/**
-
-   *Installing fonts*
-
-   The default font for spacemacs is "Source Code Pro". However, you will
-   need to install this font family so that spacemacs can find them. For
-   that, run: > > brew tap homebrew/cask-fonts && brew cask install
-   font-source-code-pro >
-
-   I've installed Ubuntu font family as well. To install Ubuntu font
-   family, run: > > brew tap homebrew/cask-fonts && brew cask install
-   font-ubuntu >
-
-   In my /.spacemacs/ file, I've the following configuration as I want to
-   use "Ubuntu Mono" fonts:
-
-#+BEGIN_EXAMPLE
-     dotspacemacs-default-font '("Ubuntu Mono"   ;; "Source Code Pro" 
-                                 :size 18
-                                 :weight normal
-                                 :width normal
-                                 :powerline-scale 1.5)
-#+END_EXAMPLE
-
-** Updating Spacemacs 
-
-   When spacemacs is installed, you will see the stable version of the spacemacs. However, to update the spacemacs, open /.emacs.d/ in shell then run the following command 
 #+begin_quote
- git checkout develop 
-#+end_quote
-to checking the develop branch. Then it is going track the latest changes of the develop branch from the original server. Any time you want to update Spacemacs configurations, simply go to the /.emacs.d/ folder and run 
-#+begin_quote
-git pull
+Error enabling Flyspell mode:
+(Searching for program No such file or directory aspell)
 #+end_quote
 
-and then restart spacemacs. 
+*Install "Ubuntu Mono" font for Windows 10*
 
+ - Download /ubuntu-font-family-0.83/ from [[https://design.ubuntu.com/font/]] 
+ - Unzip the folder ->  select all the .ttf files -> Right-click -> click /install/ or /install for all users/
+ 
+  You now should be able to use "Ubuntu Mono" font in the /dotspacemacs/ file, i.e., 
 
-* Emacs DIRectory EDitor (dired)
-   :PROPERTIES:
-   :CUSTOM_ID: configuring-emacs-directory-editor-dired
-   :END:
+ #+BEGIN_EXAMPLE
+      dotspacemacs-default-font '("Ubuntu Mono"   ;; "Source Code Pro" 
+                                  :size 18
+                                  :weight normal
+                                  :width normal
+                                  :powerline-scale 1.5)
+ #+END_EXAMPLE
 
-The default dired editor in emacs doesn't group directory and sort files
-in alphabetical order when /M-x dired/ is executed. In Linux emacs
-adding the following line: > > (setq dired-listing-switches "-aBhl
---group-directories-first") > in the /.emacs/ file should solve the
-problem. However, adding the above lines in the /Aquamacs
-Preferences.el/ file in macOS will given an error; something like:
-"Listing directory failed but 'access-file' worked" or "No such program
-/gls/ ..." To solve this problem macOS, to the following: * Install
-/coreutils/; one can use /brew install coreutils/ in the terminal to
-install the /coreutils/ package * Add the following two lines > >(setq
-insert-directory-program "gls" dired-use-ls-dired t) > >(setq
-dired-listing-switches "-aBhl --group-directories-first") >
+*** Setting up Dictionary and Fonts
 
-in the Preferences.el and save
+    You can find the definition of a word in dictionary in spacemacs through
+    /define-word/, which is a GNU emacs package that lets you see the
+    definition of a word or a phrase at a point. This package is normally
+    pre-installed.
 
-Then run /M-x eval-buffer/ or restart Aquamacs to have this new dired
-feature in effect.
+    - You can run /M-x define-word/ and then type the word that you want to
+      be defined by the dictionary.
+    - Or can you define a word right under your cursor using Key bindings in
+      Spacemacs: /SPC x w d/**
 
-[[https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.pdf][See
-dired reference card]] for list of dired opeations and keyboard shortcut
+    *Installing fonts*
 
-*Find file from dired*
+    The default font for spacemacs is "Source Code Pro". However, you will
+    need to install this font family so that spacemacs can find them. For
+    that, run: > > brew tap homebrew/cask-fonts && brew cask install
+    font-source-code-pro >
 
-Example: Find all files with prefix "Pref" in directory
-"~/Preferences/". Enter the following: ~~~ M-x find-name-dired
-~/Preferences Pref* ~~~ Enjoy...
+    I've installed Ubuntu font family as well. To install Ubuntu font
+    family, run: > > brew tap homebrew/cask-fonts && brew cask install
+    font-ubuntu >
 
-- Add /(require 'dired-x)/ in the /.emacs/ file to take advantage of
-  /C-x C-j/ (jume to the directory of the file you are editing) and I
-  (for information of file/folder), /C-x C-q/ to make the directory
-  editor *(Editable!)* and /C-c C-c/ to switch back to the *normal
-  (uneditable)* directory editor
+    In my /.spacemacs/ file, I've the following configuration as I want to
+    use "Ubuntu Mono" fonts:
 
-*dired-subtree Package*
+ #+BEGIN_EXAMPLE
+      dotspacemacs-default-font '("Ubuntu Mono"   ;; "Source Code Pro" 
+                                  :size 18
+                                  :weight normal
+                                  :width normal
+                                  :powerline-scale 1.5)
+ #+END_EXAMPLE
 
-- Use TAB key to expand current directory,
-- Use C-TAB key once expand current directory, twice to expand the
-  directory recursively, thrice to contract
-- Use SHIFT-TAB key to contract the subtree when the point is inside
-  that subtree
+*** Updating Spacemacs 
 
-To take advantage of dired-subtree package with the above options: Add
-the following lines in the /.emacs/ or /Preferences.el/ file
+    When spacemacs is installed, you will see the stable version of the spacemacs. However, to update the spacemacs, open /.emacs.d/ in shell then run the following command 
+ #+begin_quote
+  git checkout develop 
+ #+end_quote
+ to checking the develop branch. Then it is going track the latest changes of the develop branch from the original server. Any time you want to update Spacemacs configurations, simply go to the /.emacs.d/ folder and run 
+ #+begin_quote
+ git pull
+ #+end_quote
 
-#+BEGIN_EXAMPLE
-  (use-package dired-subtree
-    :ensure
-    :after dired
-    :config
+ and then restart spacemacs. 
+
+*** Emacs DIRectory EDitor (dired)
+    :PROPERTIES:
+    :CUSTOM_ID: configuring-emacs-directory-editor-dired
+    :END:
+
+  The default dired editor in emacs doesn't group directory and sort files
+  in alphabetical order when /M-x dired/ is executed. In Linux emacs
+  adding the following line: > > (setq dired-listing-switches "-aBhl
+  --group-directories-first") > in the /.emacs/ file should solve the
+  problem. However, adding the above lines in the /Aquamacs
+  Preferences.el/ file in macOS will given an error; something like:
+  "Listing directory failed but 'access-file' worked" or "No such program
+  /gls/ ..." To solve this problem macOS, to the following: * Install
+  /coreutils/; one can use /brew install coreutils/ in the terminal to
+  install the /coreutils/ package * Add the following two lines > >(setq
+  insert-directory-program "gls" dired-use-ls-dired t) > >(setq
+  dired-listing-switches "-aBhl --group-directories-first") >
+
+  in the Preferences.el and save
+
+  Then run /M-x eval-buffer/ or restart Aquamacs to have this new dired
+  feature in effect.
+
+  [[https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.pdf][See
+  dired reference card]] for list of dired opeations and keyboard shortcut
+
+  *Find file from dired*
+
+  Example: Find all files with prefix "Pref" in directory
+  "~/Preferences/". Enter the following: ~~~ M-x find-name-dired
+  ~/Preferences Pref* ~~~ Enjoy...
+
+  - Add /(require 'dired-x)/ in the /.emacs/ file to take advantage of
+    /C-x C-j/ (jume to the directory of the file you are editing) and I
+    (for information of file/folder), /C-x C-q/ to make the directory
+    editor *(Editable!)* and /C-c C-c/ to switch back to the *normal
+    (uneditable)* directory editor
+
+  *dired-subtree Package*
+
+  - Use TAB key to expand current directory,
+  - Use C-TAB key once expand current directory, twice to expand the
+    directory recursively, thrice to contract
+  - Use SHIFT-TAB key to contract the subtree when the point is inside
+    that subtree
+
+  To take advantage of dired-subtree package with the above options: Add
+  the following lines in the /.emacs/ or /Preferences.el/ file
+
+  #+BEGIN_EXAMPLE
+    (use-package dired-subtree
+      :ensure
+      :after dired
+      :config
     
-    (setq dired-subtree-use-backgrounds nil)
-    :bind (:map dired-mode-map
-                ("<tab>" . dired-subtree-toggle)
-                ("<C-tab>" . dired-subtree-cycle)
-                ("<S-iso-lefttab>" . dired-subtree-remove)))
-#+END_EXAMPLE
-
-*Copy/Paste/ Rename in Dired using ido-mode*
-
-In directory editor (dired) when a file is to be copied/renamed/moved to
-a different directory with key C/R then all directory choice will
-automatically appear in the minibuffer using ido-mode (rather than
-conventional way of changing directory). For that,
-
-- First install /ido-completing-read+/ from melpha (M-x
-  package-list-packages => search for/ido-completing-read+/, type /i/
-  then /x/).
-- After that, add the following two lines in the /.emacs/
-  (Preferences.el) file
-
-#+BEGIN_EXAMPLE
-  ;;(require 'ido-completing-read+)  ;; no need to activate this line if ido-completing-read+ is installed from melpha 
-  (ido-ubiquitous-mode 1)
-  (eval-after-load 'dired '(progn (mapatoms (lambda (symbol) (if (s-starts-with? "dired-do-" (symbol-name symbol))  (put symbol 'ido 'find-file))))))
-#+END_EXAMPLE
-
-- Now simply use /C/ or /R/ key to navigate to the directory you want
-  and pres /C-j/ to stop at a path and paste the file
-
-*Reusing current buffer in dired when exploring directories*
-
-In directory editor, visiting a new (child) directory under the cursor
-by pressing RET key normally opens in a new buffer, which could be
-annoying for someone.
-
-/To avoid opening child directory in a new buffer, press *a* (instead of
-RET key) or use command /dired-find-alternate-file* to kill the current
-buffer and replace it with the contents of the subdirectory
-
-- However, the reuse buffer using 'dired-find-alternate-file' does not
-  work when you use /'^'/ to move up to the parent directory. If you
-  want to reuse the current buffer (i.e., buffer containing child
-  directory) to *move up to the parent directory* by pressing /'^'/ key,
-  then add the following lines in the /.emacs (Preferences.el)/ file: >
-  >(add-hook 'dired-mode-hook > (lambda () > (define-key dired-mode-map
-  (kbd "^") > (lambda () (interactive) (find-alternate-file ".."))))) >
-
-* Installing AucTeX for emacs for improved Latex Editor (for macOS)
-   :PROPERTIES:
-   :CUSTOM_ID: installing-auctex-for-emacs-for-improved-latex-editor-for-macos
-   :END:
-
-1. M-x package-list-packages
-2. Search for auctex and install it
-
-Emac customization file .emacs is located (in my windows laptop) at the
-following directory: c:/Users/smiah-admin.JOB340LAP/AppData/Roaming/
-
-*Some basic emacs command and keyboard shortcut*
-
-s => Command (Windows) key
-
-1. Force indentation: C-q < TAB Key >
-2. Toggle word wrap: M-x toggle-word-wrap
-3. Toggle word wrap in Visual line mode (preferred): M-x
-   global-visual-line-mode. To set it permanently, open .emacs file and
-   insert the following line and save:
-
-(global-visual-line-mode 1) ; 1 for on, 0 for off.
-
-If C-a and C-e makes your cursor go to the beginning of a paragraph and
-end of a paragraph, it is just because fill-paragraph command is turned
-on. You can deactivate it by M-q key. It is because of the
-/better-defaults/ layer in dotspacemacs configuration file.
-
-1.  Word wrap in Aquamacs: a) *Options ► Line Wrapping ► Word wrap b*
-    Options ► Line Wrapping ► Adopt as default c) Options ► Save
-    options**
-2.  M-x delete-file => deletes file
-3.  M-x delete-directory => deletes directory
-4.  M -x make-directory /dirname =>/ This command creates a directory
-    named dirname
-5.  C-x d => open current directory
-6.  C-x C-v RET => refresh buffer (for docView type g)
-7.  Shift ^ => go to previous parent directory
-8.  C-x [ => beginning of the document
-9.  C-x ] => end of the document
-10. C-Delete => deletes a word forward
-11. C-Backspace => deletes a word backward
-12. C-Shift-Backspace => deletes the entire line regardless of cursor
-    position in the line
-13. C-0 C-k => kills from point to the start of the line
-14. C-up/down arrow => paragraph up/down
-15. Next/previous buffer => C-x right arrow/left arrow
-16. C-x o => To switch to another buffer in the split windows
-17. C-x 5 o => To switch to another emacs window (frame)
-18. C-x PLUS leftArrow (C-x PLUS rightArrow ) => switch between buffers.
-19. Command+Shift+{ => switch between tabbed buffers (macOS)
-
-- Switch to text mode: M-x text mode
-
-*I (interactive) do (ido) mode*
-
-- ido-mode is useful to find files from a directory. It shows all the
-  subdirectories under a directory automatically. To make use of
-  ido-mode, type > >M-x ido-mode >
+      (setq dired-subtree-use-backgrounds nil)
+      :bind (:map dired-mode-map
+                  ("<tab>" . dired-subtree-toggle)
+                  ("<C-tab>" . dired-subtree-cycle)
+                  ("<S-iso-lefttab>" . dired-subtree-remove)))
+  #+END_EXAMPLE
+
+  *Copy/Paste/ Rename in Dired using ido-mode*
+
+  In directory editor (dired) when a file is to be copied/renamed/moved to
+  a different directory with key C/R then all directory choice will
+  automatically appear in the minibuffer using ido-mode (rather than
+  conventional way of changing directory). For that,
+
+  - First install /ido-completing-read+/ from melpha (M-x
+    package-list-packages => search for/ido-completing-read+/, type /i/
+    then /x/).
+  - After that, add the following two lines in the /.emacs/
+    (Preferences.el) file
+
+  #+BEGIN_EXAMPLE
+    ;;(require 'ido-completing-read+)  ;; no need to activate this line if ido-completing-read+ is installed from melpha 
+    (ido-ubiquitous-mode 1)
+    (eval-after-load 'dired '(progn (mapatoms (lambda (symbol) (if (s-starts-with? "dired-do-" (symbol-name symbol))  (put symbol 'ido 'find-file))))))
+  #+END_EXAMPLE
+
+  - Now simply use /C/ or /R/ key to navigate to the directory you want
+    and pres /C-j/ to stop at a path and paste the file
+
+  *Reusing current buffer in dired when exploring directories*
+
+  In directory editor, visiting a new (child) directory under the cursor
+  by pressing RET key normally opens in a new buffer, which could be
+  annoying for someone.
+
+  /To avoid opening child directory in a new buffer, press *a* (instead of
+  RET key) or use command /dired-find-alternate-file* to kill the current
+  buffer and replace it with the contents of the sub-directory
+
+  - However, the reuse buffer using 'dired-find-alternate-file' does not
+    work when you use /'^'/ to move up to the parent directory. If you
+    want to reuse the current buffer (i.e., buffer containing child
+    directory) to *move up to the parent directory* by pressing /'^'/ key,
+    then add the following lines in the /.emacs (Preferences.el)/ file: >
+    >(add-hook 'dired-mode-hook > (lambda () > (define-key dired-mode-map
+    (kbd "^") > (lambda () (interactive) (find-alternate-file ".."))))) >
+
+**** Installing AucTeX for emacs for improved Latex Editor (for macOS)
+     :PROPERTIES:
+     :CUSTOM_ID: installing-auctex-for-emacs-for-improved-latex-editor-for-macos
+     :END:
+
+   1. M-x package-list-packages
+   2. Search for auctex and install it
+
+   Emac customization file .emacs is located (in my windows laptop) at the
+   following directory: c:/Users/smiah-admin.JOB340LAP/AppData/Roaming/
+
+   *Some basic emacs command and keyboard shortcut*
+
+   s => Command (Windows) key
+
+   1. Force indentation: C-q < TAB Key >
+   2. Toggle word wrap: M-x toggle-word-wrap
+   3. Toggle word wrap in Visual line mode (preferred): M-x
+      global-visual-line-mode. To set it permanently, open .emacs file and
+      insert the following line and save:
+
+   (global-visual-line-mode 1) ; 1 for on, 0 for off.
+
+   If C-a and C-e makes your cursor go to the beginning of a paragraph and
+   end of a paragraph, it is just because fill-paragraph command is turned
+   on. You can deactivate it by M-q key. It is because of the
+   /better-defaults/ layer in dotspacemacs configuration file.
+
+   1.  Word wrap in Aquamacs: a) *Options ► Line Wrapping ► Word wrap b*
+       Options ► Line Wrapping ► Adopt as default c) Options ► Save
+       options**
+   2.  M-x delete-file => deletes file
+   3.  M-x delete-directory => deletes directory
+   4.  M -x make-directory /dirname =>/ This command creates a directory
+       named dirname
+   5.  C-x d => open current directory
+   6.  C-x C-v RET => refresh buffer (for docView type g)
+   7.  Shift ^ => go to previous parent directory
+   8.  C-x [ => beginning of the document
+   9.  C-x ] => end of the document
+   10. C-Delete => deletes a word forward
+   11. C-Backspace => deletes a word backward
+   12. C-Shift-Backspace => deletes the entire line regardless of cursor
+       position in the line
+   13. C-0 C-k => kills from point to the start of the line
+   14. C-up/down arrow => paragraph up/down
+   15. Next/previous buffer => C-x right arrow/left arrow
+   16. C-x o => To switch to another buffer in the split windows
+   17. C-x 5 o => To switch to another emacs window (frame)
+   18. C-x PLUS leftArrow (C-x PLUS rightArrow ) => switch between buffers.
+   19. Command+Shift+{ => switch between tabbed buffers (macOS)
+
+   - Switch to text mode: M-x text mode
+
+   *I (interactive) do (ido) mode*
+
+   - ido-mode is useful to find files from a directory. It shows all the
+     subdirectories under a directory automatically. To make use of
+     ido-mode, type > >M-x ido-mode >
 
-To activate ido-mode when starting emacs, write
+   To activate ido-mode when starting emacs, write
 
-#+BEGIN_QUOTE
-  (require 'ido) (ido-mode t)
-#+END_QUOTE
+   #+BEGIN_QUOTE
+     (require 'ido) (ido-mode t)
+   #+END_QUOTE
 
-in the /.emacs/ or /Preferences.el/ file and the run /M-x eval-buffer/
-to take its effect without restarting emacs
+   in the /.emacs/ or /Preferences.el/ file and the run /M-x eval-buffer/
+   to take its effect without restarting emacs
 
-- *smex* package is useful to have auto-complete commands in the
-  minibuffer. See [[https://github.com/nonsequitur/smex][this link]] for
-  details. To install this package, run
+   - *smex* package is useful to have auto-complete commands in the
+     minibuffer. See [[https://github.com/nonsequitur/smex][this link]] for
+     details. To install this package, run
 
-  - /M-x package-list-packages/
-  - Search /smex/, then type i then x, then follow the instructions
+     - /M-x package-list-packages/
+     - Search /smex/, then type i then x, then follow the instructions
 
-*ido vertical mode* This mode makes ido-mode display vertically (very
-convenient). First install ido-vertical-mode from the melpha packages
-usng /M-x package-list-packages/ and then fine /ido-vertical-mode/ then
-install it by typing /i/ then /x/ . After that add the following lines
-in the .emacs (Preferences file)
+   *ido vertical mode* This mode makes ido-mode display vertically (very
+   convenient). First install ido-vertical-mode from the melpha packages
+   usng /M-x package-list-packages/ and then fine /ido-vertical-mode/ then
+   install it by typing /i/ then /x/ . After that add the following lines
+   in the .emacs (Preferences file)
 
-#+BEGIN_EXAMPLE
-  (require 'ido-vertical-mode)
-  (ido-mode 1)
-  (ido-vertical-mode 1)
-  (setq ido-vertical-define-keys 'C-n-and-C-p-only)
-#+END_EXAMPLE
+   #+BEGIN_EXAMPLE
+     (require 'ido-vertical-mode)
+     (ido-mode 1)
+     (ido-vertical-mode 1)
+     (setq ido-vertical-define-keys 'C-n-and-C-p-only)
+   #+END_EXAMPLE
 
-*Installing pdf-tools* /pdf-tools/ is an open-source package, which is a
-replacement of DocView package, which is built-in emacs. More details
-about the package can be sought at
-[[https://github.com/politza/pdf-tools][PDF tools README]]. To install
-it, follow the steps below.
+   *Installing pdf-tools* /pdf-tools/ is an open-source package, which is a
+   replacement of DocView package, which is built-in emacs. More details
+   about the package can be sought at
+   [[https://github.com/politza/pdf-tools][PDF tools README]]. To install
+   it, follow the steps below.
 
-- Install /use-package/ package from /M-x package-list-packages/
-- Open /.emacs/ (Preferences.el) file and add the following
+   - Install /use-package/ package from /M-x package-list-packages/
+   - Open /.emacs/ (Preferences.el) file and add the following
 
-#+BEGIN_EXAMPLE
-  ;;; pdf-tools elisp via the use-package below. To upgrade the epdfinfo
-  ;;; server, just do 'brew upgrade pdf-tools' prior to upgrading to newest
-  ;;; pdf-tools package using Emacs package system. If things get messed
-  ;;; up, just do 'brew uninstall pdf-tools', wipe out the elpa
-  ;;; pdf-tools package and reinstall both as at the start.
-  (use-package pdf-tools
-    :ensure t
-    :config
-    (custom-set-variables
-      '(pdf-tools-handle-upgrades nil)) ; Use brew upgrade pdf-tools instead.
-    (setq pdf-info-epdfinfo-program "/usr/local/bin/epdfinfo"))
-  (pdf-tools-install)
-#+END_EXAMPLE
+   #+BEGIN_EXAMPLE
+     ;;; pdf-tools elisp via the use-package below. To upgrade the epdfinfo
+     ;;; server, just do 'brew upgrade pdf-tools' prior to upgrading to newest
+     ;;; pdf-tools package using Emacs package system. If things get messed
+     ;;; up, just do 'brew uninstall pdf-tools', wipe out the elpa
+     ;;; pdf-tools package and reinstall both as at the start.
+     (use-package pdf-tools
+       :ensure t
+       :config
+       (custom-set-variables
+         '(pdf-tools-handle-upgrades nil)) ; Use brew upgrade pdf-tools instead.
+       (setq pdf-info-epdfinfo-program "/usr/local/bin/epdfinfo"))
+     (pdf-tools-install)
+   #+END_EXAMPLE
 
-- Restart emacs or run /M-x eval-buffer RET/ to take effect of
-  pdf-tools. Note that you will need to follow the on-screen
-  instructions for the first time as it will install /poppler/ package
-  using brew installer (install Homebrew installer if haven't!)
-- In case Emacs is frozen to open a PDF file using PDF-tools, it is
-  probably because you have linum-mode enabled. Note that pdf-tools
-  pretty much unusable with linum-mode enabled. Therefore, you will need
-  to *deactivate* it. For that add the following line somewhere in your
-  .emacs (Preferences.el) file: > >(add-hook 'pdf-view-mode-hook
-  (lambda() (linum-mode -1))) >
+   - Restart emacs or run /M-x eval-buffer RET/ to take effect of
+     pdf-tools. Note that you will need to follow the on-screen
+     instructions for the first time as it will install /poppler/ package
+     using brew installer (install Homebrew installer if haven't!)
+   - In case Emacs is frozen to open a PDF file using PDF-tools, it is
+     probably because you have linum-mode enabled. Note that pdf-tools
+     pretty much unusable with linum-mode enabled. Therefore, you will need
+     to *deactivate* it. For that add the following line somewhere in your
+     .emacs (Preferences.el) file: > >(add-hook 'pdf-view-mode-hook
+     (lambda() (linum-mode -1))) >
 
-If the above steps installing pdf-tools doesn't work then follow the
-steps below:
+   If the above steps installing pdf-tools doesn't work then follow the
+   steps below:
 
-- Install /use-package/ package from /M-x package-list-packages/
-- For macOS, install poppler using /brew install poppler automake/
-- Using terminal install pdf-tools using /brew install --HEAD
-  dunn/homebrew-emacs/pdf-tools/ Note the path of epdfinfo and after the
-  installation as this path will be required down the road
-- Install /pdf-tools/ package from /M-x package-list-packages/
-- Open /.emacs/ (Preferences.el) file and add the above lines.
+   - Install /use-package/ package from /M-x package-list-packages/
+   - For macOS, install poppler using /brew install poppler automake/
+   - Using terminal install pdf-tools using /brew install --HEAD
+     dunn/homebrew-emacs/pdf-tools/ Note the path of epdfinfo and after the
+     installation as this path will be required down the road
+   - Install /pdf-tools/ package from /M-x package-list-packages/
+   - Open /.emacs/ (Preferences.el) file and add the above lines.
 
-Working with latex "minted" package: Invoke latex command with
+   Working with latex "minted" package: Invoke latex command with
 
-==========================================
+   ==========================================
 
-1. Type Meta(Alt)-!
-2. Then type: pdflatex -shell-escape source.tex or latex -shell-escape
-   source.tex
+   1. Type Meta(Alt)-!
+   2. Then type: pdflatex -shell-escape source.tex or latex -shell-escape
+      source.tex
 
-Or insert the following lines in .emacs file and save:
+   Or insert the following lines in .emacs file and save:
 
-(eval-after-load "tex"
+   (eval-after-load "tex"
 
-'(setcdr (assoc "LaTeX" TeX-command-list)
+   '(setcdr (assoc "LaTeX" TeX-command-list)
 
-'("%`%l%(mode) -shell-escape%' %t"
+   '("%`%l%(mode) -shell-escape%' %t"
 
-TeX-run-TeX nil (latex-mode doctex-mode) :help "Run LaTeX")
+   TeX-run-TeX nil (latex-mode doctex-mode) :help "Run LaTeX")
 
-)
+   )
 
-)
+   )
 
-%%% HOw to install TOC ref option in AUCTEX
+   %%% HOw to install TOC ref option in AUCTEX
 
-Add the following lines in .emacs
+   Add the following lines in .emacs
 
-; Table of contents of latex document by reftex! (this is a comment)
+   ; Table of contents of latex document by reftex! (this is a comment)
 
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+   (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 
-(setq reftex-plug-into-AUCTeX t)
+   (setq reftex-plug-into-AUCTeX t)
 
-%%% How to install packages in emacs (e.g., auto-complete,
-auto-complete-auctex, yasnippet)
+   %%% How to install packages in emacs (e.g., auto-complete,
+   auto-complete-auctex, yasnippet)
 
-1. Open .emacs file from "C:\extract\emacs/" directory
-2. Add the following lines and save .emacs file:
+   1. Open .emacs file from "C:\extract\emacs/" directory
+   2. Add the following lines and save .emacs file:
 
-; start package.el with emacs (require 'package) ; add MELPA repository
-list (add-to-list 'package-archives'("melpa" .
-"http://melpa.milkbox.net/packages/")) ; initialize package.el
-(package-initialize)
+   ; start package.el with emacs (require 'package) ; add MELPA repository
+   list (add-to-list 'package-archives'("melpa" .
+   "http://melpa.milkbox.net/packages/")) ; initialize package.el
+   (package-initialize)
 
-3. Run the command /M-x eval-buffer/ or restart emacs
+   3. Run the command /M-x eval-buffer/ or restart emacs
 
-4. Type M-x package-list-packages
+   4. Type M-x package-list-packages
 
-5. Find the package: e.g. auto-complete
+   5. Find the package: e.g. auto-complete
 
-6. Take the cursor at the beginning of the line containing package name,
-   then type "I" then "x". Your package auto-complete is installed.
+   6. Take the cursor at the beginning of the line containing package name,
+      then type "I" then "x". Your package auto-complete is installed.
 
-7. Add the following lines in the .emacs file and save:
+   7. Add the following lines in the .emacs file and save:
 
-; start auto-complete with emacs (require 'auto-complete) ; do default
-config for auto-complete (require 'auto-complete-config)
-(ac-config-default) 8. Restart emacs. In order to add
-auto-complete-auctex and yasnippet, do the similar procedure
+   ; start auto-complete with emacs (require 'auto-complete) ; do default
+   config for auto-complete (require 'auto-complete-config)
+   (ac-config-default) 8. Restart emacs. In order to add
+   auto-complete-auctex and yasnippet, do the similar procedure
 
-(Note that yasnippet package automatically drops down list of available
-commands so is very powerful.)
+   (Note that yasnippet package automatically drops down list of available
+   commands so is very powerful.)
 
-Show line numbers at the left side of the file.
+   Show line numbers at the left side of the file.
 
-1. M-x package-list-packages
-2. Search for linum
-3. Type 'i' at the beginning of the line followed by 'x'
-4. Type M-x global-linum
+   1. M-x package-list-packages
+   2. Search for linum
+   3. Type 'i' at the beginning of the line followed by 'x'
+   4. Type M-x global-linum
 
-%%%%%%%%%%%%% OUTPUT DVI
+   %%%%%%%%%%%%% OUTPUT DVI
 
-Command: TeX-PDF-mode (C-c C-t C-p) This command toggles the PDF mode of
-AUCTeX, a buffer-local minor mode which is enabled by default. You can
-customize TeX-PDF-mode to give it a different default or set it as a
-file local variable on a per-document basis. This option usually results
-in calling either PDFTeX or ordinary TeX.
+   Command: TeX-PDF-mode (C-c C-t C-p) This command toggles the PDF mode of
+   AUCTeX, a buffer-local minor mode which is enabled by default. You can
+   customize TeX-PDF-mode to give it a different default or set it as a
+   file local variable on a per-document basis. This option usually results
+   in calling either PDFTeX or ordinary TeX.
 
-After TeX-PDF-mode is disabled, you will be able to comple latex
-document to dvi and do the following to view dvi file:
+   After TeX-PDF-mode is disabled, you will be able to comple latex
+   document to dvi and do the following to view dvi file:
 
-1. M-x customize-variable
-2. Type "TeX-view-program-selection"
-3. Replace "Yap" with "Start"
+   1. M-x customize-variable
+   2. Type "TeX-view-program-selection"
+   3. Replace "Yap" with "Start"
 
-%%%%%%%%%%%%%%% Auto-completion text mode
+   %%%%%%%%%%%%%%% Auto-completion text mode
 
-- Install company package from melpha: -> M-x package-list-packages,
-  then C-s company -> i -> x -> y
-- Insert the following in the .emacs file
+   - Install company package from melpha: -> M-x package-list-packages,
+     then C-s company -> i -> x -> y
+   - Insert the following in the .emacs file
 
-(require 'company)
+   (require 'company)
 
-(add-hook 'after-init-hook 'global-company-mode)
+   (add-hook 'after-init-hook 'global-company-mode)
 
-(defun text-mode-hook-setup ()
+   (defun text-mode-hook-setup ()
 
-;; make `company-backends' local is critcal
+   ;; make `company-backends' local is critcal
 
-;; or else, you will have completion in every major mode, that's very
-annoying!
+   ;; or else, you will have completion in every major mode, that's very
+   annoying!
 
-(make-local-variable 'company-backends)
+   (make-local-variable 'company-backends)
 
-;; company-ispell is the plugin to complete words
+   ;; company-ispell is the plugin to complete words
 
-(add-to-list 'company-backends 'company-ispell)
+   (add-to-list 'company-backends 'company-ispell)
 
-;; OPTIONAL, if
-=company-ispell-dictionary&#39; is nil,=ispell-complete-word-dict' is
-used
+   ;; OPTIONAL, if
+   =company-ispell-dictionary&#39; is nil,=ispell-complete-word-dict' is
+   used
 
-;; but I prefer hard code the dictionary path. That's more portable.
+   ;; but I prefer hard code the dictionary path. That's more portable.
 
-(setq company-ispell-dictionary (file-truename
-"~/.emacs.d/misc/english-words.txt")))
+   (setq company-ispell-dictionary (file-truename
+   "~/.emacs.d/misc/english-words.txt")))
 
-(add-hook 'text-mode-hook 'text-mode-hook-setup)
+   (add-hook 'text-mode-hook 'text-mode-hook-setup)
