@@ -61,7 +61,7 @@
      (org :variables
           org-enable-github-support t)
      octave
-     osx
+     osx  ;; before ading this layer, install 
      pandoc ;; before adding this layer, install pandoc using brew install pandoc first
      python
      (ranger :variables
