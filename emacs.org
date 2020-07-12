@@ -58,7 +58,9 @@ Once Emacs is installed, then open the terminal then run
 1. Run the following command (assuming you are already in home/ directory ) to backup the current .emacs configurations: 
 #+begin_quote
 cd ~
+
 mv .emacs.d .emacs.d.bak
+
 mv .emacs .emacs.bak
 #+end_quote  
 
@@ -81,11 +83,14 @@ recommended options provided by Spacemacs.
 
 
 *Spacemacs for Windows 10*
+
  Run emacs.exe but look for .emacs and .emacs.d/ directory in /C:\Users\username\AppData\Roaming\/  (home) directory. Go to /C:\Users\username\AppData\Roaming\/ directory using gitbash (install git for windows if you do not have it), and then 
 
 1. Run the following command (assuming you are already in home/ directory ) to backup the current .emacs configurations: 
 #+begin_quote
+
 mv .emacs.d .emacs.d.bak
+
 mv .emacs .emacs.bak
 #+end_quote  
 
@@ -258,163 +263,118 @@ Error enabling Flyspell mode:
 
  and then restart spacemacs. 
 
+** Emacs Configurations
+   :PROPERTIES:
+   :CUSTOM_ID: configuring-emacs-directory-editor-dired
+   :END:
 *** Emacs DIRectory EDitor (dired)
-    :PROPERTIES:
-    :CUSTOM_ID: configuring-emacs-directory-editor-dired
-    :END:
 
-  The default dired editor in emacs doesn't group directory and sort files
-  in alphabetical order when /M-x dired/ is executed. In Linux emacs
-  adding the following line: > > (setq dired-listing-switches "-aBhl
-  --group-directories-first") > in the /.emacs/ file should solve the
-  problem. However, adding the above lines in the /Aquamacs
-  Preferences.el/ file in macOS will given an error; something like:
-  "Listing directory failed but 'access-file' worked" or "No such program
-  /gls/ ..." To solve this problem macOS, to the following: * Install
-  /coreutils/; one can use /brew install coreutils/ in the terminal to
-  install the /coreutils/ package * Add the following two lines > >(setq
-  insert-directory-program "gls" dired-use-ls-dired t) > >(setq
-  dired-listing-switches "-aBhl --group-directories-first") >
+ The default dired editor in emacs doesn't group directory and sort files
+ in alphabetical order when /M-x dired/ is executed. In Linux emacs
+ adding the following line: > > (setq dired-listing-switches "-aBhl
+ --group-directories-first") > in the /.emacs/ file should solve the
+ problem. However, adding the above lines in the /Aquamacs
+ Preferences.el/ file in macOS will given an error; something like:
+ "Listing directory failed but 'access-file' worked" or "No such program
+ /gls/ ..." To solve this problem macOS, to the following: * Install
+ /coreutils/; one can use /brew install coreutils/ in the terminal to
+ install the /coreutils/ package * Add the following two lines > >(setq
+ insert-directory-program "gls" dired-use-ls-dired t) > >(setq
+ dired-listing-switches "-aBhl --group-directories-first") >
 
-  in the Preferences.el and save
+ in the Preferences.el and save
 
-  Then run /M-x eval-buffer/ or restart Aquamacs to have this new dired
-  feature in effect.
+ Then run /M-x eval-buffer/ or restart Aquamacs to have this new dired
+ feature in effect.
 
-  [[https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.pdf][See
-  dired reference card]] for list of dired opeations and keyboard shortcut
+ [[https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.pdf][See
+ dired reference card]] for list of dired opeations and keyboard shortcut
 
-  *Find file from dired*
+ *Find file from dired*
 
-  Example: Find all files with prefix "Pref" in directory
-  "~/Preferences/". Enter the following: ~~~ M-x find-name-dired
-  ~/Preferences Pref* ~~~ Enjoy...
+ Example: Find all files with prefix "Pref" in directory
+ "~/Preferences/". Enter the following: ~~~ M-x find-name-dired
+ ~/Preferences Pref* ~~~ Enjoy...
 
-  - Add /(require 'dired-x)/ in the /.emacs/ file to take advantage of
-    /C-x C-j/ (jume to the directory of the file you are editing) and I
-    (for information of file/folder), /C-x C-q/ to make the directory
-    editor *(Editable!)* and /C-c C-c/ to switch back to the *normal
-    (uneditable)* directory editor
+ - Add /(require 'dired-x)/ in the /.emacs/ file to take advantage of
+   /C-x C-j/ (jume to the directory of the file you are editing) and I
+   (for information of file/folder), /C-x C-q/ to make the directory
+   editor *(Editable!)* and /C-c C-c/ to switch back to the *normal
+   (uneditable)* directory editor
 
-  *dired-subtree Package*
+ *dired-subtree Package*
 
-  - Use TAB key to expand current directory,
-  - Use C-TAB key once expand current directory, twice to expand the
-    directory recursively, thrice to contract
-  - Use SHIFT-TAB key to contract the subtree when the point is inside
-    that subtree
+ - Use TAB key to expand current directory,
+ - Use C-TAB key once expand current directory, twice to expand the
+   directory recursively, thrice to contract
+ - Use SHIFT-TAB key to contract the subtree when the point is inside
+   that subtree
 
-  To take advantage of dired-subtree package with the above options: Add
-  the following lines in the /.emacs/ or /Preferences.el/ file
+ To take advantage of dired-subtree package with the above options: Add
+ the following lines in the /.emacs/ or /Preferences.el/ file
 
-  #+BEGIN_EXAMPLE
-    (use-package dired-subtree
-      :ensure
-      :after dired
-      :config
+ #+BEGIN_EXAMPLE
+   (use-package dired-subtree
+     :ensure
+     :after dired
+     :config
     
-      (setq dired-subtree-use-backgrounds nil)
-      :bind (:map dired-mode-map
-                  ("<tab>" . dired-subtree-toggle)
-                  ("<C-tab>" . dired-subtree-cycle)
-                  ("<S-iso-lefttab>" . dired-subtree-remove)))
-  #+END_EXAMPLE
+     (setq dired-subtree-use-backgrounds nil)
+     :bind (:map dired-mode-map
+                 ("<tab>" . dired-subtree-toggle)
+                 ("<C-tab>" . dired-subtree-cycle)
+                 ("<S-iso-lefttab>" . dired-subtree-remove)))
+ #+END_EXAMPLE
 
-  *Copy/Paste/ Rename in Dired using ido-mode*
+ *Copy/Paste/ Rename in Dired using ido-mode*
 
-  In directory editor (dired) when a file is to be copied/renamed/moved to
-  a different directory with key C/R then all directory choice will
-  automatically appear in the minibuffer using ido-mode (rather than
-  conventional way of changing directory). For that,
+ In directory editor (dired) when a file is to be copied/renamed/moved to
+ a different directory with key C/R then all directory choice will
+ automatically appear in the minibuffer using ido-mode (rather than
+ conventional way of changing directory). For that,
 
-  - First install /ido-completing-read+/ from melpha (M-x
-    package-list-packages => search for/ido-completing-read+/, type /i/
-    then /x/).
-  - After that, add the following two lines in the /.emacs/
-    (Preferences.el) file
+ - First install /ido-completing-read+/ from melpha (M-x
+   package-list-packages => search for/ido-completing-read+/, type /i/
+   then /x/).
+ - After that, add the following two lines in the /.emacs/
+   (Preferences.el) file
 
-  #+BEGIN_EXAMPLE
-    ;;(require 'ido-completing-read+)  ;; no need to activate this line if ido-completing-read+ is installed from melpha 
-    (ido-ubiquitous-mode 1)
-    (eval-after-load 'dired '(progn (mapatoms (lambda (symbol) (if (s-starts-with? "dired-do-" (symbol-name symbol))  (put symbol 'ido 'find-file))))))
-  #+END_EXAMPLE
+ #+BEGIN_EXAMPLE
+   ;;(require 'ido-completing-read+)  ;; no need to activate this line if ido-completing-read+ is installed from melpha 
+   (ido-ubiquitous-mode 1)
+   (eval-after-load 'dired '(progn (mapatoms (lambda (symbol) (if (s-starts-with? "dired-do-" (symbol-name symbol))  (put symbol 'ido 'find-file))))))
+ #+END_EXAMPLE
 
-  - Now simply use /C/ or /R/ key to navigate to the directory you want
-    and pres /C-j/ to stop at a path and paste the file
+ - Now simply use /C/ or /R/ key to navigate to the directory you want
+   and pres /C-j/ to stop at a path and paste the file
 
-  *Reusing current buffer in dired when exploring directories*
+ *Reusing current buffer in dired when exploring directories*
 
-  In directory editor, visiting a new (child) directory under the cursor
-  by pressing RET key normally opens in a new buffer, which could be
-  annoying for someone.
+ In directory editor, visiting a new (child) directory under the cursor
+ by pressing RET key normally opens in a new buffer, which could be
+ annoying for someone.
 
-  /To avoid opening child directory in a new buffer, press *a* (instead of
-  RET key) or use command /dired-find-alternate-file* to kill the current
-  buffer and replace it with the contents of the sub-directory
+ /To avoid opening child directory in a new buffer, press *a* (instead of
+ RET key) or use command /dired-find-alternate-file* to kill the current
+ buffer and replace it with the contents of the sub-directory
 
-  - However, the reuse buffer using 'dired-find-alternate-file' does not
-    work when you use /'^'/ to move up to the parent directory. If you
-    want to reuse the current buffer (i.e., buffer containing child
-    directory) to *move up to the parent directory* by pressing /'^'/ key,
-    then add the following lines in the /.emacs (Preferences.el)/ file: >
-    >(add-hook 'dired-mode-hook > (lambda () > (define-key dired-mode-map
-    (kbd "^") > (lambda () (interactive) (find-alternate-file ".."))))) >
+ - However, the reuse buffer using 'dired-find-alternate-file' does not
+   work when you use /'^'/ to move up to the parent directory. If you
+   want to reuse the current buffer (i.e., buffer containing child
+   directory) to *move up to the parent directory* by pressing /'^'/ key,
+   then add the following lines in the /.emacs (Preferences.el)/ file: >
+   >(add-hook 'dired-mode-hook > (lambda () > (define-key dired-mode-map
+   (kbd "^") > (lambda () (interactive) (find-alternate-file ".."))))) >
 
-**** Installing AucTeX for emacs for improved Latex Editor (for macOS)
-     :PROPERTIES:
-     :CUSTOM_ID: installing-auctex-for-emacs-for-improved-latex-editor-for-macos
-     :END:
-
+     *Installing AucTeX package for emacs for improved Latex Editor (for macOS)*
+    
    1. M-x package-list-packages
    2. Search for auctex and install it
 
    Emac customization file .emacs is located (in my windows laptop) at the
    following directory: c:/Users/smiah-admin.JOB340LAP/AppData/Roaming/
 
-   *Some basic emacs command and keyboard shortcut*
-
-   s => Command (Windows) key
-
-   1. Force indentation: C-q < TAB Key >
-   2. Toggle word wrap: M-x toggle-word-wrap
-   3. Toggle word wrap in Visual line mode (preferred): M-x
-      global-visual-line-mode. To set it permanently, open .emacs file and
-      insert the following line and save:
-
-   (global-visual-line-mode 1) ; 1 for on, 0 for off.
-
-   If C-a and C-e makes your cursor go to the beginning of a paragraph and
-   end of a paragraph, it is just because fill-paragraph command is turned
-   on. You can deactivate it by M-q key. It is because of the
-   /better-defaults/ layer in dotspacemacs configuration file.
-
-   1.  Word wrap in Aquamacs: a) *Options ► Line Wrapping ► Word wrap b*
-       Options ► Line Wrapping ► Adopt as default c) Options ► Save
-       options**
-   2.  M-x delete-file => deletes file
-   3.  M-x delete-directory => deletes directory
-   4.  M -x make-directory /dirname =>/ This command creates a directory
-       named dirname
-   5.  C-x d => open current directory
-   6.  C-x C-v RET => refresh buffer (for docView type g)
-   7.  Shift ^ => go to previous parent directory
-   8.  C-x [ => beginning of the document
-   9.  C-x ] => end of the document
-   10. C-Delete => deletes a word forward
-   11. C-Backspace => deletes a word backward
-   12. C-Shift-Backspace => deletes the entire line regardless of cursor
-       position in the line
-   13. C-0 C-k => kills from point to the start of the line
-   14. C-up/down arrow => paragraph up/down
-   15. Next/previous buffer => C-x right arrow/left arrow
-   16. C-x o => To switch to another buffer in the split windows
-   17. C-x 5 o => To switch to another emacs window (frame)
-   18. C-x PLUS leftArrow (C-x PLUS rightArrow ) => switch between buffers.
-   19. Command+Shift+{ => switch between tabbed buffers (macOS)
-
-   - Switch to text mode: M-x text mode
-
-   *I (interactive) do (ido) mode*
+    *I (interactive) do (ido) mode*
 
    - ido-mode is useful to find files from a directory. It shows all the
      subdirectories under a directory automatically. To make use of
@@ -612,3 +572,47 @@ Error enabling Flyspell mode:
    "~/.emacs.d/misc/english-words.txt")))
 
    (add-hook 'text-mode-hook 'text-mode-hook-setup)
+  
+*** Some basic emacs command and key bindings
+
+   s => Command (Windows) key => 's' for supper!
+
+   1. Force indentation: C-q < TAB Key >
+   2. Toggle word wrap: M-x toggle-word-wrap
+   3. Toggle word wrap in Visual line mode (preferred): M-x
+      global-visual-line-mode. To set it permanently, open .emacs file and
+      insert the following line and save:
+
+   (global-visual-line-mode 1) ; 1 for on, 0 for off.
+
+   If C-a and C-e makes your cursor go to the beginning of a paragraph and
+   end of a paragraph, it is just because fill-paragraph command is turned
+   on. You can deactivate it by M-q key. It is because of the
+   /better-defaults/ layer in dotspacemacs configuration file.
+
+   1.  Word wrap in Aquamacs: a) *Options ► Line Wrapping ► Word wrap b*
+       Options ► Line Wrapping ► Adopt as default c) Options ► Save
+       options**
+   2.  M-x delete-file => deletes file
+   3.  M-x delete-directory => deletes directory
+   4.  M -x make-directory /dirname =>/ This command creates a directory
+       named dirname
+   5.  C-x d => open current directory
+   6.  C-x C-v RET => refresh buffer (for docView type g)
+   7.  Shift ^ => go to previous parent directory
+   8.  C-x [ => beginning of the document
+   9.  C-x ] => end of the document
+   10. C-Delete => deletes a word forward
+   11. C-Backspace => deletes a word backward
+   12. C-Shift-Backspace => deletes the entire line regardless of cursor
+       position in the line
+   13. C-0 C-k => kills from point to the start of the line
+   14. C-up/down arrow => paragraph up/down
+   15. Next/previous buffer => C-x right arrow/left arrow
+   16. C-x o => To switch to another buffer in the split windows
+   17. C-x 5 o => To switch to another emacs window (frame)
+   18. C-x PLUS leftArrow (C-x PLUS rightArrow ) => switch between buffers.
+   19. Command+Shift+{ => switch between tabbed buffers (macOS)
+
+   - Switch to text mode: M-x text mode
+
