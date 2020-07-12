@@ -348,7 +348,7 @@ Error enabling Flyspell mode:
  - Now simply use /C/ or /R/ key to navigate to the directory you want
    and pres /C-j/ to stop at a path and paste the file
 
- *Reusing current buffer in dired when exploring directories*
+ *Reusing current buffer in dired when exploring directories (OBSOLETE/not necessary for spacemacs for spacemacs )*
 
  In directory editor, visiting a new (child) directory under the cursor
  by pressing RET key normally opens in a new buffer, which could be

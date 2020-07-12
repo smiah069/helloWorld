@@ -352,8 +352,106 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
+                                        ; start package.el with emacs
+  (require 'package)
+                                        ; add MELPA repository list
+  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+                                        ; initialize package.el
+  (package-initialize)
 
- ;; Aspell directory settings 
+
+  (require 'dired-x) ;; useful to jump (or info) to the directory of the file your are editing kbd shortcut C-x C-j; I for info 
+
+  (setq-default delete-by-moving-to-trash t) ;; delete files/folder to trash (instead of  deleting them permenently)
+
+  ;;; Explore folder with TAB, C-TAB keys
+  (use-package dired-subtree
+    :ensure
+    :after dired
+    :config
+    (setq dired-subtree-use-backgrounds nil)
+    :bind (:map dired-mode-map
+                ("<tab>" . dired-subtree-toggle)   ;; TAB
+                ("<C-tab>" . dired-subtree-cycle)  ;; C-TAB
+                ("<S-iso-lefttab>" . dired-subtree-remove))) ;; Shift-TAB
+
+  ;; For file previews including images
+
+  (use-package peep-dired
+    :ensure
+    :after dired
+    :config
+    (setq peep-dired-cleanup-on-disable t)
+    (setq peep-dired-cleanup-eagerly t)
+    (setq peep-dired-enable-on-directories nil)
+    (setq peep-dired-ignored-extensions
+          '("mkv" "webm" "mp4" "mp3" "ogg" "iso"))
+    :bind (:map dired-mode-map
+                ("P" . peep-dired)))
+
+
+  ;;;;;;;; start yasnippet with emacs (obsolete for spacemacs) ;;;;;;;;;
+                                        ; (require 'yasnippet) ;; in Spacemacs, yasnippet-snippets is included in dotspacemacs-additional-packages() function
+                                        ; (yas-global-mode 1)
+
+  (global-visual-line-mode 1)  ; 1 for on, 0 for off.
+
+
+  (setq-default TeX-master nil)   ; working with Master file
+
+
+  (setq ediff-split-window-function 'split-window-horizontally)
+
+  ;;;;;; Ido-mode enable
+
+  (require 'ido)
+
+  (ido-mode 1); enable ido-mode
+  (setq ido-enable-flex-matching t); flexibly match names via fuzzy matching
+  ;; (ido-everywhere 1); use ido-mode everywhere, in buffers and for finding files
+  (setq ido-use-filename-at-point 'guess); for find-file-at-point
+  (setq ido-use-url-at-point t); look for URLs at point
+  (setq ffap-require-prefix t); get find-file-at-point with C-u C-x C-f
+
+
+  ;;;; Autocomplete for minibuffer's M-x commands (similar to ido-mode but it is M-x only)
+  ;;(require 'smex) ; Not needed if you use package.el
+  ;;  (smex-initialize) ; Can be omitted. This might cause a (minimal) delay
+                                        ; when Smex is auto-initialized on its first run.
+  ;;(global-set-key (kbd "M-x") 'smex)
+  ;;  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+  ;; This is your old M-x.
+  ;;(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+  (require 'recentf)  ;; To access recently opened files
+  (recentf-mode 1)
+  (setq recentf-max-menu-items 25)
+  (global-set-key "\C-x\ \C-r" 'recentf-open-files)
+
+  ;;(require 'amx)  ;; Newer version of smex
+  ;;(amx-mode 1)
+
+
+  ;;(blink-cursor-mode t) ;;;;;; blink cursor
+
+  ;; Indentation
+  (indent-guide-global-mode 1) ;; This minor mode highlights indentation levels via font-lock (very useful for programming)
+
+
+  ;; Stopping the snippets warning when starting snippets with SPC i s
+  (defvaralias 'helm-c-yas-space-match-any-greedy 'helm-yas-space-match-any-greedy "Temporary alias for Emacs27")
+
+  ;; Editing emacs-lisp in org-mode for nice organization
+
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)))
+
+
+  ;; Enable company mode (text completion framework) in all buffers
+  (add-hook 'after-init-hook 'global-company-mode)
+
+  ;; Aspell directory settings 
   (setq-default ispell-program-name "C:/msys64/mingw64/bin/aspell.exe")
 
   ) ;; end of user-config() fucntion 
