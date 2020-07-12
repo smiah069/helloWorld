@@ -44,7 +44,7 @@ For macOS installation: run the following commands:
 #+BEGIN_QUOTE
   $ brew tap d12frosted/emacs-plus
 
-  $ brew install emacs-plus@27 --HEAD
+  $ brew install emacs-plus@27 -~-HEAD
 
   $ ln -s /usr/local/opt/emacs-plus@27/Emacs.app /Applications
 #+END_QUOTE
