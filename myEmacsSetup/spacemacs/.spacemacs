@@ -61,7 +61,7 @@
      (org :variables
           org-enable-github-support t)
      octave
-     osx
+     osx ;;before adding osx layer, install coreutils (for sorting files/folders) package using  "brew install coreutils"
      pandoc ;; before adding this layer, install pandoc using brew install pandoc first
      python
      (ranger :variables

@@ -449,7 +449,7 @@ Error enabling Flyspell mode:
 
    - Install /use-package/ package from /M-x package-list-packages/
    - For macOS, install poppler using /brew install poppler automake/
-   - Using terminal install pdf-tools using /brew install --HEAD
+   - Using terminal install pdf-tools using /brew install  - -HEAD
      dunn/homebrew-emacs/pdf-tools/ Note the path of epdfinfo and after the
      installation as this path will be required down the road
    - Install /pdf-tools/ package from /M-x package-list-packages/

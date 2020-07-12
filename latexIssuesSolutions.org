@@ -290,19 +290,19 @@ sudo /opt/texbin/tlmgr update --self --all
 *Installing Pygments on MacOS X (Useful for using minted package in
 Latex)*
 
-Mojave has "easy_install" installer command installed already
+Mojave or later verions of macOS has "easy_install" installer command installed already
 
 So, simply run: sudo easy_install Pygments
 
-In case you get the following error:
+In case you get the following (or other) error:
 
 "! Package minted Error: Missing Pygments output; \inputminted was"
 
 Then simply remove easy_install manually from /usr/local/bin directory
 
-Reinstall Pygments using the command "sudo easy_install-3.7 Pygments"
+Reinstall Pygments using the command "sudo easy_install-x.x Pygments" (replace x.x with whatever version of easy_install (in macOS Catalina, it was easy_install-3.8) you see in /usr/local/bin directory)
 
-Or the following steps were done for macOS Seirra
+For older verion of macOS (Seirra or older) the following steps were done:
 
 First make sure to install pip installer if you do not have. For most
 recently tested on macOS Sierra (10.12.6):
