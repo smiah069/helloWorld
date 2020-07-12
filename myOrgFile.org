@@ -20,7 +20,7 @@ This is a very messy document. This document is entirely done when I started thi
    - item 2  
    - item 3
      
-     *bold* /italic/ _underlined_ +strike-through+ Greek letters \alpha, \beta, \gamma, \delta, \Upsilon, \Gamma  
+     *bold* /italic/ _underlined_ +strike-through+ Greek letters \alpha, \beta, \gamma, \delta, \Upsilon 
    Some enumerated  items 
    1. First 
    1. Second 
