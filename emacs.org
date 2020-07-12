@@ -38,6 +38,7 @@ My Aquamacs configurations for macOS can be found in the /myEmacsSetup/aquamacs/
 - A new way of experiencing emacs
 - You will need to install Emacs first. Please checkout
   [[https://github.com/syl20bnr/spacemacs][spacemacs]] link
+** Installing Spacemacs 
 
 For macOS installation: run the following commands:
 
@@ -113,7 +114,7 @@ the errors most likely.
   /dotspacemacs-configuration-layers/ (see the .spacemacs file, for
   example**.
 
-
+*** User-config function 
 All the user configurations in emacs-lisp are to be written in the
 following functions
 
@@ -139,7 +140,7 @@ terminal before running the Emacs with my .spacemacs configurations*
 - ispell (see the dictionary section for installation instructions)
 - Fonts (see the font sections)
 
-*Key bindings:*
+*** Editing Style and Key bindings
 
 #+BEGIN_EXAMPLE
   Note that *SPC* key in spacemacs vim editor is equivalent to *M-m* in spacemacs emacs editor (which I'm using as I've experience with Emacs editor) 
@@ -166,7 +167,7 @@ If you like "Emacs" editing style then simply replace the above piece of lisp co
 #+end_quote
 
 
-*Spell Checker*
+*** Spell Checker
 
 Emacs includes Flyspell, therefore, you do not need explicitly install
 flyspell. However, flyspell needs a spell checking tool (Emacs will
@@ -200,23 +201,7 @@ If everything is set up correctly, the you should be able to enable flyspell-mod
 Error enabling Flyspell mode:
 (Searching for program No such file or directory aspell)
 #+end_quote
-
-*Install "Ubuntu Mono" font for Windows 10*
-
- - Download /ubuntu-font-family-0.83/ from [[https://design.ubuntu.com/font/]] 
- - Unzip the folder ->  select all the .ttf files -> Right-click -> click /install/ or /install for all users/
- 
-  You now should be able to use "Ubuntu Mono" font in the /dotspacemacs/ file, i.e., 
-
- #+BEGIN_EXAMPLE
-      dotspacemacs-default-font '("Ubuntu Mono"   ;; "Source Code Pro" 
-                                  :size 18
-                                  :weight normal
-                                  :width normal
-                                  :powerline-scale 1.5)
- #+END_EXAMPLE
-
-*** Setting up Dictionary and Fonts
+ *Dictionary search*
 
     You can find the definition of a word in dictionary in spacemacs through
     /define-word/, which is a GNU emacs package that lets you see the
@@ -228,8 +213,9 @@ Error enabling Flyspell mode:
     - Or can you define a word right under your cursor using Key bindings in
       Spacemacs: /SPC x w d/**
 
-    *Installing fonts*
 
+*** Installing Fonts 
+    
     The default font for spacemacs is "Source Code Pro". However, you will
     need to install this font family so that spacemacs can find them. For
     that, run: > > brew tap homebrew/cask-fonts && brew cask install
@@ -250,13 +236,42 @@ Error enabling Flyspell mode:
                                   :powerline-scale 1.5)
  #+END_EXAMPLE
 
+
+*Install "Ubuntu Mono" font for Windows 10*
+
+ - Download /ubuntu-font-family-0.83/ from [[https://design.ubuntu.com/font/]] 
+ - Unzip the folder ->  select all the .ttf files -> Right-click -> click /install/ or /install for all users/
+ 
+  You now should be able to use "Ubuntu Mono" font in the /dotspacemacs/ file, i.e., 
+
+ #+BEGIN_EXAMPLE
+      dotspacemacs-default-font '("Ubuntu Mono"   ;; "Source Code Pro" 
+                                  :size 18
+                                  :weight normal
+                                  :width normal
+                                  :powerline-scale 1.5)
+ #+END_EXAMPLE
+*** Syncing Emacs and PDF viewers
+
+    PDF-tools package is good to view latex complied PDF as it can sync. However, viewing PDF inside spacemacs emacs  using PDF-tools is a bit slow. Therefore, I decided to use Skim PDF viewer for viewing my latex complied PDF document. For that, the follow the steps below. 
+    1. Install  [[https://skim-app.sourceforge.io/][Skim]] PDF viewer for macOS
+    1. Click "Preferences" -> Sync -> Tick all the checkboxes and choose "Emacs" from the dropdown menu under "Preset" 
+    1. Open Spacemacs and add the following two lines under the user-config() function. 
+ 
+#+begin_example
+  (server-start)
+  (add-hook 'server-switch-hook 'raise-emacs-on-aqua)
+#+end_example
+    1. Under tex-view program selection in tex customization-group, choose "Skim" right under the output-pdf button. 
+    
+       Now you can just use Cmd+Shift+left-click for go back from the Skim PDF to latex document. 
 *** Updating Spacemacs 
 
     When spacemacs is installed, you will see the stable version of the spacemacs. However, to update the spacemacs, open /.emacs.d/ in shell then run the following command 
  #+begin_quote
   git checkout develop 
  #+end_quote
- to checking the develop branch. Then it is going track the latest changes of the develop branch from the original server. Any time you want to update Spacemacs configurations, simply go to the /.emacs.d/ folder and run 
+ to checkout the develop branch. Then it is going track the latest changes of the develop branch from the original server. Any time you want to update Spacemacs configurations, simply go to the /.emacs.d/ folder and run 
  #+begin_quote
  git pull
  #+end_quote
