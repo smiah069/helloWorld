@@ -532,9 +532,18 @@ you should place your code here."
   ;; Enable company mode (text completion framework) in all buffers
   (add-hook 'after-init-hook 'global-company-mode)
   ;;;;;;;;;;; Setup for syncing Skim PDF and Emacs
-  ;; Starts the Emacs server
-  (server-start)
-  (add-hook 'server-switch-hook 'raise-emacs-on-aqua)
+
+  (setq TeX-source-correlate-mode t)
+  (setq TeX-source-correlate-start-server t)
+  (setq TeX-source-correlate-method 'synctex)
+  (setq TeX-view-program-list
+        '(("Okular" "okular --unique %o#src:%n`pwd`/./%b")
+          ("/Applications/install/Skim.app" "displayline -b -g %n %o %b")
+          ("Zathura"
+           ("zathura %o"
+            (mode-io-correlate
+             " --synctex-forward %n:0:%b -x \"emacsclient +%{line} %{input}\"")))))
+
   )  ;; End of user-config() function 
 
 ;; Do not write anything past this comment. This is where Emacs will

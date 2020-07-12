@@ -257,7 +257,26 @@ Error enabling Flyspell mode:
     1. Install  [[https://skim-app.sourceforge.io/][Skim]] PDF viewer for macOS
     1. Click "Preferences" -> Sync -> Tick all the checkboxes and choose "Emacs" from the dropdown menu under "Preset" 
     1. Open Spacemacs and add the following two lines under the user-config() function. 
- 
+
+#+begin_example
+  ;;;;;;;;;;; Setup for syncing Skim PDF and Emacs for Latex editing. 
+  (setq TeX-source-correlate-mode t)
+  (setq TeX-source-correlate-start-server t)
+  (setq TeX-source-correlate-method 'synctex)
+  (setq TeX-view-program-list
+        '(("Okular" "okular --unique %o#src:%n`pwd`/./%b")
+          ("/Applications/install/Skim.app" "displayline -b -g %n %o %b")
+          ("Zathura"
+           ("zathura %o"
+            (mode-io-correlate
+             " --synctex-forward %n:0:%b -x \"emacsclient +%{line} %{input}\"")))))
+
+
+#+end_example 
+Pay attention to the PATH of the Skim.app where it is installed! Instead of
+above command list, adding the following two lines will also work BUT DO NOT USE
+it as it creates problem with magit commit!!
+
 #+begin_example
   (server-start)
   (add-hook 'server-switch-hook 'raise-emacs-on-aqua)
