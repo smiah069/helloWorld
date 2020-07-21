@@ -544,6 +544,21 @@ you should place your code here."
             (mode-io-correlate
              " --synctex-forward %n:0:%b -x \"emacsclient +%{line} %{input}\"")))))
 
+  ;; Aliases to open applications from eshell ;;;;;;;;;;;;;;;;;;;;;;;;;; 
+  ;;;; Application name must not contain any space (if there is any space in application name, then simply right-click and rename to remove white space)
+  (defun eshell-add-aliases ()
+    "Doc-string."
+    (dolist (var '(("ec" "open -a Thunderbird")
+                   ("preview" "open -a preview")
+                   ("office" "open -a LibreOffice")
+                   ("matlab" "open -a MATLAB_R2020a")
+                   ("finder" "open -a finder")
+                   ("chrome" "open -a GoogleChrome")
+                   ))
+   (add-to-list 'eshell-command-aliases-list var)))
+  (add-hook 'eshell-post-command-hook 'eshell-add-aliases)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
   )  ;; End of user-config() function 
 
 ;; Do not write anything past this comment. This is where Emacs will
