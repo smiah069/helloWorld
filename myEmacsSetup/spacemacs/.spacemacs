@@ -362,7 +362,8 @@ you should place your code here."
                                         ; start package.el with emacs
   (require 'package)
                                         ; add MELPA repository list
-  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+  ;;;;;;;;;; (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/")) ;;;; obsolete website for melpa packages 
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
                                         ; initialize package.el
   (package-initialize)
 
@@ -554,6 +555,7 @@ you should place your code here."
                    ("matlab" "open -a MATLAB_R2020a")
                    ("finder" "open -a finder")
                    ("chrome" "open -a GoogleChrome")
+                   ("zoom" "open -a zoom.us")
                    ))
    (add-to-list 'eshell-command-aliases-list var)))
   (add-hook 'eshell-post-command-hook 'eshell-add-aliases)
@@ -599,7 +601,7 @@ This function is called at the very end of Spacemacs initialization."
  '(LaTeX-command "latex --shell-escape")
  '(TeX-view-program-selection
    '((output-dvi "open")
-     (output-pdf "Skim")
+     (output-pdf "PDF Tools")
      (output-html "open")))
  '(blink-cursor-mode nil)
  '(column-number-mode t)
