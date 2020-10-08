@@ -81,6 +81,7 @@
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(yasnippet-snippets
+                                      dired-subtree
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -364,6 +365,7 @@ you should place your code here."
                                         ; add MELPA repository list
   ;;;;;;;;;; (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/")) ;;;; obsolete website for melpa packages 
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  
                                         ; initialize package.el
   (package-initialize)
 
@@ -373,15 +375,15 @@ you should place your code here."
   (setq-default delete-by-moving-to-trash t) ;; delete files/folder to trash (instead of  deleting them permenently)
 
 ;;; Explore folder with TAB, C-TAB keys
-  (use-package dired-subtree
-    :ensure
-    :after dired
-    :config
-    (setq dired-subtree-use-backgrounds nil)
-    :bind (:map dired-mode-map
-                ("<tab>" . dired-subtree-toggle)   ;; TAB
-                ("<C-tab>" . dired-subtree-cycle)  ;; C-TAB
-                ("<S-iso-lefttab>" . dired-subtree-remove))) ;; Shift-TAB
+;  (use-package dired-subtree
+;    :ensure
+;    :after dired
+;    :config
+;    (setq dired-subtree-use-backgrounds nil)
+;    :bind (:map dired-mode-map
+;                ("<tab>" . dired-subtree-toggle)   ;; TAB
+;                ("<C-tab>" . dired-subtree-cycle)  ;; C-TAB
+;                ("<S-iso-lefttab>" . dired-subtree-remove))) ;; Shift-TAB
 
 
   ;; Type 'a' (or use command 'dired-find-alternate-file'), instead of RET key to reuse current buffer (i.e., instead of opening a child directory in a new buffer)
@@ -550,7 +552,7 @@ you should place your code here."
   (defun eshell-add-aliases ()
     "Doc-string."
     (dolist (var '(("ec" "open -a Thunderbird")
-                   ("preview" "open -a preview")
+                   ("preview" "open -a Preview")
                    ("office" "open -a LibreOffice")
                    ("matlab" "open -a MATLAB_R2020a")
                    ("finder" "open -a finder")
@@ -601,7 +603,7 @@ This function is called at the very end of Spacemacs initialization."
  '(LaTeX-command "latex --shell-escape")
  '(TeX-view-program-selection
    '((output-dvi "open")
-     (output-pdf "PDF Tools")
+     (output-pdf "Skim")
      (output-html "open")))
  '(blink-cursor-mode nil)
  '(column-number-mode t)
