@@ -60,6 +60,22 @@ brew.
 
 - To remotely login to a file server: >sftp username@serverName > >put
   sourceFiles [it places source files in the current directory]
+  
+
+*Converting docx file to PDF using LibreOfice:*
+
+For this, you will need to have LibreOfice installed under /Applications/ directory. To convert /myDocument.docx/ that is placed in the home directory, for example, follow the steps below: 
+
+ + Open macOS terminal window
+ + Run the following commands: 
+
+#+begin_quote
+/Applications/LibreOffice.app/Contents/MacOS/soffice \
+  --headless \
+  --convert-to pdf \
+  myDocument.docx
+#+end_quote
+
 
 *How to set environment variable in MACOS:*
 
@@ -96,7 +112,7 @@ or simply use key binding: Cmd + Shift + .
   and .eps: > >find . -type f ! -name "*.tex" ! -name "*.eps" -delete\\
   >
 
-- Merging multiple pdf files into a single pdf file:
+*Merging multiple pdf files into a single pdf file:*
 
   1. First create a PDFconcat command by following the commands below
      (you need to do only once in your computer life!)

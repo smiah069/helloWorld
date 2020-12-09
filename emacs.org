@@ -143,7 +143,7 @@ terminal before running the Emacs with my .spacemacs configurations*
 *** Editing Style and Key bindings
 
 #+BEGIN_EXAMPLE
-  Note that *SPC* key in spacemacs vim editor is equivalent to *M-m* in spacemacs emacs editor (which I'm using as I've experience with Emacs editor) 
+  Note that *SPC* key in spacemacs vim editor is equivalent to *M-m* in spacemacs emacs editor (for those who like to use emacs editor with spacemacs configuration. I'm using hybrid-mode) 
 #+END_EXAMPLE
 
 However, I find it a little bit inconvenient to type M-m. Therefore, I

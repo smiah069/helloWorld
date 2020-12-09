@@ -151,3 +151,8 @@ Opening xfig
 
 - Type the command "startx &" to open X11
 - lunch xfig by the command $xfig on the terminal
+
++ Merging  multiple PDF files into a single PDF files using command line: 
+    "/System/Library/Automator/Combine PDF Pages.action/Contents/Resources/join.py" -o PATH/TO/YOUR/MERGED/FILE.pdf /PATH/TO/ORIGINAL/1.pdf /PATH/TO/ANOTHER/2.pdf /PATH/TO/A/WHOLE/DIR/*.pdf
+
+    
