@@ -67,7 +67,7 @@ brew.
 For this, you will need to have LibreOfice installed under /Applications/ directory. To convert /myDocument.docx/ that is placed in the home directory, for example, follow the steps below: 
 
  + Open macOS terminal window
- + Run the following commands: 
+ + Run the following command in the terminal window: 
 #+begin_example
 /Applications/LibreOffice.app/Contents/MacOS/soffice \
   --headless \
@@ -75,8 +75,6 @@ For this, you will need to have LibreOfice installed under /Applications/ direct
   myDocument.docx
 #+end_example
 Here '\' is for newline in terminal window
-#+begin_quote
-#+end_quote
 
 
 *How to set environment variable in MACOS:*
