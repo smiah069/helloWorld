@@ -74,7 +74,7 @@ For this, you will need to have LibreOfice installed under /Applications/ direct
   --convert-to pdf \
   myDocument.docx
 #+end_example
-Here '\' is for newline in terminal window
+Here '\\ ' is for newline in terminal window
 
 
 *How to set environment variable in MACOS:*
