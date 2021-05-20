@@ -133,12 +133,12 @@ in my .spacemacs file*
 directory. However, you will need to install several tools in your
 terminal before running the Emacs with my .spacemacs configurations*
 
-- pdf-tools using terminal: /brew install --HEAD
-  dunn/homebrew-emacs/pdf-tools/ (see the detailed instructions down
-  this document)
-- pandoc /brew install pandoc/
-- ispell (see the dictionary section for installation instructions)
-- Fonts (see the font sections)
++  pdf-tools using terminal:
+  * First install poppler automake using the command: /brew install poppler automake/
+  * Then, simply add /pdf/ layer under the dotspacemacs-configuration layers, as simple as that!
++  pandoc /brew install pandoc/
++  /ispell/ (see the dictionary section for installation instructions)
++  Fonts (see the font sections)
 
 *** Editing Style and Key bindings
 
@@ -253,7 +253,7 @@ Error enabling Flyspell mode:
  #+END_EXAMPLE
 *** Syncing Emacs and PDF viewers
 
-    PDF-tools package is good to view latex complied PDF as it can sync. However, viewing PDF inside spacemacs emacs  using PDF-tools is a bit slow. Therefore, I decided to use Skim PDF viewer for viewing my latex complied PDF document. For that, the follow the steps below. 
+    PDF-tools package is good to view latex complied PDF as it can sync. However, viewing PDF inside spacemacs emacs  using PDF-tools is a bit slow. But Skim PDF viewer can be used  for viewing my latex complied PDF document. For that, the follow the steps below. 
     1. Install  [[https://skim-app.sourceforge.io/][Skim]] PDF viewer for macOS
     1. Click "Preferences" -> Sync -> Tick all the checkboxes and choose "Emacs" from the dropdown menu under "Preset" 
     1. Open Spacemacs and add the following two lines under the user-config() function. 
@@ -454,8 +454,10 @@ buffer and replace it with the contents of the sub-directory
   [[https://github.com/politza/pdf-tools][PDF tools README]]. To install
   it, follow the steps below.
 
-  - Install /use-package/ package from /M-x package-list-packages/
-  - Open /.emacs/ (Preferences.el) file and add the following
+  - Install poppler automake using /brew install poppler automake/
+  - Then simply add /pdf/ layer under /dotspacemacs-configuration-layers/  
+     
+  If you work with plain emacs instead of spacemacs then /.emacs/ (Preferences.el) file and add the following
 
   #+BEGIN_EXAMPLE
     ;;; pdf-tools elisp via the use-package below. To upgrade the epdfinfo
@@ -498,9 +500,9 @@ buffer and replace it with the contents of the sub-directory
 
   ==========================================
 
-  1. Type Meta(Alt)-!
-  2. Then type: pdflatex -shell-escape source.tex or latex -shell-escape
-     source.tex
+  - Type Meta(Alt)-!
+  - Then run: pdflatex -shell-escape source.tex or latex -shell-escape
+    source.tex
 
   Or insert the following lines in .emacs file and save:
 
@@ -529,24 +531,24 @@ buffer and replace it with the contents of the sub-directory
   %%% How to install packages in emacs (e.g., auto-complete,
   auto-complete-auctex, yasnippet)
 
-  1. Open .emacs file from "C:\extract\emacs/" directory
-  2. Add the following lines and save .emacs file:
+  - Open .emacs file from "C:\extract\emacs/" directory
+  - Add the following lines and save .emacs file:
 
   ; start package.el with emacs (require 'package) ; add MELPA repository
   list (add-to-list 'package-archives'("melpa" .
   "http://melpa.milkbox.net/packages/")) ; initialize package.el
   (package-initialize)
 
-  3. Run the command /M-x eval-buffer/ or restart emacs
+  - Run the command /M-x eval-buffer/ or restart emacs
 
-  4. Type M-x package-list-packages
+  - Type M-x package-list-packages
 
-  5. Find the package: e.g. auto-complete
+  - Find the package: e.g. auto-complete
 
-  6. Take the cursor at the beginning of the line containing package name,
-     then type "I" then "x". Your package auto-complete is installed.
+  - Take the cursor at the beginning of the line containing package name,
+    then type "I" then "x". Your package auto-complete is installed.
 
-  7. Add the following lines in the .emacs file and save:
+  - Add the following lines in the .emacs file and save:
 
   ; start auto-complete with emacs (require 'auto-complete) ; do default
   config for auto-complete (require 'auto-complete-config)
@@ -558,10 +560,10 @@ buffer and replace it with the contents of the sub-directory
 
   Show line numbers at the left side of the file.
 
-  1. M-x package-list-packages
-  2. Search for linum
-  3. Type 'i' at the beginning of the line followed by 'x'
-  4. Type M-x global-linum
+  - M-x package-list-packages
+  - Search for linum
+  - Type 'i' at the beginning of the line followed by 'x'
+  - Type M-x global-linum
 
   %%%%%%%%%%%%% OUTPUT DVI
 
@@ -574,9 +576,9 @@ buffer and replace it with the contents of the sub-directory
   After TeX-PDF-mode is disabled, you will be able to comple latex
   document to dvi and do the following to view dvi file:
 
-  1. M-x customize-variable
-  2. Type "TeX-view-program-selection"
-  3. Replace "Yap" with "Start"
+  - M-x customize-variable
+  - Type "TeX-view-program-selection"
+  - Replace "Yap" with "Start"
 
   %%%%%%%%%%%%%%% Auto-completion text mode
 
