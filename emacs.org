@@ -133,12 +133,13 @@ in my .spacemacs file*
 directory. However, you will need to install several tools in your
 terminal before running the Emacs with my .spacemacs configurations*
 
-+  pdf-tools using terminal:
++ pdf-tools using terminal:
   * First install poppler automake using the command: /brew install poppler automake/
+  * Then run the command on the terminal: /export PKG_CONFIG_PATH=/usr/local/Cellar/zlib/1.2.8/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig/
   * Then, simply add /pdf/ layer under the dotspacemacs-configuration layers, as simple as that!
-+  pandoc /brew install pandoc/
-+  /ispell/ (see the dictionary section for installation instructions)
-+  Fonts (see the font sections)
++ pandoc /brew install pandoc/
++ /ispell/ (see the dictionary section for installation instructions)
++ Fonts (see the font sections)
 
 *** Editing Style and Key bindings
 
@@ -455,6 +456,8 @@ buffer and replace it with the contents of the sub-directory
   it, follow the steps below.
 
   - Install poppler automake using /brew install poppler automake/
+  - Then run the command on the terminal: /export PKG_CONFIG_PATH=/usr/local/Cellar/zlib/1.2.8/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig/
+
   - Then simply add /pdf/ layer under /dotspacemacs-configuration-layers/  
      
   If you work with plain emacs instead of spacemacs then /.emacs/ (Preferences.el) file and add the following
