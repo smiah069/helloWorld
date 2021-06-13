@@ -38,6 +38,7 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     ;; Suruz's customization layers
      auto-completion
      better-defaults
      c-c++
@@ -76,7 +77,7 @@ This function should only modify configuration layer settings."
      ;; version-control
      treemacs
      pdf
-     )
+     ) ;; End of dotspacemacs-configuration-layers
 
 
    ;; List of additional packages that will be installed without being wrapped
@@ -87,10 +88,9 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(yasnippet-snippets
+   dotspacemacs-additional-packages '(yasnippet-snippets   ;;  Suruz's customization => additional packages
                                       dired-subtree
                                       )
-   dotspacemacs-additional-packages '()
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -106,7 +106,6 @@ This function should only modify configuration layer settings."
    ;; installs *all* packages supported by Spacemacs and never uninstalls them.
    ;; (default is `used-only')
    dotspacemacs-install-packages 'used-only))
-
 
 (defun dotspacemacs/init ()
   "Initialization:
@@ -187,11 +186,12 @@ It should only modify the values of Spacemacs settings."
    ;; `hybrid state' with `emacs' key bindings. The value can also be a list
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
-   ;; (default 'vim)
-   dotspacemacs-editing-style '(hybrid :variables
-                                       hybrid-mode-enable-evilified-state t
-                                       hybrid-mode-enable-hjkl-bindings nil
-                                       hybrid-mode-default-state 'normal)
+   ;; (default 'vim)  ;; Suruz's customization => editing style 
+   dotspacemacs-editing-style '(hybrid :variables   
+          hybrid-mode-enable-evilified-state t
+          hybrid-mode-enable-hjkl-bindings nil
+          hybrid-mode-default-state 'normal)
+
    ;; If non-nil show the version string in the Spacemacs buffer. It will
    ;; appear as (spacemacs version)@(emacs version)
    ;; (default t)
@@ -264,17 +264,17 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
-   dotspacemacs-colorize-cursor-according-to-state nil
+   dotspacemacs-colorize-cursor-according-to-state nil ;; t ;; Suruz' customization => Change cursor color according to theme
 
    ;; Default font or prioritized list of fonts. The `:size' can be specified as
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
-   dotspacemacs-default-font '("Ubuntu Mono"   ;; "Source Code Pro" 
+
+   dotspacemacs-default-font '("Ubuntu Mono"   ;; "Source Code Pro"  ;; Suruz's customization => change font size 
                                :size 20
                                :weight normal
                                :width normal
                                :powerline-scale 1.5)
-
    ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
 
@@ -374,7 +374,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup t
+   dotspacemacs-maximized-at-startup t  ;; Suruz's customization => Change emacs window size
 
    ;; If non-nil the frame is undecorated when Emacs starts up. Combine this
    ;; variable with `dotspacemacs-maximized-at-startup' in OSX to obtain
@@ -429,7 +429,7 @@ It should only modify the values of Spacemacs settings."
    ;;   :size-limit-kb 1000)
    ;; When used in a plist, `visual' takes precedence over `relative'.
    ;; (default nil)
-   dotspacemacs-line-numbers t
+   dotspacemacs-line-numbers t   ;; Suruz's customization => show line numbers
 
    ;; Code folding method. Possible values are `evil', `origami' and `vimish'.
    ;; (default 'evil)
@@ -447,7 +447,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
    ;; over any automatically added closing parenthesis, bracket, quote, etc...
    ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
-   dotspacemacs-smart-closing-parenthesis t
+   dotspacemacs-smart-closing-parenthesis nil
 
    ;; Select a scope to highlight delimiters. Possible values are `any',
    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
@@ -557,7 +557,8 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  ;;;;; Suruz's customization (set spacemacs background color)
+
+;;;;; Suruz's customization (set spacemacs background color)
 
   (setq-default
    ;; ... other configurations...
@@ -580,7 +581,7 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
-  (require 'dired-x) ;; useful to jump (or info) to the directory of the file your are editing kbd shortcut C-x C-j; I for info 
+ (require 'dired-x) ;; useful to jump (or info) to the directory of the file your are editing kbd shortcut C-x C-j; I for info 
 
   (setq-default delete-by-moving-to-trash t) ;; delete files/folder to trash (instead of  deleting them permenently)
 
@@ -616,8 +617,7 @@ before packages are loaded."
   (add-hook 'eshell-post-command-hook 'eshell-add-aliases)
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-  )  ;; End of user-config() function 
-
+  ) ;; End of user-config ()
 
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -633,10 +633,11 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(TeX-view-program-selection
-   '((output-dvi "PDF Tools")
+   '((output-dvi "open")
      (output-pdf "PDF Tools")
-     (output-html "PDF Tools")))
- '(evil-want-Y-yank-to-eol nil))
+     (output-html "open")))
+ '(evil-want-Y-yank-to-eol nil)
+ '(safe-local-variable-values '((TeX-command-extra-options . "-shell-escape"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
