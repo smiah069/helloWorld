@@ -25,7 +25,7 @@ My Aquamacs configurations for macOS can be found in the /myEmacsSetup/aquamacs/
 
 - You can install emacs in macOS using terminal by running the command:
   #+begin_quote
-  brew install --cask emacs
+  =brew install --cask emacs=
   #+end_quote 
 
   This command will install a pre-built package from https://emacsformacosx.com/ and an /Emacs.app/ will be placed in the /Applicatiuons// folder  
