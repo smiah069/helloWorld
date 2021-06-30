@@ -9,7 +9,7 @@
 *Disclaimer*
 
 /This document is very messy at this point! I started putting things
-here since I started learning latex back in 2008. Of course, many things
+here since I started learning latex back in 2006. Of course, many things
 have changed and some information placed here is obsolete!!. Hopefully,
 I will find some time down the road to delete some obsolete
 information/instructions and make this document tidy for other users. It
@@ -24,7 +24,9 @@ My Aquamacs configurations for macOS can be found in the /myEmacsSetup/aquamacs/
    :END:
 
 - You can install emacs in macOS using terminal by running the command:
-  /brew cask install emacs/
+  /brew install --cask emacs/
+
+  This command will install a pre-built package from https://emacsformacosx.com/ and an /Emacs.app/ will be placed in the /Applicatiuons// folder  
 - New bees may want to install [[http://aquamacs.org/][Aquamacs]]
   available for macOS only
 - For windows, you can download emacs from this
@@ -40,21 +42,7 @@ My Aquamacs configurations for macOS can be found in the /myEmacsSetup/aquamacs/
   [[https://github.com/syl20bnr/spacemacs][spacemacs]] link
 ** Installing Spacemacs 
 
-For macOS installation: run the following commands:
-
-#+BEGIN_QUOTE
-  $ brew tap d12frosted/emacs-plus
-
-  $ brew install emacs-plus@27 - -HEAD
-
-  $ ln -s /usr/local/opt/emacs-plus@27/Emacs.app /Applications
-#+END_QUOTE
-
-The above commands will install emacs27 in the directory
-/usr/local/Cellar/emacs-plus@27/HEAD-229995b/ directory, and then place
-the /Emacs.app/ in the /Applications// folder
-
-Once Emacs is installed, then open the terminal then run 
+Once Emacs is installed using /brew/ command in the previous section, then open the terminal then run 
 
 1. Run the following command (assuming you are already in home/ directory ) to backup the current .emacs configurations: 
 #+begin_quote
@@ -65,11 +53,17 @@ mv .emacs.d .emacs.d.bak
 mv .emacs .emacs.bak
 #+end_quote  
 
-2. Clone the spacemacs repository: 
-
-#+begin_quote
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-#+end_quote 
+1. Now install spacemacs by cloning the spacemacs repository from GitHub. See the spacemacs's GitHub repository for details [[https://github.com/syl20bnr/spacemacs][[here]​]] 
+   There are two versions of spacemacs that you can install.
+   
+   + Stable release, which can be installed by running the command:
+     #+begin_quote
+         git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+     #+end_quote
+   + The develop version, which *I personally like* to install by running the command:
+     #+begin_quote
+       git clone -b develop https://github.com/syl20bnr/spacemacs ~/.emacs.d
+     #+end_quote 
 
 
 
@@ -77,9 +71,8 @@ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 Now can you run /Emacs.app/ or (run the command /emacs/ from the
 terminal) to open Emacs editor with spacemacs configuration. You should
 see Spacemacs logo in your Emacs editor when you launch Emacs for the
-first time. You may choose Emacs editor (I chose for myself as I've
-experience with Emacs) or Vim editor style and the rest you choose the
-recommended options provided by Spacemacs.
+first time. You may choose Vim (I configured hybrid, emacs + vim, in the /dotspacemacs/ file) or Emacs editor and the rest you choose the
+recommended options provided by Spacemacs at startup.
 
 
 
